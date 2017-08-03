@@ -1,0 +1,82 @@
+
+% ============================================================================================================
+
+% JOURNAL MODE
+% ------------
+
+%\documentclass[extra]{gji}
+%\setlength{\paperwidth}{210mm}
+%\setlength{\paperheight}{297mm}% fixed.
+%\usepackage[pass]{geometry}\usepackage{timet}
+
+% ============================================================================================================
+
+% MANUSCRIPT MODE
+% ---------------
+
+\documentclass[extra,mreferee]{gji}
+
+% ============================================================================================================
+
+% \addtolength{\paperheight}{1in}
+
+\usepackage{fancyhdr}
+\usepackage{comment}
+\usepackage{color}
+\usepackage{graphicx}
+\usepackage{amsmath}
+\usepackage{mathtools}
+\usepackage{environ}
+\usepackage{datatool}
+\usepackage{textcomp}
+
+
+\widowpenalty=10000
+\clubpenalty=10000
+
+
+\title[\input{short-title}]{\input{long-title}}
+\author[\input{short-authors}]{\input{long-authors}}
+% \date{Received 2015 August 1; in original form 2015 July 1}
+\date{To be submitted by August, 2017}
+\pagerange{\pageref{firstpage}--\pageref{lastpage}}
+\volume{000}
+\pubyear{0000}
+
+%\def\LaTeX{L\kern-.36em\raise.3ex\hbox{{\small A}}\kern-.15em
+%    T\kern-.1667em\lower.7ex\hbox{E}\kern-.125emX}
+%\def\LATeX{L\kern-.36em\raise.3ex\hbox{{\Large A}}\kern-.15em
+%    T\kern-.1667em\lower.7ex\hbox{E}\kern-.125emX}
+% Authors with AMS fonts and mssymb.tex can comment out the following
+% line to get the correct symbol for Geophysical Journal International.
+
+\let\leqslant=\leq
+
+\newtheorem{theorem}{Theorem}[section]
+
+\input{mycommands}
+
+\begin{document}
+
+\label{firstpage}
+
+\maketitle
+
+\begin{summary}
+\input{abstract}
+\end{summary}
+
+\begin{keywords}
+\input{keywords}
+\end{keywords}
+
+\input{content}
+
+\bibliographystyle{gji}
+\bibliography{references}
+
+% \bsp 
+
+\label{lastpage}
+
+\end{document}

@@ -1,0 +1,10 @@
+# GMT 5 Session common arguments shelf
+BEGIN GMT 5.1.1
+B	a10:Epicentral Distance (km):/a2f1:Score:WN
+J	X
+JX	X5.4i/1.5i
+R	0/140/0/10
+X	1.5i
+Y	4.25i
+L	15
+END
