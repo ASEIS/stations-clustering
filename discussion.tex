@@ -1,7 +1,8 @@
 
 \section{Discussion}
 
-According to the results Response Spectra (C8) is the most important metric in classifying the stations. Data percentage in Table.~\ref{tab:attribute_usage_1} represent the amount of data that the attribute is used in classifying them.  After C8, Arias Intensity Value is the most effective metric. With $C8 \leq 4.07~ \& ~ 4.07 < C8 \leq 6.1$ and $6.1 < C8~ \&~ 6.87 \leq C4$ and $6.87 \leq C4 ~ \&  6.1 \leq C8$ one can classify the simulation as poor, fair, good, and excellent, respectively, with a high confidence.  In this case minimum F1-score occurs for Class 3 and maximum F1-score occurs for Class 1. Pruning process reduce the effect of oversampling in cluster 4. In the second model, which is more accurate from the first model for all metrics, other than Response Spectra and Total Energy, 3 other metrics including: Peak Velocity, Peak Acceleration, and Cross Correlation, also determines the classes.  Fig.~\ref{fig:C8dist} represents the variation of Response Spectra score in different distances for different velocity models and components. As one can see it is fairly well distributed in different score variation in respect to response. There is differences in median value in different components. The median value improves from CVMH+without GTL layer to CVMS. 
+According to the results Response Spectra (C8) is the most important metric in classifying the stations. Data percentage in Table.~\ref{tab:attribute_usage_1} presents the amount of data that the attribute is used in classifying them.  After Response Spectra (C8), Total Energy (C4) is the most effective metric. With $C8 \leq 3.87~$ and $~ 3.87 < C8 \leq 6.1$ and $6.1 < C8~ \&~ C4 \leq 6.86$ and $6.86 \leq C4 ~ \&  6.1 \leq C8$ one can classify the simulation as poor, fair, good, and excellent, respectively, with a high confidence.  In this case minimum F1-score occurs for Class 3 and maximum F1-score occurs for Class 1. Pruning process reduce the effect of oversampling in cluster 4. In the second model, which is more accurate than the first model, other than Response Spectra and Total Energy, 2 other metrics including: Peak Velocity and Peak Acceleration are important in determining the final classes. With changing the tuning parameters (i.e., minClass and CF), which is increasing the functionality of the algorithm, other than the discussed metrics, some other metrics also get involved in the prediction model. However, in that case the model is prone to overfitting. We prefer a model with simple procedure as well as a fairly good F1-score.  Obviously, there are some stations that we cannot classify them correctly. It happens because of the prediction model and initial assumption about the class of stations. All prediction models have some uncertainty in predicting the final results.\\
+  It is also relevant to study the variation of scores (specifically C8) with distance. Fig.~\ref{fig:C8dist} presents the variation of Response Spectra score in different distances for different velocity models and components. As one can see it is fairly well distributed for different components and velocity models with respect to distance. There is differences in median value in different components. The median value improves from CVM-H to CVM-S. In general UD components has better GOF score than horizontal components. 
 
 \begin{figure}
     \centering
@@ -13,8 +14,30 @@ According to the results Response Spectra (C8) is the most important metric in c
     \label{fig:C8dist}
 \end{figure}
 
-Analysis of statistical significance for relevance of results to earthquake, velocity model, frequency band, magnitude, distance of stations, and components needs comprehensive study beyond clustering and classification. However, we illustrate the effects without making strong decision whether they affect the results or not. More comprehensive study is undergoing with \citet{Taborda_2016_GJI} dataset. \\
-Finally, we represent the application of these models on classifying stations on a geographical representation. Fig.~\ref{fig:M1_dtree_gof} represent the application of the first decision tree algorithm on the simulation of Chino Hills earthquake. In order to keep consistency in color code, and be able to compare the results with other published results \citep[e.g.,][]{Taborda_2013_BSSA, Taborda_2014_BSSA, Taborda_2016_GJI} we assign 3,5,7, and 9 to cluster 1(poor),2(fair),3(good), and 4(excellent), respectively. 
+Analysis of statistical significance for relevance of results to earthquake, velocity model, frequency band, magnitude, distance of stations, and components needs comprehensive study beyond clustering and classification. If after a comprehensive study, one finds any significant factors, the factors should be used as an input in the prediction models. In this study, we illustrate the effects without making strong decision whether they affect the results or not. More comprehensive study is undergoing with \citet{Taborda_2016_GJI} dataset. \\
+
+So far we developed two prediction models to get a pair of signals GOF scores and return their accuracy classes. However, in the case of real simulation, there are 3 components which they could have different GOF class. This situation is very similar to this study's original research question. In that case we had different metrics with different scores which make it hard to define the final score/class of a pair of signals. We addressed that issue using constrained \kmeans{} algorithm and decision tree model. However, in this case there is no background knowledge. To the authors' knowledge there is no study about the final class of a pair of stations based on different classes of each components. In this study we focus on developing a model to predict the accuracy of the GOF of a pair of stations based on individual GOF scores. However, we report the number of stations with different possible combination in Table~\ref{tab:station_comp_cvm}.
+
+\begin{table}
+\centering
+\caption{Number of stations in different score combination}
+\begin{tabular}{clccc}
+\hline
+No & GOF class combination                                                                                   & CVM-H+GTL    & CVM-H     &  CVM-S              \\ \hline
+1 & All components are in the same class                                                               &   91               & 96               &  91                    \\
+2 & Horizontal components are the same and Vertical has higher class                 &   66               & 80               &  70                     \\
+3 & Horizontal components are the same and Vertical has lower class                 &    26              &  27               &   23                 \\
+4 & One H and V components are the same and the other H has lower class       &   65               &  45               &  57                   \\
+5 & One H and V components are the same and the other H has higher class      &   50                & 47              &  52                    \\
+6 & All components classes are different and vertical has the highest class           &    27             & 27                &  31                    \\
+7 & All components classes are different and vertical has the middle class            &      6             & 4                   &  3                     \\
+8 & All components classes are different and vertical has the lowest class            &      5              & 10                &   9                      \\ \hline
+
+\end{tabular}
+\label{tab:station_comp_cvm}
+\end{table}
+
+According to Table~\ref{tab:station_comp_cvm}, majority of stations have all components at the same class. This makes it easier to classify them according to the common class. In the cases that horizontal components are in the same class, it is common to have a better match at the vertical component. In those cases where vertical component and one of horizontal components are in the same class, there is no any specific trend on the class of the other horizontal component, and it can be a better or worse match.  In those cases that all components are different, it is more common for vertical component to have a better class. It is very rare to have two horizontal component with two not successive classes. Fig.~\ref{fig:distance_comp_score_combination} presents the  Table~\ref{tab:station_comp_cvm} in a histogram plot for different velocity models. The histograms defined based on the number of stations in each categories and in radius of 10 km increments form the epicenter. We merge No.2 $\&$ 3 and 4 $\&$ 5, and 6 $\&$ 7 $\&$ 8 to have a better presentation in the histogram plots.\\  
 
 \begin{figure}
     \centering
@@ -22,12 +45,13 @@ Finally, we represent the application of these models on classifying stations on
        % [width=\columnwidth]
         [width=\textwidth]
         {figures/pdf/Figure_16.pdf}
-    \caption{M1 GOF-score for 3 velocity models and 3 components for Chino Hills earthquake simulation (max =4Hz) }
-    \label{fig:M1_dtree_gof}
+    \caption{Number of stations with different combination of class for each components in 10 km incremental distances from epicenter.}
+    \label{fig:distance_comp_score_combination}
 \end{figure}
 
+Number of stations with all components in the same class is about the same in all velocity models. CVM-H provides more stations with the same class. It is worth to mention that the common class can be any class out of the classes categories. Therefore, in this section we do not discuss the accuracy of the velocity model. In the stations closer to the epicenter  (less than 10 km) each velocity model has different behavior. In all distances (other than less than 10 km for CVM-S) all components with the same class or horizontal components with the same class is higher than all components are in different classes. Rotation of stations during or before an earthquake can affect the scores of horizontal components. In those cases the vertical components are trustable.  If two horizontal components are different, there is a chance of a problem in the orientation of the seismic station. Therefore, for stations with all components in the same group we consider the final class as the same, for stations where two horizontal components are different we consider the class of vertical component. According to the Table~\ref{tab:station_comp_cvm} at some cases one of the horizontal components has even better match, however, the mismatch between two horizontal components suggest the idea that the better class is not authentic. In those stations with two horizontal components are in the same class we consider that class as a final class. This option is conservative because the data show that in the case of two horizontal components in the same class it is common to the vertical component to have a better class. 
 
-Subsequently, Fig.~\ref{fig:M2_dtree_gof} represent of application of M2 metric on data. 
+Finally, we present the application of these models on classifying stations on a spatial geographical plots. Fig.~\ref{fig:M1_dtree_gof} shows the application of the first decision tree algorithm (M1) on the simulation of Chino Hills earthquake. In order to keep consistency in color code, and be able to comempare the results with other published results \citep[e.g.,][]{Taborda_2013_BSSA, Taborda_2014_BSSA, Taborda_2016_GJI} we assign 3,5,7, and 9 to cluster 1(poor),2(fair),3(good), and 4(excellent), respectively. 
 
 \begin{figure}
     \centering
@@ -35,10 +59,37 @@ Subsequently, Fig.~\ref{fig:M2_dtree_gof} represent of application of M2 metric 
        % [width=\columnwidth]
         [width=\textwidth]
         {figures/pdf/Figure_17.pdf}
-    \caption{M2 GOF-score for 3 velocity models and 3 components for Chino Hills earthquake simulation (max =4Hz) }
+    \caption{M1 GOF-score for 3 velocity models and 3 components for 2008 $Mw 5.4$ Chino Hills earthquake simulation (max =4Hz) }
+    \label{fig:M1_dtree_gof}
+\end{figure}
+
+
+Subsequently, Fig.~\ref{fig:M2_dtree_gof} represents the application of M2 metric on the data. 
+
+\begin{figure}
+    \centering
+    \includegraphics
+       % [width=\columnwidth]
+        [width=\textwidth]
+        {figures/pdf/Figure_18.pdf}
+    \caption{M2 GOF-score for 3 velocity models and 3 components for 2008 $Mw 5.4$ Chino Hills earthquake simulation ($f_{max} =4Hz$) }
     \label{fig:M2_dtree_gof}
 \end{figure}
 
 
-These figures are important from different point of view. As we mentioned before and illustrated in different figures, the GOF results for different component could be different. This can happen for many reason, for example not accurate orientation of station or simply location of station where makes difference for vertical and horizontal incidents. The fact that which component we should use as a final decision is beyond the scope of this paper. However, using different data in clustering and generating classification models should not affect the results. We consider the GOF of two seismograms (data and synthetic) as an observation to study the relationship between metrics not components. We only distinguished data based on components for presentation purposes. In all steps we use all data. This argument is also correct for velocity model. A velocity model could result in different accuracy and GOF scores. Not surprisingly, the algorithm will classify them in different classes. The model predicts different results for the same pair of data and synthetic for different components and velocity models simply because they are different.
+As we discussed before, the class for different components could be different. We discussed the reasons for these differences and we can visually observe them in Fig.~\ref{fig:M1_dtree_gof,M2_dtree_gof}. We expect different results for 3 different velocity models. Although these models have many details in common (see \citet{Taborda_2014_BSSA} for more details), however, they have major differences and can cause different GOF scores. There are are more stations with "Excellent" class in model $M1$ than $M2$. That is because M1 is a simplified method and using only two metrics, predicts most of the stations as excellent class. Adding $C5$ to the decision process, $M2$ model tries to be more accurate in splitting data among "Good" and "Excellent" classes.\\
+Although, the decision tree can be grown to very lower levels and be able to predict almost all the results accurately, however, due to more complicated algorithm for the user and also overfitting problem, we do not develop that complicated prediction model. However, if we take a look at $M2$  model, which we consider it as more accurate model than $M1$, out of 9 end nodes, 7 nodes (i.e., 3, 6, 8, 12, 13, 14, and 17) have very high probability of predicting the accurate model. There are two nodes (i.e., 7 and 16) which have fairly close probability of final classes. Adding more metrics with help to reduce this kind of uncertainties and achieve better classification.
+In developing these models we did not leave out the possible noises or outliers. One approach can be removing all data that are out of Interquartile Range (IQR). However, not all data are considered as outliers for all metrics. Therefore, leaving out these data, we can loose many stations information. It could be a good independent study to go one by on for each of the stations with wrong classification and study the possible reasons for misclassification. Since we labeled the data by another algorithm , there is always a chance that the labeling system has some error. 
+Looking at the confusion matrices (Table.~\ref{tab:confusionmat_test_1}, Table.~\ref{tab:confusionmat_test_2}) the algorithm in both models can predict the correct class with overall accuracy of 89\% and 92\% for M1,M2 models respectively. The accuracy is calculated based on dividing the sum of the number of true values (on diagonal) over sum of all numbers. In case of misclassification, there is only one class to misclassify. In other words there is no station with class 1 that the model classifies it as 3 or 4.  There is not station as class 2 that is classified as class 4. There is not stations with class 3 that is classified as class 1 and there is no model with class 4 that is classified as class 1 or 2.\\
 
+These results suggest the idea that the prediction model is robust and the slight error is understandable and we tolerate that amount of error because of the trade of between more complicated formulation and the final error values. In the end, we generate the component independent class for the dataset for each velocity models based on earlier discussion.  Fig.~\ref{fig:CVM_final_class} present the results. CVM-S has more stations in "Excellent", "good", and "Fair" classes than CVM-H and CVM-H+GTL models and provide better results in general than the other two models. 
+
+\begin{figure}
+    \centering
+    \includegraphics
+       % [width=\columnwidth]
+        [width=\textwidth]
+        {figures/pdf/Figure_19.pdf}
+    \caption{Classification of GOF class of synthetic and data independent of components. Synthetic data are generated for 2008 Chino Hills Mw 5.4 earthquake in \citet{Taborda_2014_BSSA} with $f_{max} =4Hz$}
+    \label{fig:CVM_final_class}
+\end{figure}

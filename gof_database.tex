@@ -1,8 +1,8 @@
 
 \section{Goodness-of-fit database}
 
-State of California is an earthquake prone region with a long history of seismicity. The Los Aneles basin, due to its unique geologic sediments, has been studied from different perspective. Numerous high resolution velocity models are developed mainly to conduct forward ground motion simulation. Occurrence of frequent moderate magnitude earthquakes made the Los Angeles basin as a natural laboratory for seismic  studies specially testing the forward ground motion simulation modeling (give some references including Tabarda et al 2016). In a relatively recent study, \citet{Taborda_2014_BSSA} conducted a comprehensive study in order to assess the functionality of developed velocity models in the Los Angeles basin and surrounding areas. They simulated the 2008 Chino Hills earthquake using 3 velocity models including: CVM-S4, CVM-H, and CVM-H+GTL (for more details about these models see \citet{Taborda_2014_BSSA}.)
-They computed the GOF scores based on \citet{Anderson_2004_Proc}, with minor modification introduced by \citet{Taborda_2013_BSSA} as discussed in the validation section.Fig.~\ref{fig:epicenters} shows the location of the epicenter and stations' locations. 
+State of California is an earthquake prone region with a long history of seismicity. The Los Aneles basin, due to its unique geologic sediments, has been studied from different perspective. Numerous high resolution velocity models are developed mainly to conduct forward ground motion simulation. Occurrence of frequent moderate magnitude earthquakes made the Los Angeles basin as a natural laboratory for seismic  studies specially testing the forward ground motion simulation modeling. In a relatively recent study, \citet{Taborda_2014_BSSA} conducted a comprehensive study in order to assess the functionality of developed velocity models in the Los Angeles basin and surrounding areas. They simulated the 2008 Chino Hills earthquake using 3 velocity models including: CVM-S4, CVM-H, and CVM-H+GTL (for more details about these models see \citet{Taborda_2014_BSSA}.)
+They computed the GOF scores based on \citet{Anderson_2004_Proc}, with minor modification introduced by \citet{Taborda_2013_BSSA} as discussed in the validation section. Fig.~\ref{fig:epicenters} shows the location of the epicenter and seismic stations. 
 
 \begin{figure}
     \centering
@@ -10,11 +10,11 @@ They computed the GOF scores based on \citet{Anderson_2004_Proc}, with minor mod
        % [width=\columnwidth]
         [width=450px]
         {figures/pdf/Figure_1}
-    \caption{(a) Region of interest and epicentral location of the 2008 Chino Hills earthquake (highlighted). Focal mechanisms are shown at the margins of the region of interest. Major quaternary faults in the area are shown in the back along with the main roads and county divisions. (b) Simulation area of interest. Dots indicate the location of the 336 stations considered in this study for validation. A subset of these stations include labels and highlights with larger symbols for later reference. The main local and interstate roads are also shown here. In both panels, the background shows the hillshade topography of the region. The color version of this figure is available only in the electronic edition. (figure and caption from 2014 paper. needs revision)}
+    \caption{(a) Region of interest and epicentral location of the 2008 $M_W ~ 5.4$ Chino Hills earthquake (highlighted). Focal mechanism is shown at the margin of the region of interest. Major quaternary faults in the area are shown in the back along with the main roads and county divisions. (b) Simulation area of interest. Dots indicate the location of the 336 stations considered in this study for validation. The main local and interstate roads are also shown here. In both panels, the background shows the hillshade topography of the region. The color version of this figure is available only in the electronic edition.}
     \label{fig:epicenters}
 \end{figure}
 
-We use \citet{Taborda_2014_BSSA} database where they computed 11 scores for 3 different velocity models. In this study we only analyze the results for broadband which in this case is \feq{0.1}{4}. Fig.~\ref{fig:data_box_plot} shows the box plot of all data that we used in this study which we separate it in velocity models and components. 
+We use \citet{Taborda_2014_BSSA} database where they computed 11 scores for 3 different velocity models. In this study we only analyze the results for broadband which in this case is \feq{0.1}{4}. Fig.~\ref{fig:data_box_plot} shows the box plot of all data that we used in this study which we separate them in velocity models and components. In total we use $336 \times 3 \times 3 = 3024$ individual pair of data and synthetic.
 
 \begin{figure}
     \centering
@@ -26,9 +26,9 @@ We use \citet{Taborda_2014_BSSA} database where they computed 11 scores for 3 di
     \label{fig:data_box_plot}
 \end{figure}
 
-As we explained before, we use all data set regardless of velocity model and components. However, distinguishing data for velocity model and components could answer the question that if the goodness of fit scores dependent on them. Addressing this research question is beyond the scope of this paper. We distinguish data based on velocity models and components only in presenting data or results.   
+As we explained before, we use all data set regardless of velocity models and components. However, distinguishing data for velocity model and components can answer the question that if the goodness of fit scores dependent on them. Addressing this research question is beyond the scope of this paper. We distinguish data based on velocity models and components only in presenting data or results.   
 
-Fig.~\ref{fig:data_density}  shows the density distribution of each score for CVM-S4.
+Fig.~\ref{fig:data_density}  shows the density distribution of each score for CVM-S. The figure shows the variation of different metrics with components. Except in cross correlation (C10) in all metrics the up-down (UD) component scores are about the same or higher than horizontal components. 
 
 \begin{figure}
     \centering
@@ -36,7 +36,7 @@ Fig.~\ref{fig:data_density}  shows the density distribution of each score for CV
        % [width=\columnwidth]
         [width=\textwidth]
         {figures/pdf/Figure_3.pdf}
-    \caption{Distribution of data (only CVMS-4) for different components in different scores based on different components. Each distribution has a unit area.}
+    \caption{Distribution of data (only CVM-S) for different components in different scores based on different components. Each distribution has a unit area.}
     \label{fig:data_density}
 \end{figure}
 
