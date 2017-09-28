@@ -1,0 +1,96 @@
+
+% Column and figure exceptions
+% ----------------------------
+
+\makeatletter
+\if@twocolumn
+\newcommand\mycolumnwidth{\columnwidth}
+\else
+\newcommand\mycolumnwidth{0.484\textwidth}
+\fi
+\makeatother
+
+\makeatletter
+\if@twocolumn
+\newcommand\mycolumnwidthreduced{0.9\columnwidth}
+\else
+\newcommand\mycolumnwidthreduced{0.436\textwidth}
+\fi
+\makeatother
+
+% Some abstract options
+% ---------------------
+
+\makeatletter
+\if@twocolumn
+\setlength{\absleftindent}{0.9in}
+\setlength{\absrightindent}{0.9in}
+\setlength{\absparindent}{0pt}
+\setlength{\abstitleskip}{-1.5em}
+\renewcommand\abstracttextfont{\normalsize}
+\renewcommand\abstractnamefont{\Large}
+%\abslabeldelim{\quad}
+\else
+\@bsruninfalse
+\renewcommand\abstracttextfont{\normalsize}
+\renewcommand\abstractnamefont{\large}
+\fi
+\makeatother
+
+% Title and sections fonts and style
+% ----------------------------------
+
+\titleformat{\section}{\centering}{}{0pt}{\large}
+
+\titleformat{\subsection}{}{}{1.5em}{\normalsize}
+
+\titleformat{\subsubsection}[runin]{}{}{0pt}{\normalsize\itshape}[.]
+
+
+% Manuscript tricks
+% -----------------
+
+\newcommand\manuscriptadjust{
+\makeatletter
+\ifthenelse{\boolean{@twocolumn}}{}{\clearpage}
+\makeatother
+}
+
+\newcommand\preprintadjust{
+\makeatletter
+\ifthenelse{\boolean{@twocolumn}}{\small}{}
+\makeatother
+}
+
+% Figure and Table captions configuration
+% ---------------------------------------
+
+\captionsetup[table]{
+%	labelfont=large,
+	labelsep=newline,
+	justification=centerlast,
+	textfont=small
+}
+\captionsetup[figure]{
+	labelfont=bf,
+	labelsep=period,
+	textfont=small
+}
+
+\newcommand\introduction{
+\makeatletter
+\ifthenelse{\boolean{@twocolumn}}{
+	~\newline
+	\vspace{-15ex}
+	\section{Introduction}
+	}{
+	\section{Introduction}
+	}
+\makeatother
+}
+
+\newcommand\corresponding{%
+	\makeatletter\ifthenelse{\boolean{@twocolumn}}
+	{}{\thanks{Corresponding author.}~}
+\makeatother
+}%

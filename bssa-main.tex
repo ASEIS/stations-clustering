@@ -1,0 +1,193 @@
+% ==============================================================================
+% ==============================================================================
+%
+%      CHOOSE ONE OPTION BY COMMENTING/NOT COMMENTING THE EACH CASE
+%
+% ==============================================================================
+% ==============================================================================
+
+% OPTION 1: Manuscript
+
+% \documentclass[12pt]{article}
+%\usepackage{myreviewpckg}
+
+% OPTION 2: Annotated Manuscript
+
+%\documentclass[12pt]{article}
+%\usepackage[review]{myreviewpckg}
+
+% OPTION 3: Paper
+
+\documentclass[twocolumn,twoside]{article}
+%\usepackage{myreviewpckg}
+
+
+
+% ==============================================================================
+% ==============================================================================
+%
+%                      DO NOT MODIFY BEYOND THIS POINT
+%
+% ==============================================================================
+% ==============================================================================
+
+\usepackage{tocloft}
+\usepackage{simplemargins}
+\usepackage[center,small]{titlesec}
+\usepackage{caption}
+\usepackage[]{subfig}
+\usepackage[round,authoryear,semicolon]{natbib}
+\usepackage{setspace}
+\usepackage{color}
+\usepackage{amsmath}
+\usepackage{ifthen}
+\usepackage{indentfirst}
+\usepackage{balance}
+\usepackage[runin]{abstract}
+\usepackage{textcomp}
+\usepackage{times}
+\usepackage{mathptmx}
+\usepackage{rotating}
+\usepackage{pslatex}
+\usepackage{authblk}
+\usepackage{datetime}
+%\usepackage{multirow}
+
+\usdate
+
+\usepackage{ifpdf}
+\ifpdf
+	\usepackage[pdftex,bookmarks=false]{hyperref}
+\else
+	\usepackage{graphics}
+	\usepackage{graphicx}
+	\usepackage{epsfig}
+	\usepackage[dvipdfm,bookmarks=false]{hyperref}
+\fi
+
+\clubpenalty=10000  % Orphan - First of paragraph left behind
+\widowpenalty=10000 % Widow  - Last of paragraph sent ahead
+
+%\raggedbottom
+
+\captionsetup{font=small,labelfont=bf}
+\captionsetup[table]{font=small,labelfont=large}
+\captionsetup[subfloat]{font=footnotesize,textfont=scriptsize}
+
+\makeatletter
+\if@twocolumn
+    \usepackage{fancyhdr}
+	\setlength{\parindent}{1.5em}
+	\singlespacing
+	\setlength{\columnsep}{0.23in}
+\else
+%    \usepackage[left,pagewise]{lineno}
+    \usepackage[left]{lineno}
+	\doublespacing
+	\captionsetup{font=doublespacing}
+	\cftpagenumbersoff{figure}
+	\usepackage[tablesfirst,notablist]{endfloat}
+	\AtBeginDelayedFloats{\renewcommand\baselinestretch{1.4}}
+	\renewcommand\cftloftitlefont{\large}
+	\renewcommand\listfigurename{
+		\begin{center}
+		Figure Captions
+		\end{center}
+	}
+	\setlength{\cftparskip}{2ex}
+	\renewcommand\cftfigpresnum{\bf Figure~}
+	\renewcommand\cftfigaftersnum{.}
+	\renewcommand\cftfignumwidth{5.5em}
+\fi
+\makeatother
+
+\hypersetup{
+    pdfpagelayout=OneColumn,
+	colorlinks = true,
+	urlcolor   = blue,
+	citecolor  = blue,
+	linkcolor  = blue
+}
+
+\urlstyle{same}
+
+\settopmargin{0.84in}
+\setleftmargin{0.8in}
+\setrightmargin{0.8in}
+\setbottommargin{0.9in}
+
+\input{bssa-commands}
+\input{mycommands}
+
+\input{title-and-authors}
+
+\begin{document}
+
+%\makeatletter
+%\if@isreview
+%    \input{review-control}
+%\fi
+%\makeatother
+
+
+\makeatletter
+\if@twocolumn
+	\renewcommand\abstractname{}
+	\twocolumn[
+		\vspace{-2em}%
+		\maketitle
+		\vspace{-2em}%
+		\begin{onecolabstract}%
+		\input{abstract}
+		\end{onecolabstract}
+		\vspace{9ex}
+	]
+\else
+	\maketitle
+	\manuscriptadjust
+	\linenumbers
+	\begin{abstract}
+	\hspace{1ex}
+	\input{abstract}
+	\end{abstract}
+\fi
+\makeatother
+
+\makeatletter
+\if@twocolumn
+\fancypagestyle{plain}{%
+    \fancyhf{}
+    \chead{\color{red}To be submitted for publication in the BSSA in October 2017}
+    \cfoot{\thepage}%
+}
+\fancyhf{}
+\fancyhead[RO,LE]{\thepage}
+\fancyhead[RE]{\small N.~Khoshnevis and R.~Taborda}
+\fancyhead[LO]{\itshape Analysis of Validation Metrics}
+\fancyfoot[CEO]{\color{red}To be submitted for publication in the BSSA in October 2017}
+\renewcommand{\headrulewidth}{0pt}
+\renewcommand{\footrulewidth}{0pt}
+\addtolength{\headsep}{-8pt}
+\addtolength{\topmargin}{8pt}
+\pagestyle{fancy}
+\fi
+\makeatother
+
+\input{controller}
+
+\makeatletter
+\if@twocolumn
+\vspace{4ex}
+\input{affiliations}
+\fi
+
+\makeatletter
+\if@twocolumn
+\raggedleft
+\vspace{6ex}
+%Manuscript sent to the BSSA 15 October 2013.\\
+%Currently under review.
+%Manuscript sent to BSSA on \today
+\fi
+
+\end{document}
