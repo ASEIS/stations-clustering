@@ -83,7 +83,9 @@
   Address                  = {Vancouver, British Columbia, Canada},
   Month                    = {August},
   Note                     = {Paper 243},
-  Organization             = {Int.~Assoc.~Earthquake Eng.}
+  Organization             = {Int.~Assoc.~Earthquake Eng.},
+
+  Owner                    = {R}
 }
 
 @Article{Bao_1998_CMAME,
@@ -110,7 +112,8 @@
   Pages                    = {375--404},
   Volume                   = {180},
 
-  Doi                      = {10.1111/j.1365-246X.2009.04417.x}
+  Doi                      = {10.1111/j.1365-246X.2009.04417.x},
+  Owner                    = {R}
 }
 
 @Article{Bielak_2011_G,
@@ -123,6 +126,13 @@
   Volume                   = {76},
 
   Doi                      = {10.1190/geo2011-0019.1}
+}
+
+@Article{Branco_2015,
+  Title                    = {A survey of predictive modelling under imbalanced distributions},
+  Author                   = {Branco, Paula and Torgo, Luis and Ribeiro, Rita},
+  Journal                  = {arXiv preprint arXiv:1505.01658},
+  Year                     = {2015}
 }
 
 @Article{Brocher_2008_BSSA,
@@ -162,6 +172,19 @@
   Abstract                 = {Three-dimensional simulations of earthquakes have given a deeper understanding of wave propagation and site effects in urban regions. In this work we study the impact of a potential major earthquake on the San Andreas Fault with significant seismic hazard in the Greater Los Angeles Basin. We present results for the ShakeOut simulation---a rupture beginning near Salton Sea, California, heading 270 km northwest along the fault, that produces a Mw 7.8 earthquake in a geographical region which includes all major populated areas of Southern California and northern Mexico, in a 600 km by 300 km by 80 km volume, for a maximum frequency of 1.0 Hz and a minimum shear wave velocity of 200 m/s. For the material model, we use a discretized version of SCEC's CVM4 velocity model, called CVM-Etree. The simulation was performed at the Pittsburgh Supercomputing Center using Hercules, a finite element octree-based, parallel software developed by the Quake Group at Carnegie Mellon University. Hercules implements a highly efficient end-to-end algorithm for solving the wave field in highly heterogeneous media due to kinematic faulting. We verify our results by comparing synthetic seismograms computed with a parallel finite difference code by Robert Graves (URS) for a similar scenario earthquake, for a maximum frequency of 0.5 Hz and minimum shear wave velocity of 500 m/s. We focus our analysis of the results of the 1.0 Hz ShakeOut simulation on the Los Angeles Basin area, and the Santa Clara River Valley and Oxnard Plain. We examine the site effects present in these two areas and their proneness to capture and amplify seismic waves due to their geological features. Results show a direct correlation between the amplification levels and the local soil and basin profiles.}
 }
 
+@Article{Burks_BSSA_2014,
+  Title                    = {Validation of Ground-Motion Simulations through Simple Proxies for the Response of Engineered Systems},
+  Author                   = {Burks, Lynne S. and Baker, Jack W.},
+  Journal                  = BSSA,
+  Year                     = {2014},
+  Number                   = {4},
+  Pages                    = {1930--1946},
+  Volume                   = {104},
+
+  Doi                      = {10.1785/0120130276},
+  Owner                    = {R}
+}
+
 @Article{Chaljub_2010_BSSA,
   Title                    = {Quantitative Comparison of Four Numerical Predictions of {3D} Ground Motion in the {G}renoble {V}alley, {F}rance},
   Author                   = {Chaljub, Emmanuel and Moczo, Peter and Tsuno, Seiji and Bard, Pierre-Yves and Kristek, Jozef and Kaser, Martin and Stupazzini, Marco and Kristekova, Miriam},
@@ -173,6 +196,21 @@
 
   Abstract                 = {This article documents a comparative exercise for numerical simulation of ground motion, addressing the seismic response of the Grenoble site, a typical Alpine valley with complex 3D geometry and large velocity contrasts. Predictions up to 2 Hz were asked for four different structure wave-field configurations (point source and extended source, with and without surface topography). This effort is part of a larger exercise organized for the third international symposium on the effects of surface geology (ESG 2006), the complete results of which are reported elsewhere (Tsuno et al., 2009). While initial, blind computations significantly differed from one another, a remarkable fit was obtained after correcting for some nonmethodological errors for four 3D methods: the arbitrary high-order derivative discontinuous Galerkin method (ADER-DGM), the velocity-stress finite-difference scheme on an arbitrary discontinuous staggered grid (FDM), and two implementations of the spectral-element method (SEM1 and SEM2). Their basic formulation is briefly recalled, and their implementation for the Grenoble Valley and the corresponding requirements in terms of computer resources are detailed. Besides a visual inspection of PGV maps, more refined, quantitative comparisons based on time-frequency analysis greatly help in understanding the origin of differences, with a special emphasis on phase misfit. The match is found excellent below 1 Hz, and gradually deteriorates for increasing frequency, reflecting differences in meshing strategy, numerical dispersion, and implementation of damping properties. While the numerical prediction of ground motion cannot yet be considered a mature, push-button approach, the good agreement reached by four participants indicates that, when used properly, numerical simulation is actually able to handle correctly wave radiation from extended sources in complex 3D media. The main recommendation to obtain reliable numerical predictions of earthquake ground motion is to use at least two different but comparably accurate methods, for instance the present formulations and implementations of the FDM, SEM, and ADER-DGM.},
   Doi                      = {10.1785/0120090052},
+  Url                      = {http://www.bssaonline.org/cgi/content/abstract/100/4/1427}
+}
+
+@Article{Chaljub_2010_BSSA,
+  Title                    = {Quantitative Comparison of Four Numerical Predictions of {3D} Ground Motion in the {G}renoble {V}alley, {F}rance},
+  Author                   = {Chaljub, Emmanuel and Moczo, Peter and Tsuno, Seiji and Bard, Pierre-Yves and Kristek, Jozef and Kaser, Martin and Stupazzini, Marco and Kristekova, Miriam},
+  Journal                  = BSSA,
+  Year                     = {2010},
+  Number                   = {4},
+  Pages                    = {1427--1455},
+  Volume                   = {100},
+
+  Abstract                 = {This article documents a comparative exercise for numerical simulation of ground motion, addressing the seismic response of the Grenoble site, a typical Alpine valley with complex 3D geometry and large velocity contrasts. Predictions up to 2 Hz were asked for four different structure wave-field configurations (point source and extended source, with and without surface topography). This effort is part of a larger exercise organized for the third international symposium on the effects of surface geology (ESG 2006), the complete results of which are reported elsewhere (Tsuno et al., 2009). While initial, blind computations significantly differed from one another, a remarkable fit was obtained after correcting for some nonmethodological errors for four 3D methods: the arbitrary high-order derivative discontinuous Galerkin method (ADER-DGM), the velocity-stress finite-difference scheme on an arbitrary discontinuous staggered grid (FDM), and two implementations of the spectral-element method (SEM1 and SEM2). Their basic formulation is briefly recalled, and their implementation for the Grenoble Valley and the corresponding requirements in terms of computer resources are detailed. Besides a visual inspection of PGV maps, more refined, quantitative comparisons based on time-frequency analysis greatly help in understanding the origin of differences, with a special emphasis on phase misfit. The match is found excellent below 1 Hz, and gradually deteriorates for increasing frequency, reflecting differences in meshing strategy, numerical dispersion, and implementation of damping properties. While the numerical prediction of ground motion cannot yet be considered a mature, push-button approach, the good agreement reached by four participants indicates that, when used properly, numerical simulation is actually able to handle correctly wave radiation from extended sources in complex 3D media. The main recommendation to obtain reliable numerical predictions of earthquake ground motion is to use at least two different but comparably accurate methods, for instance the present formulations and implementations of the FDM, SEM, and ADER-DGM.},
+  Doi                      = {10.1785/0120090052},
+  Owner                    = {R},
   Url                      = {http://www.bssaonline.org/cgi/content/abstract/100/4/1427}
 }
 
@@ -214,6 +252,23 @@
   Doi                      = {10.1109/SC.2010.45}
 }
 
+@Book{Duda_1973,
+  Title                    = {Pattern classification},
+  Author                   = {Duda, Richard O and Hart, Peter E and Stork, David G},
+  Publisher                = {Wiley, New York},
+  Year                     = {1973}
+}
+
+@Article{Dy_2004_MLR,
+  Title                    = {Feature selection for unsupervised learning},
+  Author                   = {Dy, Jennifer G and Brodley, Carla E},
+  Journal                  = {Journal of machine learning research},
+  Year                     = {2004},
+  Number                   = {Aug},
+  Pages                    = {845--889},
+  Volume                   = {5}
+}
+
 @InProceedings{Ely_2010_AGU,
   Title                    = {A {Vs30}-derived Near-surface Seismic Velocity Model},
   Author                   = {Ely, G. P. and Jordan, T. H. and Small, P. and Maechling, P. J.},
@@ -222,6 +277,18 @@
 
   Address                  = {San Francisco, California, December 13--17},
   Number                   = {S51A-1907}
+}
+
+@Article{Fayyad_1996_IEEE,
+  Title                    = {Data mining and knowledge discovery: Making sense out of data},
+  Author                   = {Fayyad, Usama M},
+  Journal                  = {IEEE Expert: Intelligent Systems and Their Applications},
+  Year                     = {1996},
+  Number                   = {5},
+  Pages                    = {20--25},
+  Volume                   = {11},
+
+  Publisher                = {IEEE Educational Activities Department}
 }
 
 @TechReport{Fujiwara_2009_Tech,
@@ -241,10 +308,7 @@
   Year                     = {2015},
 
   Address                  = {Pasadena, California, 21--23 April},
-  Note                     = {Accepted},
-
-  Owner                    = {rtaborda},
-  Timestamp                = {2015.01.27}
+  Note                     = {Accepted}
 }
 
 @Article{Graves_2011_PAG,
@@ -285,6 +349,41 @@
   Url                      = {http://www.bssaonline.org/cgi/content/abstract/86/4/1091}
 }
 
+@Article{Guidotti_2011_SRL,
+  Title                    = {Numerical Study on the Role of Basin Geometry and Kinematic Seismic Source in 3D Ground Motion Simulation of the 22 {F}ebruary 2011 {$M_w$} 6.2 {C}hristchurch Earthquake},
+  Author                   = {Guidotti, Roberto and Stupazzini, Marco and Smerzini, Chiara and Paolucci, R. and Ramieri, Paolo},
+  Journal                  = SRL,
+  Year                     = {2011},
+  Number                   = {6},
+  Pages                    = {767--782},
+  Volume                   = {82},
+
+  Doi                      = {10.1785/gssrl.82.6.767},
+  Owner                    = {R}
+}
+
+@Article{Guyon_2003,
+  Title                    = {An introduction to variable and feature selection},
+  Author                   = {Guyon, Isabelle and Elisseeff, Andr{\'e}},
+  Journal                  = {Journal of machine learning research},
+  Year                     = {2003},
+  Number                   = {Mar},
+  Pages                    = {1157--1182},
+  Volume                   = {3}
+}
+
+@Article{Hartigan_1985_JOC,
+  Title                    = {Statistical theory in clustering},
+  Author                   = {Hartigan, John A},
+  Journal                  = {Journal of classification},
+  Year                     = {1985},
+  Number                   = {1},
+  Pages                    = {63--76},
+  Volume                   = {2},
+
+  Publisher                = {Springer}
+}
+
 @Article{Hauksson_2000_JGR,
   Title                    = {Crustal structure and seismicity distribution adjacent to the {P}acific and {N}orth {A}merica plate boundary in southern {C}alifornia},
   Author                   = {Hauksson, E.},
@@ -297,6 +396,18 @@
   Doi                      = {10.1029/2000JB900016}
 }
 
+@Article{Hornik_2009,
+  Title                    = {Open-Source Machine Learning: {R} Meets {Weka}},
+  Author                   = {Kurt Hornik and Christian Buchta and Achim Zeileis},
+  Journal                  = {Computational Statistics},
+  Year                     = {2009},
+  Number                   = {2},
+  Pages                    = {225--232},
+  Volume                   = {24},
+
+  Doi                      = {10.1007/s00180-008-0119-7}
+}
+
 @Article{Isbiliroglu_2015_ES,
   Title                    = {Coupled Soil-Structure Interaction Effects of Building Clusters During Earthquakes},
   Author                   = {Isbiliroglu, Y. and Taborda, R. and Bielak, J.},
@@ -307,6 +418,48 @@
   Volume                   = {31},
 
   Doi                      = {10.1193/102412EQS315M}
+}
+
+@Book{Jain_1988_Book,
+  Title                    = {Algorithms for clustering data},
+  Author                   = {Jain, Anil K and Dubes, Richard C},
+  Publisher                = {Prentice-Hall, Inc.},
+  Year                     = {1988}
+}
+
+@Article{Jain_1999,
+  Title                    = {Data Clustering: A Review},
+  Author                   = {Jain, A. K. and Murty, M. N. and Flynn, P. J.},
+  Journal                  = {ACM Comput. Surv.},
+  Year                     = {1999},
+
+  Month                    = sep,
+  Number                   = {3},
+  Pages                    = {264--323},
+  Volume                   = {31},
+
+  Acmid                    = {331504},
+  Address                  = {New York, NY, USA},
+  Doi                      = {10.1145/331499.331504},
+  ISSN                     = {0360-0300},
+  Issue_date               = {Sept. 1999},
+  Keywords                 = {cluster analysis, clustering applications, exploratory data analysis, incremental clustering, similarity indices, unsupervised learning},
+  Numpages                 = {60},
+  Publisher                = {ACM},
+  Url                      = {http://doi.acm.org/10.1145/331499.331504}
+}
+
+@InProceedings{Khoshnevis_2015_Proc,
+  Title                    = {Sensitivity of ground motion simulation validation criteria to filtering},
+  Author                   = {Khoshnevis, Naeem and Taborda, Ricardo},
+  Year                     = {2015},
+  Month                    = {Jul},
+  Note                     = {This collection contains the proceedings of ICASP12, the 12th International Conference on Applications of Statistics and Probability in Civil Engineering held in Vancouver, Canada on July 12-15, 2015. Abstracts were peer-reviewed and authors of accepted abstracts were invited to submit full papers. Also full papers were peer reviewed. The editor for this collection is Professor Terje Haukaas, Department of Civil Engineering, UBC Vancouver.},
+  Series                   = {International Conference on Applications of Statistics and Probability in Civil Engineering (ICASP) (12th : 2015)},
+
+  Collection               = {International Conference on Applications of Statistics and Probability in Civil Engineering (ICASP) (12th : 2015)},
+  Doi                      = {http://dx.doi.org/10.14288/1.0076157},
+  Url                      = {https://open.library.ubc.ca/cIRcle/collections/53032/items/1.0076157}
 }
 
 @Article{Kohler_2003_BSSA,
@@ -334,6 +487,18 @@
   Pages                    = {7}
 }
 
+@Article{Komatitsch_2004_BSSA,
+  Title                    = {Simulations of ground motion in the Los Angeles basin based upon the spectral-element method},
+  Author                   = {Komatitsch, Dimitri and Liu, Qinya and Tromp, Jeroen and S{\"u}ss, Peter and Stidham, Christiane and Shaw, John H},
+  Journal                  = {Bulletin of the Seismological Society of America},
+  Year                     = {2004},
+  Number                   = {1},
+  Pages                    = {187--206},
+  Volume                   = {94},
+
+  Publisher                = {Seismological Society of America}
+}
+
 @Article{Komatitsch_1998_BSSA,
   Title                    = {The spectral element method{: A}n efficient tool to simulate the seismic response of {2D} and {3D} geological structures},
   Author                   = {Komatitsch, Dimitri and Vilotte, Jean-Pierre},
@@ -356,10 +521,8 @@
   Pages                    = {813--825},
   Volume                   = {178},
 
-  Abstract                 = {We present an extension of the theory of the time-frequency (TF) misfit criteria for quantitative comparison of time signals. We define TF misfit criteria for quantification and characterization of disagreement between two three-component signals. We distinguish two cases2014with and without having one signal as reference. We define locally and globally normalized TF criteria. The locally normalized misfits can be used if it is important to investigate relatively small parts of the signal (e.g. wave groups, pulses, transients, spikes, so-called seismic phases) no matter how large amplitudes of those parts are with respect to the maximum amplitude of the signal. They provide a detailed TF anatomy of the disagreement between two entire signals. The globally normalized misfits can be used for quantifying an overall level of disagreement. They allow accounting for both the envelope/phase difference at a TF point and the significance of the envelope at that point with respect to the maximum envelope of the signal. We also introduce the TF envelope and phase goodness-of-fit criteria based on the complete signal representation, and thus suitable for comparing arbitrary time signals in their entire TF complexity. The TF goodness-of-fit criteria quantify the level of agreement and are most suitable in the case of larger differences between the signals. We numerically demonstrate the capability and important features of the TF misfit and goodness-of-fit criteria in the methodologically important examples.},
   Doi                      = {10.1111/j.1365-246X.2009.04177.x},
-  File                     = {Kristekova_2009_GJI.pdf:C\:\\Documents and Settings\\root\\My Documents\\My eJournals\\Kristekova_2009_GJI.pdf:PDF},
-  Url                      = {http://dx.doi.org/10.1111/j.1365-246X.2009.04177.x}
+  Owner                    = {R}
 }
 
 @Article{Kristekova_2006_BSSA,
@@ -371,8 +534,17 @@
   Pages                    = {1836--1850},
   Volume                   = {96},
 
-  Abstract                 = {We have developed and numerically tested quantitative misfit criteria for comparison of seismograms. The misfit criteria are based on the time-frequency representation of the seismograms obtained as the continuous wavelet transform with the analyzing Morlet wavelet. The misfit criteria include time-frequency envelope and phase misfits, time-dependent envelope and phase misfits, frequency-dependent envelope and phase misfits, and single-valued envelope and phase misfits. We tested properties of the misfit criteria using canonical signals. The canonical signals, taken as the reference signals, were specifically amplitude, phase shift, time shift, and frequency modified to demonstrate the ability of the misfit criteria to properly quantify the misfits and recognize the character and cause of the misfits between the reference and modified signals. In all cases the misfit criteria properly quantified and characterized the misfits. The misfit criteria were also calculated for four different numerical solutions for a single layer over half-space (the SCEC LOH.3 problem) and the reference FK solution. The misfit criteria provided useful insight into the misfits between individual numerical solutions and the reference solution. The standard RMS misfit matches the single-valued envelope misfit only in the case of a pure amplitude modification of the signal. In all other cases RMS considerably overestimates the misfits and does not characterize them.},
-  Doi                      = {10.1785/0120060012}
+  Doi                      = {10.1785/0120060012},
+  Owner                    = {R}
+}
+
+@Manual{C50_2015,
+  Title                    = {C50: C5.0 Decision Trees and Rule-Based Models},
+  Author                   = {Max Kuhn and Steve Weston and Nathan Coulter and Mark Culp. C code for C5.0 by R. Quinlan},
+  Note                     = {R package version 0.1.0-24},
+  Year                     = {2015},
+
+  Url                      = {https://CRAN.R-project.org/package=C50}
 }
 
 @Article{Lee_2014_SRL,
@@ -421,6 +593,17 @@
   Number                   = {EM4},
   Pages                    = {859--877},
   Volume                   = {95}
+}
+
+@InProceedings{Macqueen_1967_Proc,
+  Title                    = {Some methods for classification and analysis of multivariate observations},
+  Author                   = {MacQueen, James and others},
+  Booktitle                = {Proceedings of the fifth Berkeley symposium on mathematical statistics and probability},
+  Year                     = {1967},
+  Number                   = {14},
+  Organization             = {Oakland, CA, USA.},
+  Pages                    = {281--297},
+  Volume                   = {1}
 }
 
 @Article{Magistrale_2000_BSSA,
@@ -486,6 +669,31 @@
   Doi                      = {10.1785/0120140228}
 }
 
+@Article{Maufroy_2015_BSSA,
+  Title                    = {Earthquake Ground Motion in the {M}ygdonian Basin, {G}reece: {T}he {E2VP} Verification and Validation of {3D} Numerical Simulation up to {4~Hz}},
+  Author                   = {Maufroy, E. and Chaljub, E. and Hollender, F. and Kristek, J. and Moczo, P. and Klin, P. and Priolo, E. and Iwaki, A. and Iwata, T. and Etienne, V. and De Martin, F. and Theodoulidis, N. P. and Manakou, M. and Guyonnet-Benaize, C. and Pitilakis, K. and Bard, P.-Y.},
+  Journal                  = BSSA,
+  Year                     = {2015},
+  Number                   = {3},
+  Pages                    = {1398--1418},
+  Volume                   = {105},
+
+  Doi                      = {10.1785/0120140228},
+  Owner                    = {R}
+}
+
+@Book{Mitchell_1997_Book,
+  Title                    = {Machine Learning},
+  Author                   = {Mitchell, T.M.},
+  Publisher                = {McGraw-Hill},
+  Year                     = {1997},
+  Series                   = {McGraw-Hill International Editions},
+
+  ISBN                     = {9780071154673},
+  Lccn                     = {97007692},
+  Url                      = {https://books.google.com/books?id=EoYBngEACAAJ}
+}
+
 @PhdThesis{Olsen_1994_Thesis,
   Title                    = {Simulation of three-dimensional wave propagation in the {Salt Lake} basin},
   Author                   = {Olsen, Kim B.},
@@ -518,6 +726,31 @@
   Volume                   = {81},
 
   Doi                      = {10.1785/gssrl.81.5.715}
+}
+
+@Article{Olsen_2010_SRL,
+  Title                    = {Goodness-of-fit Criteria for Broadband Synthetic Seismograms, with Application to the 2008 {$M_{\mathrm{w}}$} 5.4 {C}hino {H}ills, {C}alifornia, Earthquake},
+  Author                   = {Olsen, Kim B. and Mayhew, John E.},
+  Journal                  = SRL,
+  Year                     = {2010},
+  Number                   = {5},
+  Pages                    = {715--723},
+  Volume                   = {81},
+
+  Doi                      = {10.1785/gssrl.81.5.715},
+  Owner                    = {R}
+}
+
+@Article{Parsons_2004_ACM,
+  Title                    = {Subspace clustering for high dimensional data: a review},
+  Author                   = {Parsons, Lance and Haque, Ehtesham and Liu, Huan},
+  Journal                  = {Acm Sigkdd Explorations Newsletter},
+  Year                     = {2004},
+  Number                   = {1},
+  Pages                    = {90--105},
+  Volume                   = {6},
+
+  Publisher                = {ACM}
 }
 
 @InProceedings{Plesch_2008_SCEC,
@@ -575,6 +808,36 @@
   Doi                      = {10.1111/j.1365-246X.2006.02947.x}
 }
 
+@Book{Quinlan_1993,
+  Title                    = {C4. 5: programs for machine learning},
+  Author                   = {Quinlan, J Ross},
+  Publisher                = {Morgan Kaufmann, Burlington, Massachusetts},
+  Year                     = {1993}
+}
+
+@Article{Quinlan_1986,
+  Title                    = {Induction of decision trees},
+  Author                   = {Quinlan, J. Ross},
+  Journal                  = {Machine learning},
+  Year                     = {1986},
+  Number                   = {1},
+  Pages                    = {81--106},
+  Volume                   = {1},
+
+  Publisher                = {Springer}
+}
+
+@Manual{R_2016_program,
+  Title                    = {R: A Language and Environment for Statistical Computing},
+
+  Address                  = {Vienna, Austria},
+  Author                   = {{R Core Team}},
+  Organization             = {R Foundation for Statistical Computing},
+  Year                     = {2016},
+
+  Url                      = {https://www.R-project.org/}
+}
+
 @Article{RamirezGuzman_2012_BSSA,
   Title                    = {Seismic Velocity Model of the {C}entral {U}nited {S}tates ({V}ersion 1): {D}escription and Simulation of the 18 {A}pril 2008 {M}t.~{C}armel, {I}llinois, Earthquake},
   Author                   = {Ram\'{i}rez-Guzm\'{a}n, L. and Boyd, Oliver S. and Hartzell, Stephen and Williams, Robert A.},
@@ -585,6 +848,28 @@
   Volume                   = {102},
 
   Doi                      = {10.1785/0120110303}
+}
+
+@Article{Rezaeian_2015_BSSA,
+  Title                    = {Validation of Simulated Earthquake Ground Motions Based on Evolution of Intensity and Frequency Content},
+  Author                   = {Rezaeian, S. and Zhong, P. and Hartzell, S. and Zareian, F.},
+  Journal                  = BSSA,
+  Year                     = {2015},
+  Number                   = {6},
+  Pages                    = {3036--3049},
+  Volume                   = {105},
+
+  Doi                      = {10.1785/0120140210},
+  Owner                    = {R}
+}
+
+@InProceedings{Roten_2016_IEEE,
+  Title                    = {High-frequency nonlinear earthquake simulations on petascale heterogeneous supercomputers},
+  Author                   = {Roten, Daniel and Cui, Yifeng and Olsen, Kim B and Day, Steven M and Withers, Kyle and Savran, William H and Wang, Peng and Mu, Dawei},
+  Booktitle                = {High Performance Computing, Networking, Storage and Analysis, SC16: International Conference for},
+  Year                     = {2016},
+  Organization             = {IEEE},
+  Pages                    = {957--968}
 }
 
 @Article{Suss_2003_JGR,
@@ -656,6 +941,20 @@ As a solution to these problems, we propose a new approach for providing scienti
   Year                     = {2003}
 }
 
+@Article{Taborda_2016_GJI,
+  Title                    = {Evaluation of the southern California seismic velocity models through simulation of recorded events},
+  Author                   = {Taborda, Ricardo and Azizzadeh-Roodpish, Shima and Khoshnevis, Naeem and Cheng, Keli},
+  Journal                  = {Geophysical Journal International},
+  Year                     = {2016},
+  Number                   = {3},
+  Pages                    = {1342},
+  Volume                   = {205},
+
+  Doi                      = {10.1093/gji/ggw085},
+  Eprint                   = {/oup/backfile/content_public/journal/gji/205/3/10.1093/gji/ggw085/3/ggw085.pdf},
+  Url                      = { + http://dx.doi.org/10.1093/gji/ggw085}
+}
+
 @Article{Taborda_2014_BSSA,
   Title                    = {Ground-Motion Simulation and Validation of the 2008 {C}hino {H}ills, {C}alifornia, Earthquake using different velocity models},
   Author                   = {Taborda, R. and Bielak, J.},
@@ -665,7 +964,8 @@ As a solution to these problems, we propose a new approach for providing scienti
   Pages                    = {1876--1898},
   Volume                   = {104},
 
-  Doi                      = {10.1785/0120130266}
+  Doi                      = {10.1785/0120130266},
+  Owner                    = {R}
 }
 
 @Article{Taborda_2013_BSSA,
@@ -677,7 +977,8 @@ As a solution to these problems, we propose a new approach for providing scienti
   Pages                    = {131--156},
   Volume                   = {103},
 
-  Doi                      = {10.1785/0120110325}
+  Doi                      = {10.1785/0120110325},
+  Owner                    = {R}
 }
 
 @TechReport{Taborda_2010_Tech,
@@ -792,6 +1093,15 @@ As a solution to these problems, we propose a new approach for providing scienti
   Doi                      = {10.1145/1188455.1188551}
 }
 
+@InProceedings{Wagstaff_2001_Proc,
+  Title                    = {Constrained k-means clustering with background knowledge},
+  Author                   = {Wagstaff, Kiri and Cardie, Claire and Rogers, Seth and Schr{\"o}dl, Stefan and others},
+  Booktitle                = {ICML},
+  Year                     = {2001},
+  Pages                    = {577--584},
+  Volume                   = {1}
+}
+
 @Article{Wald_2007_BSSA,
   Title                    = {Topographic Slope as a Proxy for Seismic Site Conditions and Amplification},
   Author                   = {Wald, David J. and Allen, Trevor I.},
@@ -803,6 +1113,31 @@ As a solution to these problems, we propose a new approach for providing scienti
 
   Abstract                 = {We describe a technique to derive first-order site-condition maps directly from topographic data. For calibration, we use global 30 arc sec topographic data and VS30 measurements (here VS30 refers to the average shear-velocity down to 30 m) aggregated from several studies in the United States, as well as in Taiwan, Italy, and Australia. VS30 values are correlated against topographic slope to develop two sets of parameters for deriving VS30: one for active tectonic regions where topographic relief is high, and one for stable shields where topography is more subdued. By taking the gradient of the topography and choosing ranges of slope that maximize the correlation with shallow shear-velocity observations, we can recover, to first order, many of the spatially varying features of site-condition maps developed for California. Our site-condition map for the low-relief Mississippi Embayment also predicts the bulk of the VS30 observations in that region despite rather low slope ranges.We find that maps derived from the slope of the topography are often well correlated with other independently derived, regional-scale site-condition maps, but the latter maps vary in quality and continuity, and subsequently, also in their ability to match observed VS30 measurements contained therein. Alternatively, the slope-based method provides a simple approach to uniform site-condition mapping.After validating this approach in regions with numerous VS30 observations, we subsequently estimate and map site conditions for the entire continental United States using the respective slope correlations.},
   Doi                      = {10.1785/0120060267}
+}
+
+@Book{Watanabe_1985_Book,
+  Title                    = {Pattern recognition: human and mechanical},
+  Author                   = {Watanabe, Satosi},
+  Publisher                = {John Wiley \& Sons, Inc.},
+  Year                     = {1985}
+}
+
+@Manual{Corrplot_2016,
+  Title                    = {corrplot: Visualization of a Correlation Matrix},
+  Author                   = {Taiyun Wei and Viliam Simko},
+  Note                     = {R package version 0.77},
+  Year                     = {2016},
+
+  Url                      = {https://CRAN.R-project.org/package=corrplot}
+}
+
+@Article{Weiss_2003,
+  Title                    = {Learning when training data are costly: The effect of class distribution on tree induction},
+  Author                   = {Weiss, Gary M and Provost, Foster},
+  Journal                  = {Journal of Artificial Intelligence Research},
+  Year                     = {2003},
+  Pages                    = {315--354},
+  Volume                   = {19}
 }
 
 @Article{Wells_1994_BSSA,
@@ -847,246 +1182,4 @@ As a solution to these problems, we propose a new approach for providing scienti
 
   Doi                      = {10.1785/0120050081}
 }
-
-@inproceedings{Macqueen_1967_Proc,
-  title={Some methods for classification and analysis of multivariate observations},
-  author={MacQueen, James and others},
-  booktitle={Proceedings of the fifth Berkeley symposium on mathematical statistics and probability},
-  volume={1},
-  number={14},
-  pages={281--297},
-  year={1967},
-  organization={Oakland, CA, USA.}
-}
-
-@inproceedings{Wagstaff_2001_Proc,
-  title={Constrained k-means clustering with background knowledge},
-  author={Wagstaff, Kiri and Cardie, Claire and Rogers, Seth and Schr{\"o}dl, Stefan and others},
-  booktitle={ICML},
-  volume={1},
-  pages={577--584},
-  year={2001}
-}
-
-@Article{Taborda_2016_GJI,
-author = {Taborda, Ricardo and Azizzadeh-Roodpish, Shima and Khoshnevis, Naeem and Cheng, Keli},
-title = {Evaluation of the southern California seismic velocity models through simulation of recorded events},
-journal = {Geophysical Journal International},
-volume = {205},
-number = {3},
-pages = {1342},
-year = {2016},
-doi = {10.1093/gji/ggw085},
-URL = { + http://dx.doi.org/10.1093/gji/ggw085},
-eprint = {/oup/backfile/content_public/journal/gji/205/3/10.1093/gji/ggw085/3/ggw085.pdf}
-}
-
- @inproceedings{Khoshnevis_2015_Proc,
- series={International Conference on Applications of Statistics and Probability in Civil Engineering (ICASP) (12th : 2015)},
- title={Sensitivity of ground motion simulation validation criteria to filtering},
- url={https://open.library.ubc.ca/cIRcle/collections/53032/items/1.0076157},
- DOI={http://dx.doi.org/10.14288/1.0076157},
- note={This collection contains the proceedings of ICASP12, the 12th International Conference on Applications of Statistics and Probability in Civil Engineering held in Vancouver, Canada on July 12-15, 2015. Abstracts were peer-reviewed and authors of accepted abstracts were invited to submit full papers. Also full papers were peer reviewed. The editor for this collection is Professor Terje Haukaas, Department of Civil Engineering, UBC Vancouver.},
- author={Khoshnevis, Naeem and Taborda, Ricardo},
- year={2015},
- month={Jul}, 
- collection={International Conference on Applications of Statistics and Probability in Civil Engineering (ICASP) (12th : 2015)}
- }
-
-
-@Article{Fayyad_1996_IEEE,
-  title={Data mining and knowledge discovery: Making sense out of data},
-  author={Fayyad, Usama M},
-  journal={IEEE Expert: Intelligent Systems and Their Applications},
-  volume={11},
-  number={5},
-  pages={20--25},
-  year={1996},
-  publisher={IEEE Educational Activities Department}
-}
-
-@Article{Jain_1999,
- author = {Jain, A. K. and Murty, M. N. and Flynn, P. J.},
- title = {Data Clustering: A Review},
- journal = {ACM Comput. Surv.},
- issue_date = {Sept. 1999},
- volume = {31},
- number = {3},
- month = sep,
- year = {1999},
- issn = {0360-0300},
- pages = {264--323},
- numpages = {60},
- url = {http://doi.acm.org/10.1145/331499.331504},
- doi = {10.1145/331499.331504},
- acmid = {331504},
- publisher = {ACM},
- address = {New York, NY, USA},
- keywords = {cluster analysis, clustering applications, exploratory data analysis, incremental clustering, similarity indices, unsupervised learning},
-} 
-
-@book{Mitchell_1997_Book,
-  title={Machine Learning},
-  author={Mitchell, T.M.},
-  isbn={9780071154673},
-  lccn={97007692},
-  series={McGraw-Hill International Editions},
-  url={https://books.google.com/books?id=EoYBngEACAAJ},
-  year={1997},
-  publisher={McGraw-Hill}
-}
-
-@Article{Quinlan_1986,
-  title={Induction of decision trees},
-  author={Quinlan, J. Ross},
-  journal={Machine learning},
-  volume={1},
-  number={1},
-  pages={81--106},
-  year={1986},
-  publisher={Springer}
-}
-
-@Book{Quinlan_1993,
-  title={C4. 5: programs for machine learning},
-  author={Quinlan, J Ross},
-  year={1993},
-  publisher={Morgan Kaufmann, Burlington, Massachusetts}
-}
-
-
-  @Article{Hornik_2009,
-    title = {Open-Source Machine Learning: {R} Meets {Weka}},
-    author = {Kurt Hornik and Christian Buchta and Achim Zeileis},
-    journal = {Computational Statistics},
-    year = {2009},
-    volume = {24},
-    number = {2},
-    pages = {225--232},
-    doi = {10.1007/s00180-008-0119-7},
-  }
-
-@Article{Parsons_2004_ACM,
-  title={Subspace clustering for high dimensional data: a review},
-  author={Parsons, Lance and Haque, Ehtesham and Liu, Huan},
-  journal={Acm Sigkdd Explorations Newsletter},
-  volume={6},
-  number={1},
-  pages={90--105},
-  year={2004},
-  publisher={ACM}
-}
-
-@article{Dy_2004_MLR,
-  title={Feature selection for unsupervised learning},
-  author={Dy, Jennifer G and Brodley, Carla E},
-  journal={Journal of machine learning research},
-  volume={5},
-  number={Aug},
-  pages={845--889},
-  year={2004}
-}
-
-@book{Jain_1988_Book,
-  title={Algorithms for clustering data},
-  author={Jain, Anil K and Dubes, Richard C},
-  year={1988},
-  publisher={Prentice-Hall, Inc.}
-}
-
-@article{Hartigan_1985_JOC,
-  title={Statistical theory in clustering},
-  author={Hartigan, John A},
-  journal={Journal of classification},
-  volume={2},
-  number={1},
-  pages={63--76},
-  year={1985},
-  publisher={Springer}
-}
-
-@book{Watanabe_1985_Book,
-  title={Pattern recognition: human and mechanical},
-  author={Watanabe, Satosi},
-  year={1985},
-  publisher={John Wiley \& Sons, Inc.}
-}
-
-@Article{Guyon_2003,
-  title={An introduction to variable and feature selection},
-  author={Guyon, Isabelle and Elisseeff, Andr{\'e}},
-  journal={Journal of machine learning research},
-  volume={3},
-  number={Mar},
-  pages={1157--1182},
-  year={2003}
-}
-
-@Book{Duda_1973,
-  title={Pattern classification},
-  author={Duda, Richard O and Hart, Peter E and Stork, David G},
-  year={1973},
-  publisher={Wiley, New York}
-}
-
-@Article{Branco_2015,
-  title={A survey of predictive modelling under imbalanced distributions},
-  author={Branco, Paula and Torgo, Luis and Ribeiro, Rita},
-  journal={arXiv preprint arXiv:1505.01658},
-  year={2015}
-}
-
-@Article{Weiss_2003,
-  title={Learning when training data are costly: The effect of class distribution on tree induction},
-  author={Weiss, Gary M and Provost, Foster},
-  journal={Journal of Artificial Intelligence Research},
-  volume={19},
-  pages={315--354},
-  year={2003}
-}
-
-  @Manual{C50_2015,
-    title = {C50: C5.0 Decision Trees and Rule-Based Models},
-    author = {Max Kuhn and Steve Weston and Nathan Coulter and Mark Culp. C code for C5.0 by R. Quinlan},
-    year = {2015},
-    note = {R package version 0.1.0-24},
-    url = {https://CRAN.R-project.org/package=C50},
-  }
-  
-    @Manual{Corrplot_2016,
-    title = {corrplot: Visualization of a Correlation Matrix},
-    author = {Taiyun Wei and Viliam Simko},
-    year = {2016},
-    note = {R package version 0.77},
-    url = {https://CRAN.R-project.org/package=corrplot},
-  }
-
-@Inproceedings{Roten_2016_IEEE,
-  title={High-frequency nonlinear earthquake simulations on petascale heterogeneous supercomputers},
-  author={Roten, Daniel and Cui, Yifeng and Olsen, Kim B and Day, Steven M and Withers, Kyle and Savran, William H and Wang, Peng and Mu, Dawei},
-  booktitle={High Performance Computing, Networking, Storage and Analysis, SC16: International Conference for},
-  pages={957--968},
-  year={2016},
-  organization={IEEE}
-}
-
-@Article{Komatitsch_2004_BSSA,
-  title={Simulations of ground motion in the Los Angeles basin based upon the spectral-element method},
-  author={Komatitsch, Dimitri and Liu, Qinya and Tromp, Jeroen and S{\"u}ss, Peter and Stidham, Christiane and Shaw, John H},
-  journal={Bulletin of the Seismological Society of America},
-  volume={94},
-  number={1},
-  pages={187--206},
-  year={2004},
-  publisher={Seismological Society of America}
-}
-
-  @Manual{R_2016_program,
-    title = {R: A Language and Environment for Statistical Computing},
-    author = {{R Core Team}},
-    organization = {R Foundation for Statistical Computing},
-    address = {Vienna, Austria},
-    year = {2016},
-    url = {https://www.R-project.org/},
-  }
 
