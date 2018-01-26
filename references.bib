@@ -2,6 +2,7 @@
 % Encoding: ISO8859_1
 
 
+@String { ACMCS  = {ACM Comput.~Surv.} }
 @String { AG     = {Ann.~Geofisc.} }
 @String { AGT    = {Acta Geotechnica} }
 @String { AM     = {Acta Mech.} }
@@ -48,6 +49,7 @@
 @String { JSE    = {J.~Struct.~Eng., ASCE} }
 @String { JSG    = {J.~Struct.~Geol.} }
 @String { JSMFD  = {J.~Soil Mech.~Found.~Div., ASCE} }
+@String { MLR    = {} }
 @String { NAT    = {Nature} }
 @String { NED    = {Nucl.~Eng.~Des.} }
 @String { PAG    = {Pure Appl.~Geophys.} }
@@ -98,9 +100,7 @@
   Volume                   = {152},
 
   Abstract                 = {This paper reports on the development of a parallel numerical methodology for simulating large-scale earthquake-induced ground motion in highly heterogeneous basins. We target large sedimentary basins with contrasts in wavelengths of over an order of magnitude. Regular grid methods prove intractable for such problems. We overcome the problem of multiple physical scales by using unstructured finite elements on locally-resolved Delaunay triangulations derived from octree-based grids. The extremely large mesh sizes require special mesh generation techniques. Despite the method's multiresolution capability, large problem sizes necessitate the use of distributed memory parallel supercomputers to solve the elastic wave propagation problem. We have developed a system that helps automate the task of writing efficient portable unstructured mesh solvers for distributed memory parallel supercomputers. The numerical methodology and software system have been used to simulate the seismic response of the San Fernando Valley in Southern California to an aftershock of the 1994 Northridge Earthquake. We report on parallel performance on the Cray T3D for several models of the basin ranging in size from 35 000 to 77 million tetrahedra. The results indicate that, despite the highly irregular structure of the problem, excellent performance and scalability are achieved.},
-  Doi                      = {10.1016/S0045-7825(97)00183-7},
-  File                     = {Bao_1998_CMAME_color.pdf:C\:\\Documents and Settings\\root\\My Documents\\My eJournals\\Bao_1998_CMAME_color.pdf:PDF},
-  Url                      = {http://www.sciencedirect.com/science/article/B6V29-3SYPT4H-12/2/1e2b3c4b64ddaba3251a336b91087583}
+  Doi                      = {10.1016/S0045-7825(97)00183-7}
 }
 
 @Article{Bielak_2010_GJI,
@@ -246,12 +246,14 @@
 
 @Article{Dy_2004_MLR,
   Title                    = {Feature selection for unsupervised learning},
-  Author                   = {Dy, Jennifer G and Brodley, Carla E},
-  Journal                  = {Journal of machine learning research},
+  Author                   = {Dy, Jennifer G. and Brodley, Carla E.},
+  Journal                  = MLR,
   Year                     = {2004},
   Number                   = {Aug},
   Pages                    = {845--889},
-  Volume                   = {5}
+  Volume                   = {5},
+
+  Owner                    = {R}
 }
 
 @InProceedings{Ely_2010_AGU,
@@ -266,7 +268,7 @@
 
 @Article{Fayyad_1996_IEEE,
   Title                    = {Data mining and knowledge discovery: {M}aking sense out of data},
-  Author                   = {Feyyad, Usama M},
+  Author                   = {Fayyad, Usama M},
   Journal                  = {IEEE Expert},
   Year                     = {1996},
   Number                   = {5},
@@ -372,12 +374,14 @@
 @Article{Hartigan_1985_JOC,
   Title                    = {Statistical theory in clustering},
   Author                   = {Hartigan, John A},
-  Journal                  = {Journal of classification},
+  Journal                  = {J. Classification},
   Year                     = {1985},
   Number                   = {1},
   Pages                    = {63--76},
   Volume                   = {2},
 
+  Doi                      = {10.1007/BF01908064},
+  Owner                    = {R},
   Publisher                = {Springer}
 }
 
@@ -419,15 +423,19 @@
 
 @Book{Jain_1988_Book,
   Title                    = {Algorithms for clustering data},
-  Author                   = {Jain, Anil K and Dubes, Richard C},
+  Author                   = {Jain, Anil K. and Dubes, Richard C.},
   Publisher                = {Prentice-Hall, Inc.},
-  Year                     = {1988}
+  Year                     = {1988},
+
+  Address                  = {Englewood Cliffs, New Jersey},
+
+  Owner                    = {R}
 }
 
 @Article{Jain_1999_ACMCS,
   Title                    = {Data Clustering: {A} Review},
   Author                   = {Jain, A. K. and Murty, M. N. and Flynn, P. J.},
-  Journal                  = {ACM Computing Surveys},
+  Journal                  = ACMCS,
   Year                     = {1999},
   Number                   = {3},
   Pages                    = {264--323},
