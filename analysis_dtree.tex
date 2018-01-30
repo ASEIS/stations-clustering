@@ -1,28 +1,26 @@
 \section{Classification model} \label{dtree}
 
-In the section.~\ref{dtree_methodology} we discussed the basics of decision tree method and we provided a brief history of available algorithm. In this section we develop a classification model. Although there are numerous methods to classify labeled data, however, in this study we are interested in a method that not only predict the class of simulation based on metrics, but also give an intuition about the decision process. Therefor we use tree based algorithm to develop the prediction model.\\
+In the section.~\ref{dtree_methodology} we discussed the basics of decision tree method and we provided a brief history of available algorithm. In this section we develop a classification model. Although there are numerous methods to classify labeled data, however, in this study we are interested in a method that not only predict the class of simulation based on metrics, but also give an intuition about the decision process. Therefor we use tree based algorithm to develop the prediction model.
 
 Preprocessing data is an important part of data analysis. However, in this study we deal with a clean data without any missing values. All data are reported in the same scale (0-10), therefore, we do not normalize them. After preprocessing data the most important step in developing a prediction model is feature selection. The step becomes more relevant when data set has hundreds to tens of thousands of variable or features. Although our dataset does not have numerous features we do some analysis on features before developing the prediction model. Features of a dataset could have similar behavior. This characteristic is easy to understand by correlation criteria. The Pearson correlation coefficient between two features is defined as
-
+% 
 \begin{equation}
 R(i)=\frac{cov(X_i,X_j)}{\sqrt{var(X_i)var(X_j)}},
 \end{equation} 
-
+% 
 where $cov$ is covariance function and $var$ is the variance function \citep{Guyon_2003}. Fig.~\ref{fig:Corplot} represent the Pearson Correlation factor among features.  
 
 \begin{figure}
     \centering
-    \includegraphics
-       % [width=\columnwidth]
-        [width=200px]
-        {figures/pdf/Figure_10.pdf}
+    \includegraphics[width=\columnwidth]{figures/pdf/Figure_10.pdf}
     \caption{Pearson correlation values between metrics. The plot is generated using Corrplot package  \citep{Corrplot_2016}  in R programming language.}
     \label{fig:Corplot}
 \end{figure}
 
 As we can see from the figure some metrics are highly correlated. Among them we can mention C1 vs C2 , C3 vs C4, C5 vs C6 and C8, and C6 vs C8 have correlation factor more than 90\%. Also we observe that C11 is mostly have a negative correlation with other features. Feature selection is a broad research field. \citet{Guyon_2003} presented a review of common methods to select features, construct new features or reduce the domain. They highlighted the fact that redundant variable or variables that are useless by themselves may be useful in combination with other variables. Clustering can be used as a method to construct new features as an unsupervised learning or feature selection without having the labels in calculation. The idea is to replace a group of features mean with newly developed features. It helps to reduce the number of features and use all of the available information \citep{Duda_1973,Guyon_2003}. Since we do not have a long list of features and also we want to study all features' effects we leave all features to be used in the prediction model. 
 
-After analysis of each features the next step is subsetting data for training and testing process. A subset of data that is used for training and test should have about the equal distribution of target values. Equally distributed data helps training process to not biased to an special class also helps to have an accurate evaluation of the model during the test process. Not equally distributed data is called imbalanced. Imbalanced data may decrease the classifier performance. \citet{Branco_2015} provided a comprehensive review of different approaches toward imbalanced distribution of target variables. A mostly common approach is data preprocessing through resampling. According to \citet{Branco_2015}, resampling strategies based on diverse set of techniques such as: random under/over-sampling, distance methods, data cleaning approaches, clustering algorithm among them.\\
+After analysis of each features the next step is subsetting data for training and testing process. A subset of data that is used for training and test should have about the equal distribution of target values. Equally distributed data helps training process to not biased to an special class also helps to have an accurate evaluation of the model during the test process. Not equally distributed data is called imbalanced. Imbalanced data may decrease the classifier performance. \citet{Branco_2015} provided a comprehensive review of different approaches toward imbalanced distribution of target variables. A mostly common approach is data preprocessing through resampling. According to \citet{Branco_2015}, resampling strategies based on diverse set of techniques such as: random under/over-sampling, distance methods, data cleaning approaches, clustering algorithm among them.
+
 According to the clustering results, among all data with different components and velocity model there are 816,1253,879, and 76 data belonging to cluster 1,2,3, and 4, respectively. \citet{Weiss_2003} discussed the fact that the perfectly balanced dataset does not always provide the optimal results. One option could be under sampling cluster 1 to 3 to be in the similar distribution of cluster 4. This may eliminate the useful examples leading to a worse performance. Therefor we 10 times over-sample the data with cluster 4 to have a distribution similar to other cluster. Oversampling may increase the likelihood of overfitting, however, in this case the oversampling rate is not high. On the other hand, using pruning method during training as well as evaluating algorithm with unseen (test) dataset, we address the overfitting issues.  Choosing what fraction of data should be used for training and testing is an open question. We put 30 percent of data for test and 70 percent of data for training process. 
 
 Different measures are defined for evaluation of performance of prediction models. Two main metrics are precision and recall. In a simple word, in a binary case, precision represent the fact that how many of predicted values as positive is actually positive and recall shows that how many of positive cases are diagnosticated with the algorithm. Choosing between these two measures is dependent on the application. For example if there is a highly contagious disease and we want to put all contaminated persons in a quarantine, we need to focus on recall value, because even if we miss one case, it could distribute the virus, however, there is a trade off between recall and precision. In the mentioned example there should be some person that indicated as contaminated with virus where as they are not. Therefor, the algorithm precision is low. Table~\ref{tab:confusion_def} which is called confusion matrix is a method to present the overall functionality of the algorithm \citep{Branco_2015}.  
@@ -53,10 +51,11 @@ Because of trade of between these two metrics other metrics are defined to gener
 F_\beta = \frac{(1+\beta)^2.recall.precision}{\beta^2.recall+precision},
 \end{equation}
 
-In this study we assume $\beta = 1$ to give same importance to precision and recall. \\
+In this study we assume $\beta = 1$ to give same importance to precision and recall.
+
 Developing a prediction model has a broad discussion. In this study we are not presenting the best model, however, we present an intuition into the method and be able to present a simple model where a user could estimate the target class without using sophisticated algorithms or packages. We divid data into training and test sets. C5.0 package in R has two options to prune the tree. These parameters include: Confidence factor (CF) and the smallest number of samples that must be put in at least two of the splits (minCases). We tune the algorithm for these two parameters based on training with train data and test the results on test data based on F1-score. We also activate the winnow option, which use the internal feature selection algorithm of the C5.0 package. Fig.~\ref{fig:tune} presents the tuning parameters results. It's obvious that the minCases is dominant factor. In this study we choose $CF=0.2$. 
 
-\begin{figure}
+\begin{figure*}
     \centering
     \includegraphics
        % [width=\columnwidth]
@@ -64,7 +63,7 @@ Developing a prediction model has a broad discussion. In this study we are not p
         {figures/pdf/Figure_11.pdf}
     \caption{Results of tuning C5.0 algorithm through grid search on confidence factor (CF) and the smallest number of samples that must be put in at least two of the splits (minCases). Color variation represents F1-score. Gray area at C3 has F1-score less than 0.9.}
     \label{fig:tune}
-\end{figure}
+\end{figure*}
 
 Fig.~\ref{fig:tuneCFp2} presents the variation of F1-score for different clusters (or classes in terms of supervised learning) with respect to the minCases.  
 
@@ -80,8 +79,10 @@ Fig.~\ref{fig:tuneCFp2} presents the variation of F1-score for different cluster
 \end{figure}
 
 A decision tree could grow to very low levels and predict all training data accurately unless there is duplicated data with two different target value. The decision tree algorithm in this study provides very good results for the test data. However, the scope of this study is to generate a simple relationship to evaluate the simulation results. In the case of going to very sophisticated methods, other algorithms (e.g., random forest, conditional random forest, neural networks, ...) can be much more accurate. Consequently, In this study we do not activate the boosting capability of the C5.0 algorithm. According to  Fig.~\ref{fig:tuneCFp2} lower minCases and higher CF provides a better results. It is worth to not that the results are based on evaluating algorithm on test data, therefore, higher F1-score are not suggesting overfitting. However, as we mentioned earlier, we do not present the best model, rather we present a simplest model that in general illustrate the feature effects. 
+
 First we start with a very simple model. A simple model needs a strong pruning process.  Therefore we use $minCases = 120, CF=0.2$. Fig.~\ref{fig:dtree1} shows the classification decision tree. 
-\begin{figure}
+
+\begin{figure*}
     \centering
     \includegraphics
        % [width=\columnwidth]
@@ -89,7 +90,7 @@ First we start with a very simple model. A simple model needs a strong pruning p
         {figures/pdf/Figure_13.pdf}
     \caption{First prediction model (M1) for classifying ground motion simulation process based on goodness of fit scores of two metrics (i.e., C8 (Response Spectra) and C4(Total Energy)). Numbers above the box represent the number of training data that end up to that specific node. Bar plots represent the probability of each class under the related condition.  }
     \label{fig:dtree1}
-\end{figure}
+\end{figure*}
 Table~\ref{tab:confusionmat_test_1} shows  the confusion matrix of applying the prediction model on test dataset and Table~\ref{tab:prec_recall_test_1} presents the precision, recall, and F1-score for each individual class.
 
 \begin{table}
@@ -123,12 +124,6 @@ Class 4 & 0.9094488 & 0.9390244 & 0.9240000 \\ \hline
 \label{tab:prec_recall_test_1}
 \end{table}
 
-
-
-
-
-
-
 Summary of attribute usage in decision tree are according to Table~\ref{tab:attribute_usage_1}
 
 \begin{table}
@@ -145,7 +140,7 @@ Data percentage (\%) & Attribute & Metric                \\ \hline
 
 Now we decrease the $minClass$ to 40 to have a more accurate model we call this model M2. Fig.~\ref{fig:dtree2} presents the resultant model. 
 
-\begin{figure}
+\begin{figure*}
     \centering
     \includegraphics
        % [width=\columnwidth]
@@ -153,7 +148,7 @@ Now we decrease the $minClass$ to 40 to have a more accurate model we call this 
         {figures/pdf/Figure_14.pdf}
     \caption{First prediction model (M2) for classifying ground motion simulation process based on goodness of fit scores of two metrics (i.e., C8 (Response Spectra), C4(Total Energy), C6 (Peak Velocity), and C5 (Peak Acceleration)). Numbers above the box represent the number of training data that end up to that specific node. Bar plots represent the probability of each class under the related condition. }
     \label{fig:dtree2}
-\end{figure}
+\end{figure*}
 
 Confusion matrix, model scores, and attribute usage for M2 are presented in  Table~\ref{tab:confusionmat_test_2},  Table~\ref{tab:prec_recall_test_2}, and  Table~\ref{tab:attribute_usage_2}.
 
@@ -173,8 +168,6 @@ Confusion matrix, model scores, and attribute usage for M2 are presented in  Tab
 \label{tab:confusionmat_test_2}
 \end{table}
 
-
-
 \begin{table}
 \centering
 \caption{Recall and precision}
@@ -189,12 +182,6 @@ Class 4 & 0.9681818 &  0.8658537 &  0.9141631 \\ \hline
 \label{tab:prec_recall_test_2}
 \end{table}
 
-
-
-
-
-
-
 \begin{table}
 \centering
 \caption{Data usage percentile}
@@ -208,9 +195,6 @@ Data percentage (\%) & Attribute & Metric                \\ \hline
 \end{tabular}
 \label{tab:attribute_usage_2}
 \end{table}
-
-
-
 
 % error and accuracy also are other measures.
 %Rijsbergen, C. V. (1979). Information retrieval. dept. of computer science, university of glasgow, 2nd edition.
