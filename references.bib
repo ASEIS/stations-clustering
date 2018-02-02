@@ -14,6 +14,8 @@
 @String { CMAME  = {Comput.~Meth.~Appl.~Mech.~Eng.} }
 @String { CMES   = {Comput.~Model.~Eng.~Sci.} }
 @String { CRM    = {Compt.~Rendus.~Mec.} }
+@String { CS     = {Comput.~Stat.} }
+@String { DMKD   = {Data Min.~Knowl.~Discovery} }
 @String { EESD   = {Earthquake Eng.~Struct.~Dyn.} }
 @String { EG     = {Eng.~Geol.} }
 @String { EJGE   = {Electron.~J.~Geotech.~Eng.} }
@@ -31,6 +33,7 @@
 @String { IJPMG  = {International Journal of Physical Modelling in Geotechnics} }
 @String { IJSS   = {Int.~J.~Solids Struct.} }
 @String { ISET   = {ISET Journal of Earthquake Technology} }
+@String { JAIR   = {J.~Artif.~Intell.~Res.} }
 @String { JAM    = {J.~Appl.~Mech., ASME} }
 @String { JAP    = {J.~Appl.~Phys.} }
 @String { JASA   = {J.~Acoust.~Soc.~Am.} }
@@ -129,11 +132,28 @@
   Doi                      = {10.1190/geo2011-0019.1}
 }
 
-@Article{Branco_2015,
-  Title                    = {A survey of predictive modelling under imbalanced distributions},
-  Author                   = {Branco, Paula and Torgo, Luis and Ribeiro, Rita},
-  Journal                  = {arXiv preprint arXiv:1505.01658},
-  Year                     = {2015}
+@Article{Branco_2016_ACMCS,
+  Title                    = {A Survey of Predictive Modeling on Imbalanced Domains},
+  Author                   = {Branco, Paula and Torgo, Luis and Ribeiro, Rita P.},
+  Journal                  = ACMCS,
+  Year                     = {2016},
+  Number                   = {2},
+  Pages                    = {31},
+  Volume                   = {49},
+
+  Doi                      = {10.1145/2907070},
+  Owner                    = {R}
+}
+
+@Book{Breiman_1984_Book,
+  Title                    = {Breiman, L., Friedman, J., Olshen, R., \& Stone, C. (1984). Classification and Regression Trees. New York, NY:  Chapman and Hall.},
+  Author                   = {Breiman, L. and Friedman, J. and Olshen, R and Stone, C.},
+  Publisher                = {Chapman \& Hall/CRC, Taylor \& Francis Group},
+  Year                     = {1984},
+
+  Address                  = {Boca Raton, Florida},
+
+  Owner                    = {R}
 }
 
 @Article{Brocher_2008_BSSA,
@@ -398,16 +418,17 @@
   Doi                      = {10.1029/2000JB900016}
 }
 
-@Article{Hornik_2009,
-  Title                    = {Open-Source Machine Learning: {R} Meets {Weka}},
-  Author                   = {Kurt Hornik and Christian Buchta and Achim Zeileis},
-  Journal                  = {Computational Statistics},
+@Article{Hornik_2009_CS,
+  Title                    = {Open-Source Machine Learning: {R} Meets {W}eka},
+  Author                   = {Hornik, Kurt and Buchta, Christian and Zeileis, Achim},
+  Journal                  = CS,
   Year                     = {2009},
   Number                   = {2},
   Pages                    = {225--232},
   Volume                   = {24},
 
-  Doi                      = {10.1007/s00180-008-0119-7}
+  Doi                      = {10.1007/s00180-008-0119-7},
+  Owner                    = {R}
 }
 
 @Article{Isbiliroglu_2015_ES,
@@ -541,13 +562,13 @@
   Owner                    = {R}
 }
 
-@Manual{C50_2015,
-  Title                    = {C50: C5.0 Decision Trees and Rule-Based Models},
-  Author                   = {Max Kuhn and Steve Weston and Nathan Coulter and Mark Culp. C code for C5.0 by R. Quinlan},
-  Note                     = {R package version 0.1.0-24},
-  Year                     = {2015},
+@Manual{Kuhn_2017_Manual,
+  Title                    = {Package `C50'},
+  Author                   = {Kuhn, M. and Weston, S. and Culp, M. and Coulter, N. and Quinlan, R.},
+  Organization             = {\url{https://topepo.github.io/C5.0/}},
+  Year                     = {2017},
 
-  Url                      = {https://CRAN.R-project.org/package=C50}
+  Owner                    = {R}
 }
 
 @Article{Lee_2014_SRL,
@@ -674,6 +695,15 @@
   Owner                    = {R}
 }
 
+@InProceedings{McCarthy_1995_Proc,
+  Title                    = {Using decision trees for coreference resolution},
+  Author                   = {McCarthy, Joseph F. and Lehnert, Wendy G.},
+  Booktitle                = {Proc.~14th Int.~Joint Conf. Artif.~Intell.},
+  Year                     = {1995},
+
+  Address                  = {Montreal, Quebec, Canada, August 20--25, available at \url{https://arxiv.org/abs/cmp-lg/9505043}}
+}
+
 @Book{Mitchell_1997_Book,
   Title                    = {Machine Learning},
   Author                   = {Mitchell, T.M.},
@@ -683,6 +713,19 @@
 
   ISBN                     = {9780071154673},
   Lccn                     = {97007692},
+  Owner                    = {R}
+}
+
+@Article{Murthy_1998_DMKD,
+  Title                    = {Automatic Construction of Decision Trees from Data: {A} Multi-Disciplinary Survey},
+  Author                   = {Murthy, Sreerama},
+  Journal                  = DMKD,
+  Year                     = {1998},
+  Number                   = {4},
+  Pages                    = {345--389},
+  Volume                   = {2},
+
+  Doi                      = {10.1023/A:100974463},
   Owner                    = {R}
 }
 
@@ -788,6 +831,18 @@
   Volume                   = {166},
 
   Doi                      = {10.1111/j.1365-246X.2006.02947.x}
+}
+
+@Article{Quinlan_1996_JAIR,
+  Title                    = {Improved use of continuous attributes in {C4.5}},
+  Author                   = {Quinlan, J. Ross},
+  Journal                  = JAIR,
+  Year                     = {1996},
+  Pages                    = {77--90},
+  Volume                   = {4},
+
+  Doi                      = {10.1613/jair.279},
+  Owner                    = {R}
 }
 
 @Book{Quinlan_1993_Book,
@@ -1105,6 +1160,17 @@ As a solution to these problems, we propose a new approach for providing scienti
   Doi                      = {10.1145/1188455.1188551}
 }
 
+@Book{Rijsbergen_1979_Book,
+  Title                    = {Information Retrieval},
+  Author                   = {{van Rijsbergen}, C. J.},
+  Publisher                = {Butterworth-Heinemann},
+  Year                     = {1979},
+
+  Address                  = {London, United Kingdom},
+
+  Owner                    = {R}
+}
+
 @InProceedings{Wagstaff_2001_Proc,
   Title                    = {Constrained $k$-means clustering with background knowledge},
   Author                   = {Wagstaff, Kiri and Cardie, Claire and Rogers, Seth and Schroedl, Stefan},
@@ -1144,13 +1210,16 @@ As a solution to these problems, we propose a new approach for providing scienti
   Url                      = {https://CRAN.R-project.org/package=corrplot}
 }
 
-@Article{Weiss_2003,
-  Title                    = {Learning when training data are costly: The effect of class distribution on tree induction},
-  Author                   = {Weiss, Gary M and Provost, Foster},
-  Journal                  = {Journal of Artificial Intelligence Research},
+@Article{Weiss_2003_JAIR,
+  Title                    = {Learning when training data are costly: {T}he effect of class distribution on tree induction},
+  Author                   = {Weiss, Gary M. and Provost, Foster},
+  Journal                  = JAIR,
   Year                     = {2003},
   Pages                    = {315--354},
-  Volume                   = {19}
+  Volume                   = {19},
+
+  Doi                      = {10.1613/jair.1199},
+  Owner                    = {R}
 }
 
 @Article{Wells_1994_BSSA,
@@ -1175,6 +1244,19 @@ As a solution to these problems, we propose a new approach for providing scienti
   Volume                   = {96},
 
   Doi                      = {10.1785/0120050179}
+}
+
+@Article{Wu_2010_JH,
+  Title                    = {Prediction of rainfall time series using modular artificial neural networks coupled with data-preprocessing techniques},
+  Author                   = {Wu, C. L. and Chau, K.W. and Fan, C.},
+  Journal                  = {J.~Hydrol.},
+  Year                     = {2010},
+  Number                   = {1},
+  Pages                    = {146--167},
+  Volume                   = {389},
+
+  Doi                      = {10.1016/j.jhydrol.2010.05.040},
+  Owner                    = {R}
 }
 
 @Article{Yoffe_1951_PM,

@@ -1,32 +1,107 @@
 
-\subsection{Decision Tree Design}
+\subsection{Decision Trees}
 \label{sec:decision-tree}
 
-The construction of a decision tree is a supervised learning process to obtain a target function used to measure the effectiveness of an attribute to classify data. There are a good number of approaches to develop decision trees \citep[e.g.,][]{Quinlan_1986_ML, Mitchell_1997_Book, Hornik_2009_}
+Building decision trees is a supervised learning process used to approximate a target function as a sequence of disjunctive conditions designed to measure the effectiveness of a set of attributes to classify data and predict outcomes. The theory behind decision trees is well established \citep[e.g.,][]{Quinlan_1986_ML, Mitchell_1997_Book}. Decision trees are, however, non-unique. They depend on the dataset, the user parameters, and the algorithm employed to build them \citep{Murthy_1998_DMKD}. Therefore, before describing our choice of the decision tree algorithm and parameters, we revise three aspects about the dataset: data classes, attributes equivalence, and dataset balance.
 
-We use the C4.5 algorithm developed by \citet{Quinlan_1993_Book}...
+First, regarding data classes we refer to whether the classes of data are properly distinguishable or not, and to whether the data attributes contribute to those classes or not. In our case, data classes are handled by means of the clustering and labeling process. As we described in the previous section, at the end of the clustering process, all the data-points (or samples) in our dataset get labeled with one out of four outcome classes (or clusters) defined in terms of the validation categories (poor, fair, good, excellent).
 
-% In machine learning, decision trees are classified as a supervised method, 
+Second, attributes equivalence refers to whether the data attributes are comparable with each other on equivalent terms or not. There are cases, either because of the method or because of the data, that the data attributes need to be standardized. In artificial neural networks, for instance, the data needs to be normalized on a $[-1,1]$ or $[0,1]$ scale. Normalization is also necessary when data attributes come in different unit scales or value ranges \citep[e.g.,][]{Wu_2010_JH}. In our case, this is not necessary because (a) all the data attributes---defined by the 11 GOF metrics---are on the same dimensionless numerical scale (varying from 0 to 10), and (b) because the algorithm we use is not susceptible to the attributes scale.
+
+Last, there is the issue of balance. A balanced dataset is one that has about the same number of samples per class. Algorithms used for building decision trees tend to perform better with balanced datasets \citep[e.g.,][]{Branco_2016_ACMCS, Weiss_2003_JAIR}. Imbalanced datasets, on the other hand, are those with a significant disparity in the number of samples in each class. Imbalanced datasets can be improved by a resampling process. There are two basic resampling approaches: undersampling and oversampling \citep{Branco_2016_ACMCS}. Undersampling discards data from the subsets with larger number of samples. Oversampling replicates data until reaching appropriate number of samples. Both processes are done by randomly picking data to either be discarded or replicated. In our case, as we will see later, we apply oversampling to one of our dataset classes. This process has consequences, mainly that it increases the likelihood of overfitting. A matter we discuss later. 
+
+Upon completing the clustering and resampling processes, the next step is to subdivide the dataset in two, a training dataset (with 70 percent of the samples picked randomly), and a testing dataset (with the remaining 30 percent). We first use the training dataset to build a large suite of potential decision trees, and then use the testing dataset to evaluate and pick the best possible decision tree(s) among them. There are several algorithms for building decision trees \citep[e.g., ID3, C4.5, C5.0, CART; see][]{Quinlan_1986_ML, Quinlan_1993_Book, Quinlan_1996_JAIR, Breiman_1984_Book}. Here we use the C5.0 implementation \citep{Kuhn_2017_Manual}, which is an extension of the C4.5 algorithm developed by \citet{Quinlan_1993_Book, Quinlan_1996_JAIR}.
+
+In essence, given a dataset, the process of building the tree consists of recursively identifying the attributes in the training data that are most likely to predict an outcome. The process is recursive because new branches and decision nodes are created based on the remaining data at every branch and level, until the tree reaches a certain depth or when other conditions are met. The effectiveness of an attribute $A$ in classifying any subset $S$ from the training data is measured through the information gain $G$ as
+% 
+\begin{equation}
+	\label{eq:gain}
+	G(S,A) = E(S) - \sum_{v \, \in \, A[a]} \frac{ \left| S_v \right| }{ \left| S \right| } E \left( S_v \right)
+	\, ,
+\end{equation} 
+% 
+where $A[a]$ is the set of all possible values of attribute $A$, $S_v$ is the subset of $S$ for which attribute $A$ has value $v$, and $E(\cdot)$ is the entropy function given by
+% 
+\begin{equation}
+	E(S) = \sum_{i=1}^{c} \Big( -p_i \log_2 \left(p_i\right) \Big)
+	\, ,
+\end{equation}
+% 
+where $p_i$ is the proportion of $S$ belonging to class $i$, and $c$ are the different values that a given target attribute can take.
+
+Entropy measures the homogeneity of a set of data. The higher the entropy, the more even the distribution of the data across classes. Conversely, an extremely low value of entropy would mean most of the data falls within a particular class. With this in mind, the information gain $G$ of an attribute $A$ for the dataset $S$, or $G(S,A)$ in equation (\ref{eq:gain}), is the expected reduction in entropy caused by partitioning the dataset according to attribute $A$ \citep{Mitchell_1997_Book}. For selection of a threshold for a continuous attribute refer to \citet{Quinlan_1996_JAIR}.
+
+In the particular case of the C5.0 algorithm the result of this process depends on several parameters, logical and numerical. We set the options to do feature selection and evaluate possible advanced splits of data, but do not use the boosted models option \citep[see][]{Kuhn_2017_Manual}; and use the confidence factor (CF) and the smallest number of samples that must be placed in at least two of the splits ($S_{\min}$, also known as \textit{minCases}) to fine tune the prediction models. In particular, we build a suite of trees for varying values of CF and $S_{\min}$.
+
+Each tree resulting from this process has different qualities. We are interested in selecting a tree that is highly effective, but with a low level of complexity. In other words, we seek a tree with a good ratio of accuracy for predicting the classification outcome of the data, while using a reduced number of attributes (i.e., GOF metrics) in only a few number of steps (i.e., tree nodes). The number of metrics and the number of nodes are directly seen from the topology of the trees, and are often proportional (shallow trees tend to use less nodes). In general, smaller trees are preferable because they are easy to understand and often more accurate predictors \citep{Quinlan_1996_JAIR}.
+
+The effectiveness of the tree, on the other hand, needs to be measured. To that end we use the factor $F_{\beta}$ proposed by \citet{Rijsbergen_1979_Book} as
+% 
+\begin{equation}
+	\label{eq:f}
+	F_{\beta} = \frac{ (1 + \beta^2) P R}{\beta^2 P + R}
+	\, ,
+\end{equation}
+% 
+where $P$ and $R$ are the precision and recall factors, respectively, and $\beta$ is a weighting factor between the two. $P$ measures the fraction of data samples that are correctly classified within a category, whereas $R$ measures the fraction of the data classified within that category regardless of whether it was correctly classified or not. Mathematically, they are defined as
+% 
+\begin{equation}
+	P = \frac{ \mathrm{TP} }{ \mathrm{TP} + \mathrm{FP} } 
+	\quad \mathrm{and} \quad
+	R = \frac{ \mathrm{TP} }{ \mathrm{TP} + \mathrm{FN} }
+	\, .
+\end{equation}
+% 
+Here, TP, FP, and FN are the number of samples in the testing dataset considered to be true-positives, false-positives, and false-negatives, respectively. These values are typically ordered in what is known as a confusion matrix. For the simplest case of two categories, a confusion matrix takes the form
+% 
+\begin{equation}
+\nonumber
+\begin{array}{rr@{}rl}
+	&					&	\multicolumn{2}{c}{\mathrm{Prediction}}		\\
+	&					&	\mathrm{Postive}	&	\mathrm{Negative}	\\[0.75ex]
+	\mathrm{Actual~Value}		
+	&	\begin{array}{r}
+			\mathrm{Positive} \\[1ex]
+			\mathrm{Negative} 
+		\end{array}
+	&	\left[~
+		\begin{array}{c}
+			\mathrm{TP} \\[1ex]
+			\mathrm{FP} 
+		\end{array}\right.
+	&
+		\left.
+		\begin{array}{cc}
+			~\mathrm{FN} \\[1ex]
+			~\mathrm{TN} \\[1ex]
+		\end{array}~\right]
+\end{array}
+\end{equation}
+% 
+where TN is the number of true-negative samples.
+
+We compute $F_{\beta}$ in equation (\ref{eq:f}) using $\beta = 1$ to give equal weight to $P$ and $R$ \citep{McCarthy_1995_Proc}. This is done for all the trees obtained using all possible combinations of CF and $S_{\min}$ values. Then, we select the tree with the highest level of effectiveness as measure by $F_1$, commensurate to such tree having a low complexity, i.e., a reduced number of metrics and a shallow depth, which is precisely the goal set at the start. Note that $F_1$ is obtained based on the testing dataset as opposed to the training dataset. The results as applied to our dataset are presented next.
 
 % ===========================================================================================
 %
 % OLD NAEEM VERSION
 % 
-Decision tree learning is a method for approximating a target function, in which learned function is represented by decision tree \citep{Mitchell_1997_Book}. \citet{Quinlan_1986} demonstrated that the technology for building decision trees from examples is fairly robust. He summarized an approach to synthesizing decision trees that has been used in a variety of systems, and he describes one such system, ID3, in detail. Although ID3 algorithm is successful in most classification problems, it does not handle the numeric attributes and only one attribute at a time is tested for making decisions. \citet{Quinlan_1993_Book} extended the ID3 algorithm and presented the C4.5 algorithm. Later on they added boosting capability to C4.5 and called it C5.0. The improved algorithm accepts both continues and discrete features and solves over fitting problem by pruning. Although there are many other algorithm for implementing decision tree, in this study we use the C5.0 algorithm. Discussing the algorithm in details is out of the scope of this paper. There are fairly good amount of references to study those details \citep[e.g.,][]{Mitchell_1997_Book, Quinlan_1993_Book, Hornik_2009_}.
+% Decision tree learning is a method for approximating a target function, in which learned function is represented by decision tree \citep{Mitchell_1997_Book}. \citet{Quinlan_1986_ML} demonstrated that the technology for building decision trees from examples is fairly robust. He summarized an approach to synthesizing decision trees that has been used in a variety of systems, and he describes one such system, ID3, in detail. Although ID3 algorithm is successful in most classification problems, it does not handle the numeric attributes and only one attribute at a time is tested for making decisions. \citet{Quinlan_1993_Book} extended the ID3 algorithm and presented the C4.5 algorithm. Later on they added boosting capability to C4.5 and called it C5.0. The improved algorithm accepts both continues and discrete features and solves over fitting problem by pruning. Although there are many other algorithm for implementing decision tree, in this study we use the C5.0 algorithm. Discussing the algorithm in details is out of the scope of this paper. There are fairly good amount of references to study those details \citep[e.g.,][]{Mitchell_1997_Book, Quinlan_1993_Book, Hornik_2009_CS}.
 
-In general, decision tree measures the effectiveness of an attribute in classifying the training data through information gain. According to  \citet{Mitchell_1997_Book}, information gain of an attribute is the expected reduction in entropy caused by partitioning the examples according to this attribute. If the target can take on $c$ different values the entropy is defined as
-% 
-\begin{equation}
-Entropy(S) = \sum_{i=1}^{c} -p_{i}\ log_2\ p_i,
-\end{equation}
-% 
-where $p_i$ is proportion of $S$ belonging to class $i$. Entropy measures the homogeneity of examples or dataset. Higher entropy means data is  fairly uniformly distributed among different classes. On the other hand lower entropy means data unequally distributed among classes. The extreme case happens when all data belong to one class which results in entropy equal to zero. Given entropy as a measure of impurity in a collection of training example the measure of the effectiveness of attribute is defined through information gain which is expected reduction in entropy caused by partitioning the examples according to this attribute. Gain of the attribute A is defined as 
-% 
-\begin{equation}
-Gain(S,A)\ =\ Entropy(S) - \sum_{v \in Values(A) } \frac{|S_v|}{|S|} Entropy(S_v)
-\end{equation} 
-% 
-where $Values(A)$ is the set of all possible values of attribute A, and $S_v$ is the subset of $S$ for which attribute $A$ has value $v$. Information gain is used by the algorithm in order to determine which is the better attribute for classifying the training example. The attribute with higher information gain will be the first option to separate the training data based on that attribute and grow to the lower nodes (Refer to chapter 3 of \citet{Mitchell_1997_Book} for more detailed examples.)
+% In general, decision tree measures the effectiveness of an attribute in classifying the training data through information gain. According to  \citet{Mitchell_1997_Book}, information gain of an attribute is the expected reduction in entropy caused by partitioning the examples according to this attribute. If the target can take on $c$ different values the entropy is defined as
+% % 
+% \begin{equation}
+% 	Entropy(S) = \sum_{i=1}^{c} \left[ -p_i \log_2 \left(p_i\right) \right]
+% 	\, ,
+% \end{equation}
+% % 
+% where $p_i$ is proportion of $S$ belonging to class $i$. Entropy measures the homogeneity of examples or dataset. Higher entropy means data is  fairly uniformly distributed among different classes. On the other hand lower entropy means data unequally distributed among classes. The extreme case happens when all data belong to one class which results in entropy equal to zero. Given entropy as a measure of impurity in a collection of training example the measure of the effectiveness of attribute is defined through information gain which is expected reduction in entropy caused by partitioning the examples according to this attribute. Gain of the attribute A is defined as 
+% % 
+% \begin{equation}
+% Gain(S,A)\ =\ Entropy(S) - \sum_{v \in Values(A) } \frac{|S_v|}{|S|} Entropy(S_v)
+% \end{equation} 
+% % 
+% where $Values(A)$ is the set of all possible values of attribute A, and $S_v$ is the subset of $S$ for which attribute $A$ has value $v$. Information gain is used by the algorithm in order to determine which is the better attribute for classifying the training example. The attribute with higher information gain will be the first option to separate the training data based on that attribute and grow to the lower nodes (Refer to chapter 3 of \citet{Mitchell_1997_Book} for more detailed examples.)
 
-We discussed the basic idea behind the decision tree algorithm, however, there are more details specially in dealing with outliers and noises which we address them through pruning approaches. In this study we use C5.0 package \citep{C50_2015} in R programming language \citep{R_2016_program} to develop the decision tree algorithms. We discuss the input parameters in the section \ref{classification_model}.  
+% We discussed the basic idea behind the decision tree algorithm, however, there are more details specially in dealing with outliers and noises which we address them through pruning approaches. In this study we use C5.0 package \citep{C50_2015} in R programming language \citep{R_2016_program} to develop the decision tree algorithms. We discuss the input parameters in the section \ref{classification_model}.  
 

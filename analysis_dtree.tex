@@ -5,7 +5,8 @@ In the section.~\ref{dtree_methodology} we discussed the basics of decision tree
 Preprocessing data is an important part of data analysis. However, in this study we deal with a clean data without any missing values. All data are reported in the same scale (0-10), therefore, we do not normalize them. After preprocessing data the most important step in developing a prediction model is feature selection. The step becomes more relevant when data set has hundreds to tens of thousands of variable or features. Although our dataset does not have numerous features we do some analysis on features before developing the prediction model. Features of a dataset could have similar behavior. This characteristic is easy to understand by correlation criteria. The Pearson correlation coefficient between two features is defined as
 % 
 \begin{equation}
-R(i)=\frac{cov(X_i,X_j)}{\sqrt{var(X_i)var(X_j)}},
+    R(i) = \frac{ \mathrm{cov}(X_i,X_j) }{ \sqrt{ \mathrm{var}(X_i) \mathrm{var}(X_j) } }
+    \, ,
 \end{equation} 
 % 
 where $cov$ is covariance function and $var$ is the variance function \citep{Guyon_2003}. Fig.~\ref{fig:Corplot} represent the Pearson Correlation factor among features.  
