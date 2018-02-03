@@ -11,6 +11,6 @@ rm ${MAIN}.fff ${MAIN}.log ${MAIN}.aux ${MAIN}.ttt ${MAIN}.bbl ${MAIN}.lof ${MAI
 
 mv ${MAIN}.pdf ${FINAL}.pdf
 
-open -a Adobe\ Acrobat\ Pro.app ${FINAL}.pdf
+open -a Adobe\ Acrobat.app ${FINAL}.pdf
 
 clear
