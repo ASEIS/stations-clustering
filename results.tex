@@ -2,9 +2,9 @@
 \section{Results}
 \label{sec:results}
 
-As explained in the methodology, the first step is to subject the dataset through a clustering process to properly label the data according to the classes to be used by the decision tree algorithm. Figure \ref{fig:clusters} presents a sample of the results obtained after the clustering process is completed. Because visual representation above 3 dimensions is not possible, in this figure we limit ourselves to present two-dimensional subspaces, i.e., for two features (or metrics). In total, as we mentioned before, there are 55 subspaces with 2 features, and 550 total in our analysis (done for subspaces with 2, 3, and 4). 
+As explained in the methodology, the first step is to subject the dataset through a clustering process to properly label the data according to the classes to be used by the decision tree algorithm. Figure \ref{fig:clusters} presents a sample of the results obtained after the clustering process is completed. Because visual representation above 3 dimensions is not possible, in this figure we limit ourselves to present two-dimensional subspaces, i.e., subspaces for two features (or metrics). Recall that there are 55 subspaces with 2 features, and a total of 550 for the sum of the subspaces with 2, 3, and 4 features. 
 
-Figure \ref{fig:clusters} shows 6 subspaces for an ordered sequence of metric pairs from C1 to C11 (see Table \ref{tab:metrics}). As it can be seen, not all feature combinations lead to clearly distinguishable clusters. In this sample we include well-partitioned sets (e.g., C3-C4, C5-C6, C7-C8), and some others where the data is all mixed (e.g., C1-C2, C10-C11). Note also that although some data distribution may hint the existence of clusters, it is considered irrelevant because knowledge about one feature does not add value to the other. That is the case of the C9-C10 subspace. Conversely, there are subspaces with a clear correlation between the data, but with indistinguishable clusters. That is the case of the C1-C2 subspace. Such subspaces do not contribute information to the clustering process \citep{Dy_2004_MLR}. 
+In particular, Fig.~\ref{fig:clusters} shows six subspaces for an ordered sequence of metric pairs from C1 to C11 (see Table \ref{tab:metrics}). Although it would be impractical to discuss all the possible combinations, some points can be made from those shown in this figure. For instance, not all feature combinations lead to clearly distinguishable clusters. In this sample we include well-partitioned sets such as C3-C4, C5-C6, C7-C8, and some others where the data-points are mixed across classes, such as subspaces C1-C2 and C10-C11. Note also that although some data distribution may hint the existence of clusters, they may nonetheless be irrelevant because knowledge about one feature does not add insight about the other. That is the case of the C9-C10 subspace. Conversely, there are subspaces with a clear correlation between the data, but with indistinguishable clusters. That is the case of the C1-C2 subspace. These latter two types of subspaces do not contribute information to the clustering process \citep{Dy_2004_MLR}. 
 
 \begin{figure*}
 	\centering
@@ -20,48 +20,21 @@ Figure \ref{fig:clusters} shows 6 subspaces for an ordered sequence of metric pa
 	\label{fig:boxed-clusters}
 \end{figure*}
 
-Figure 
-\textcolor{red}{I will discard Figure 6, and will promote Figure 7 to be the new Figure 6 as the one showing the final distribution of the data after clustering is all done.}
+Figure \ref{fig:boxed-clusters} shows the statistical distribution of the data in the form of box-plots for each metric and component of motion once partitioned into the four validation classes. Separately, we have prepared similar plots for the different velocity models used in the simulations from where we obtained our dataset. As in Fig.~\ref{fig:data-box-plot} before the clustering, and in Fig.~\ref{fig:data-box-plot} after the clustering process, we observe that the velocity models and the components of motion do not have a strong influence on the statistical distribution of the data, that is why we merge all the data samples into a single dataset at the before processing the data and we continue forward with that approach after clustering and labeling.
 
+In total, the initial dataset is partitioned into groups of 816, 1253, 879 and 76 data samples for the poor, fair, good and excellent classes, respectively. These groups are shown in Fig.~\ref{fig:count-classes}, which also show the contribution of the component of motion to the final count of samples in each class for illustrative purposes. The main aspect to notice in this figure and the quantities just provided is the fact that the number of samples in the excellent class is significantly less than those of the poor, fair, and good classes. 
 
-Working...
+As a consequence, before moving on with the decision tree analysis, it is necessary to do resampling on the subset of the excellent class. In order to maintain a good number of samples for the other three classes, we used the oversampling approach described in the previous section. To that end, we replicated data randomly by a $\times$10 factor until elevating the number of samples in this class to 760 as indicated in Fig.~\ref{fig:count-classes}. By common standards, an oversample rate of $\times$10 is considered acceptable \textcolor{red}{(reference)}. (Arguably, we could have as well undersampled the fair class, but we deemed that unnecessary.) Once this process was completed we went on with the decision tree analysis. 
 
-\begin{figure}
+\begin{figure}[t]
 	\centering
-	\includegraphics[width=\columnwidth]{figures/pdf/Figure_9.pdf}
-	\caption{Number of data in each cluster based on components after conducting constraint \kmeans{} clustering through subspace analysis.}
-	\label{fig:Figure_cluster_barplot}
+	\includegraphics[width=\columnwidth]{figures/pdf/figure-07}
+	\caption{Number of data samples in each class (poor, far, good, excellent) after conducting a multi-dimensional constrained \kmeans{} clustering process using subspace analysis for 2, 3, and 4 features (GOF metrics). Here, for illustrative purposes, the filling of the bars distinguishes the component of motion of the compared signals as classified. The dashed-line bar indicates the number of samples in the excellent class after oversampling.}
+	\label{fig:count-classes}
 \end{figure}
 
-% Fig.~\ref{fig:C_cvm_comp} shows the results for different velocity models and components after clustering the dataset. A preliminary visually inspection shows that the behavior of scores with respect to the velocity model is fairly similar. Therefor we merge data of different velocity models.  and present them at Fig.~\ref{fig:Figure_cluster_comp}. 
+In total we generated 20,000 trees using the C5.0 algorithm for combinations of the parameters CF and $S_{\min}$. CF was chosen to vary between 0 and 1 at intervals of size 0.01, and $S_{\min}$ between 1 and 200 at unitary intervals. Not surprisingly, for such a small size intervals, the algorithm often reached the same tree for different CF and $S_{\min}$ values. Therefore, in reality, from the 20,000 we ran the algorithm, we only found 66 unique trees. For each one of these unique threes, we computed the effectiveness factor $F_1$ from equation (\ref{eq:f}) and extracted the total number of nodes in the trees and their depth.
 
-% \begin{figure*}
-%     \centering
-%     \includegraphics[width=\textwidth]{figures/pdf/Figure_6.pdf}
-%     \caption{Box plot of data used in the study after clustering. Metrics are shown for C1 to C11 for 3 components in separate plots for velocity models and clusters. Median of data are shown as notchs. Thick lines represent the IQR (Interquartile Range, Q3-Q1) of data. Outliers (data less than Q1-1.5*IQR and greater than Q3+1.5*IQR) are shown as scatter dots above and below plots if applicable.}
-%     \label{fig:C_cvm_comp}
-% \end{figure*}
-
-% \begin{figure*}
-%     \centering
-%     \includegraphics[width=\textwidth]{figures/pdf/Figure_7.pdf}
-%     \caption{Box plot of data used in the study after clustering and merging the results for different velocity models. Metrics shown for C1 to C11 for 3 components in separate plots for  clusters. Median of data are shown as notchs. Thick lines represent the IQR (Interquartile Range, Q3-Q1) of data. Outliers (data less than Q1-1.5*IQR and greater than Q3+1.5*IQR) are shown as scatter dots above and below plots if applicable.}
-%     \label{fig:Figure_cluster_comp}
-% \end{figure*}
-
-% Although there are some differences in the scores based on different components, there are general similarities in all clusters for different metrics among their components. Fig.~\ref{fig:Figure_cluster_all_comp} shows the results with merging the components. 
-
-% Fig.~\ref{fig:Figure_cluster_all_comp} presents the results from a broad perspective. Statistical tests can be helpful to understand the effect of component, velocity model, earthquake, and frequency band in the results.  According to Fig.~\ref{fig:Figure_cluster_all_comp} scores C1, C2, and C11 has the least changes in different clusters. It suggests the idea that they may not helpful in defining a decision rule. On the other hand, other scores are fairly variable among different clusters. 
-% Scores C1, C2, and C10 are very similar in cluster 1 to 3. However, we can see a small increase in cluster 4 for these scores. Also the data variation becomes small and range of data moves higher. Scores C3-C9 have a considerable increment from cluster 1 to cluster 4. Although there are a broad variation of data in cluster 3 and cluster 4 for these scores, good amount of data (50\% based on the IQR) are in a small range and increasing with respect to the clusters. C11 has a constant behavior with a small reduction in median at cluster 4. Fig.~\ref{fig:Figure_cluster_barplot} shows number of stations in each cluster based on component. 
+Figure... (working)
 
 
-
-
-\subsection{Decision Trees}
-
-In total, we built \textcolor{red}{XXX} trees corresponding to \textcolor{red}{XXX} CF values (varying between 0 and 1 at intervals of \textcolor{red}{0.1}) and \textcolor{red}{XXX} $S_{\min}$ values (varying between 1 and \textcolor{red}{XXX} at intervals of \textcolor{red}{XXX}). 
-
-
-% \input{analysis_cluster}
-
-% \input{analysis_dtree}
