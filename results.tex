@@ -4,18 +4,22 @@
 
 \subsection{Preprocessing Results}
 
-Working...
-
 \begin{figure*}[t]
 	\centering
 	\includegraphics[width=\textwidth]{figures/pdf/figure-05}
 	\caption{A sample of the results from the multi-dimensional clustering analysis for pairs of consecutive metrics C1 through C11. These results are part of the 55 possible sub-spaces with 2 features (metrics). The cluster centers are shown with a cross symbol. Although for some pairs it may be obvious, the clusters 1 through 4 do not necessarily correspond in that order to the validation classes poor, fair, good, and excellent. The color version of this figure is available only in the electronic edition.}
-	\label{fig:clusters-sample}
+	\label{fig:clusters}
 \end{figure*}
 
-\subsection{Decision Trees}
+As explained in the methodology, the first step is to subject the dataset through a clustering process to properly label the data according to the classes to be used by the decision tree algorithm. Figure \ref{fig:clusters} presents a sample of the results obtained after the clustering process is completed. Because visual representation above 3 dimensions is not possible, in this figure we limit ourselves to present two-dimensional subspaces, i.e., for two features (or metrics). In total, as we mentioned before, there are 55 subspaces with 2 features, and 550 total in our analysis (done for subspaces with 2, 3, and 4). 
+
+Figure \ref{fig:clusters} shows 6 subspaces for an ordered sequence of metric pairs from C1 to C11 (see Table \ref{tab:metrics}). As it can be seen, not all feature combinations lead to clearly distinguishable clusters. In this sample we include well-partitioned sets (e.g., C3-C4, C5-C6, C7-C8), and some others where the data is all mixed (e.g., C1-C2, C10-C11). Note also that although some data distribution may hint the existence of clusters, it is considered irrelevant because knowledge about one feature does not add value to the other. That is the case of the C9-C10 subspace. Conversely, there are subspaces with a clear correlation between the data, but with indistinguishable clusters. That is the case of the C1-C2 subspace. Such subspaces do not contribute information to the clustering process \citep{Dy_2004_MLR}. 
+
+\textcolor{red}{I will discard Figure 6, and will promote Figure 7 to be the new Figure 6 as the one showing the final distribution of the data after clustering is all done.}
 
 Working...
+
+\subsection{Decision Trees}
 
 In total, we built \textcolor{red}{XXX} trees corresponding to \textcolor{red}{XXX} CF values (varying between 0 and 1 at intervals of \textcolor{red}{0.1}) and \textcolor{red}{XXX} $S_{\min}$ values (varying between 1 and \textcolor{red}{XXX} at intervals of \textcolor{red}{XXX}). 
 
