@@ -42,7 +42,7 @@ For each one of these unique trees, we computed the effectiveness factor $F_1$ f
 	\label{fig:nodes-depth}
 \end{figure*}
 
-Based on these criteria, we selected three candidate trees: T1, T2, and T3. These trees are shown in Fig.~\ref{fig:trees}.
+Based on these criteria, we selected three candidate trees: T1, T2, and T3. These trees are shown in Fig.~\ref{fig:trees}. T1 is the simplest of the three, and T2 and T3 share some of the logarithmic structure on the branches to the right-hand side. T3 is the more complex of them. More complex trees tend to be deeper, use more nodes, and thus employ more attributes. In total T1, T2, and T3 use 2, 3 and 4 attributes respectively. All coincide in the use of the total energy (C4) and response spectra (C8) as key metrics. T2 adds peak acceleration (C5), and T3 adds peak velocity (C5) to the previous metrics.
 
 \begin{figure*}
 	\centering
@@ -50,3 +50,53 @@ Based on these criteria, we selected three candidate trees: T1, T2, and T3. Thes
 	\caption{Selected trees \textbf{(a)} T1, \textbf{(b)} T2, and \textbf{(c)} T3. In each case the decision nodes of the trees contain the code corresponding to the metric (see Table \ref{tab:metrics}) used and the branches beneath each node show the limit value to be used to select the next level in the tree. At the bottom, normalized histograms are shown to indicate the distribution of the samples at each leaf-node according to the validation classes with codes P, F, G, and E for poor, fair, good, and excellent, respectively. At the top of each histogram is the total count of samples at the corresponding leaf node. The histograms highlight the dominant validation class. The color version of this figure is available only in the electronic edition.}
 	\label{fig:trees}
 \end{figure*}
+
+\begin{table}%[t]
+	\centering
+	\caption{Confusion matrix results for decision tree T1}
+	\label{tab:t1:confusion}
+	\small
+	\begin{tabular}{cccccc}
+		& 		& \multicolumn{4}{c}{Prediction}\\ 
+		\cline{3-6}
+		&   	& P  	& F     & G  	& E 	\\
+		\cline{2-6}
+		\parbox[t]{2mm}{\multirow{4}{*}{\rotatebox[origin=c]{90}{Actual}}}  
+		& P 	& 242 	& 11 	& 0     & 0    	\\
+		& F 	& 13 	& 313   & 16    & 0    	\\
+		& G 	& 0 	& 42    & 207   & 15   	\\
+		& E 	& 0 	& 0     & 23    & 231	\\ 
+		\cline{2-6}
+	\end{tabular}
+\end{table}
+
+\begin{table}%[t]
+	\centering
+	\caption{Confusion matrix results for decision tree T3}
+	\label{tab:t3:confusion}
+	\small
+	\begin{tabular}{cccccc}
+		& 		& \multicolumn{4}{c}{Prediction}\\ 
+		\cline{3-6}
+		&   	& P  	& F     & G  	& E 	\\
+		\cline{2-6}
+		\parbox[t]{2mm}{\multirow{4}{*}{\rotatebox[origin=c]{90}{Actual}}}  
+		& P 	& 248 	& 14 	& 0     & 0    	\\
+		& F 	& 7 	& 343   & 18    & 0    	\\
+		& G 	& 0 	& 9 	& 221   & 33   	\\
+		& E 	& 0 	& 0     & 7    	& 213	\\ 
+		\cline{2-6}
+	\end{tabular}
+\end{table}
+
+At the bottom of each tree in Fig.~\ref{fig:trees} are the histograms of the data that land on each leaf node. (Note that the count of samples here is done based on the training dataset.) The decision tree assigns the final validation category based on the dominant class in each leaf. As such, the samples in the second leaf-node from the right in T3 are categorized as good despite a significant portion of them being excellent. This is a natural trade-off embedded in the use of decision trees which actually results in more effective trees. To illustrate this, Tables \ref{tab:t1:confusion} and \ref{tab:t3:confusion} show the confusion matrix results for T1 and T3, respectively; and Tables \ref{tab:t1:f1} and \ref{tab:t3:f1} show the corresponding results for the $F_1$ scores.
+
+working...
+
+Values are obtained using the testing dataset. P, F, G, and E stand for the validation classes poor, fair, good, and excellent, respectively.
+
+
+% As we mentioned in reference to the results shown in Fig.~\ref{nodes-depth}, all trees led to relatively high values of the effectiveness score (i.e., $F_1 > 0.9$). As an example, Table \ref{tab:t1:confusion} shows the count of samples in the confusion matrix for tree T1 and Table \ref{tab:t1:f1} show the results of the precision and recall factors, along with the individual-leaves and leaves average $F_1$ scores.
+
+% All trees having high $F_1$ factors, we highlight (with darker color) the bars in those histogram where a dominance of a class is strong to help us understand their differences. 
+
