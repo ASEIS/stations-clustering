@@ -42,16 +42,7 @@ For each one of these unique trees, we computed the effectiveness factor $F_1$ f
 	\label{fig:nodes-depth}
 \end{figure*}
 
-Based on these criteria, we selected three candidate trees: T1, T2, and T3. These trees are shown in Fig.~\ref{fig:trees}. T1 is the simplest of the three, and T2 and T3 share some of their topology on the right-hand side. T3 is the most complex of them. More complex trees tend to be deeper, have more nodes, and employ more attributes. This leads to higher $F_1$ values, but they may not necessarily be more practical. In total T1, T2, and T3 use 2, 3 and 4 attributes respectively. All coincide in the use of the total energy (C4) and response spectra (C8) as key metrics. T2 adds peak acceleration (C5), and T3 adds peak velocity (C5) to the previous metrics.
-
-\begin{figure*}
-	\centering
-	\includegraphics[width=0.86\textwidth]{figures/pdf/figure-09}
-	\caption{Selected trees \textbf{(a)} T1, \textbf{(b)} T2, and \textbf{(c)} T3. In each case the decision nodes of the trees contain the code corresponding to the metric (see Table \ref{tab:metrics}) used and the branches beneath each node show the limit value to be used to select the next level in the tree. At the bottom, normalized histograms are shown to indicate the distribution of the samples at each leaf-node according to the validation classes with codes P, F, G, and E for poor, fair, good, and excellent, respectively. At the top of each histogram is the total count of samples at the corresponding leaf node. The histograms highlight the dominant validation class. The color version of this figure is available only in the electronic edition.}
-	\label{fig:trees}
-\end{figure*}
-
-\begin{table}%[t]
+\begin{table}[t]
 	\centering
 	\caption{Confusion matrix results for decision tree T1}
 	\label{tab:t1:confusion}
@@ -70,7 +61,7 @@ Based on these criteria, we selected three candidate trees: T1, T2, and T3. Thes
 	\end{tabular}
 \end{table}
 
-\begin{table}%[t]
+\begin{table}[t]
 	\centering
 	\caption{Confusion matrix results for decision tree T3}
 	\label{tab:t3:confusion}
@@ -89,7 +80,16 @@ Based on these criteria, we selected three candidate trees: T1, T2, and T3. Thes
 	\end{tabular}
 \end{table}
 
-\begin{table}
+Based on these criteria, we selected three candidate trees: T1, T2, and T3. These trees are shown in Fig.~\ref{fig:trees}. T1 is the simplest of the three, and T2 and T3 share some of their topology on the right-hand side. T3 is the most complex of them. More complex trees tend to be deeper, have more nodes, and employ more attributes. This leads to higher $F_1$ values, but they may not necessarily be more practical. In total T1, T2, and T3 use 2, 3 and 4 attributes respectively. All coincide in the use of the total energy (C4) and response spectra (C8) as key metrics. T2 adds peak acceleration (C5), and T3 adds peak velocity (C5) to the previous metrics.
+
+\begin{figure*}
+	\centering
+	\includegraphics[width=0.86\textwidth]{figures/pdf/figure-09}
+	\caption{Selected trees \textbf{(a)} T1, \textbf{(b)} T2, and \textbf{(c)} T3. In each case the decision nodes of the trees contain the code corresponding to the metric (see Table \ref{tab:metrics}) used and the branches beneath each node show the limit value to be used to select the next level in the tree. At the bottom, normalized histograms are shown to indicate the distribution of the samples at each leaf-node according to the validation classes with codes P, F, G, and E for poor, fair, good, and excellent, respectively. At the top of each histogram is the total count of samples at the corresponding leaf node. The histograms highlight the dominant validation class. The color version of this figure is available only in the electronic edition.}
+	\label{fig:trees}
+\end{figure*}
+
+\begin{table}[t]
 	\centering
 	\caption{T1 precision, recall, and $F_1$ values per class}
 	\label{tab:t1:f1}
@@ -106,7 +106,7 @@ Based on these criteria, we selected three candidate trees: T1, T2, and T3. Thes
 	\end{tabular}
 \end{table}
 
-\begin{table}
+\begin{table}[t]
 	\centering
 	\caption{T3 precision, recall, and $F_1$ values per class}
 	\label{tab:t3:f1}
