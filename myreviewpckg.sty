@@ -1,0 +1,61 @@
+
+\ProvidesPackage{myreviewpckg}
+
+\RequirePackage{ifthen}
+\RequirePackage{color}
+
+\newboolean{@isreview}
+\setboolean{@isreview}{false}
+
+\DeclareOption{review}{\setboolean{@isreview}{true}}
+\ProcessOptions
+
+%\makeatletter
+%\if@isreview
+\definecolor{mygreen}{RGB}{0,150,0}
+%\else
+%\definecolor{mygreen}{RGB}{0,0,0}
+%\fi
+\makeatother
+
+\newcommand{\reviewer}[2]{%
+    \vspace{5ex}%
+    \noindent%
+    \textbf{\large{Reviewer #1: #2}}%
+    \vspace{5ex}%
+}
+
+\newcommand{\introcomment}[2]{%
+    \vspace{-5ex}%
+	\begin{list}{\textbf{#1}}{%
+		\setlength{\labelwidth}{3em}%
+	}%
+	\item{\textit{#2}}\\%
+	\end{list}%
+}
+
+\newcommand{\comment}[2]{%
+    \vspace{-5ex}%
+	\begin{list}{\textbf{#1.}}{%
+		\setlength{\labelwidth}{3em}%
+	}%
+	\item{\textit{#2}}\\%
+	\end{list}%
+}
+
+\newcommand{\response}[1]{%
+    \vspace{-5ex}%
+	\begin{list}{\textbf{$>$}}{%
+		\setlength{\labelwidth}{1em}%
+	}%
+	\item{\color{blue}{#1}}\\%
+	\end{list}%
+}
+
+\makeatletter
+\if@isreview
+    \newcommand{\change}[1]{{\color{mygreen}#1}}
+\else
+    \newcommand{\change}[1]{#1}
+\fi
+\makeatother
