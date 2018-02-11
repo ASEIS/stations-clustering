@@ -36,7 +36,7 @@ In total we generated 20,000 trees using the C5.0 algorithm for all possible com
 \begin{figure*}[t]
 	\centering
 	\includegraphics[width=\textwidth]{figures/pdf/figure-08}
-	\caption{Accuracy of tree predictions in terms of the factor ($F_1$) from equation \ref{eq:f} as indicated by colored dots distributed with respect to the number of attributes (GOF metrics) as a function of: \textbf{(a)} the number of nodes, and \textbf{(b)} the depth of the trees. The rings around the left-most bottom dots indicate selected trees shown in Fig.~\ref{fig:trees}. The color version of this figure is available only in the electronic edition.}
+	\caption{Accuracy of tree predictions in terms of the factor ($F_1$) from equation \ref{eq:f} as indicated by colored dots distributed with respect to the number of attributes (GOF metrics) as a function of: \textbf{(a)} the number of nodes, and \textbf{(b)} the depth of the trees. The rings around some of the dots indicate select trees used as reference in the text, other figures and tables. The color version of this figure is available only in the electronic edition.}
 	\label{fig:nodes-depth}
 \end{figure*}
 
@@ -127,5 +127,38 @@ At the bottom of each tree in Fig.~\ref{fig:trees} are the histograms of the dat
 
 The actual effectiveness (i.e., the average $F_1$ values shown in Fig.~\ref{fig:nodes-depth}), however, is measured based on the testing dataset. Recall that $F_1$ depends on the number of true predictions and false predictions measured by the confusion matrix and the precision and recall factors. Tables \ref{tab:t1:confusion} and \ref{tab:t3:confusion} show the confusion matrices for T1 and T3, respectively; and Tables \ref{tab:t1:f1} and \ref{tab:t3:f1} show the corresponding results for $P$, $R$, and $F_1$. As it can be seen in the Tables \ref{tab:t1:confusion} and \ref{tab:t3:confusion}, both trees lead to strong diagonal confusion matrices, meaning that the classification into poor, fair, good and excellent is well defined. The differences between both matrices are actually minor and small with respect to their diagonal values, and the $F_1$ values in Tables \ref{tab:t1:f1} and \ref{tab:t3:f1} are all near to or above 0.9. The values obtained for tree T2 are consistent with this.
 
-The final selection of a preferred tree, then, comes down to reducing the complexity. We favor tree T1 because it is based only in three decision steps, and two GOF metrics, C4: energy, and C8: response spectra.
+Another aspect of interest is the level of participation of each metric in the analysis of data as GOF values are run through the decision nodes in the trees. The results of such level of participation are listed in Table \ref{tab:participation} for trees T1, T2, T3, and T66. (The tree T66 is the most complex of them all as inferred from the number of metrics involved and the number of nodes and levels as seen in Fig.~\ref{fig:nodes-depth}.) The percentages in this table represent the amount of data that is seen by a decision node associated by any particular metric. The nodes are not unique and metrics are often used in different nodes in a given tree, thus these percentage are cumulative for each individual metric. A percentage of 100 means a given metric has the opportunity to see all data samples through a single nodes or multiple ones. A low percentage means only a few data samples are evaluated by that metric, and a null percentage means the metric plays no role in the decision tree (it is not present in any node).
+
+Notice that almost independently of the tree (T3 being the exception), the metrics C4 (total energy) and C8 (response spectra) are consistently the most relevant ones in the decision algorithms. They are followed by C5 (peak acceleration) and C6 (peak velocity). On the other end, notice that C11 (strong phase duration) plays no role whatsoever in any of the trees, and that C1 (Arias integral), C2 (energy integral), and C3 (Arias intensity) have only small to marginal participations. The remaining metrics---C7 (peak displacement), C9 (Fourier spectrum), and C10 (Cross correlation)---have a somewhat significant participation, but only in the more complex trees.
+
+A low participation does not necessarily mean that a given metric is not important. Arguably, the strong phase duration is highly regarded as an important parameter for strong motion records in engineering. What the results we present here mean, in the context of GOF validation, is that in order to classify whether a simulation result is poor, fair, good, or excellent, other metrics such as energy (C8) are much more decisive in reaching an accurate conclusion about validation quality than the duration (C11).
+
+In the end, the final selection of a preferred tree comes down to reducing complexity in the analysis without compromising the interpretation of results. We favor tree T1 because it is based only in three decision steps, and two GOF metrics: C4 (total energy), and C8 (response spectra).
+
+\begin{table}[t]
+	\centering
+	\caption{Metrics data analysis participation in select trees (in percent)}
+	\label{tab:participation}
+	\small
+	\begin{tabular}{lrrrr}
+	Metric 	& T1 	& T2	& T3 	& T66 	\\ 
+	\hline
+	C1 		& --	& --	& -- 	& 1.5	\\
+	C2 		& -- 	& --	& -- 	& 0.5	\\
+	C3 		& -- 	& -- 	& -- 	& 9.6	\\
+	\rowcolor{light-light-gray}
+	C4 		& 46.8	& 52.4	& 60.2	& 100.0	\\
+	\rowcolor{light-light-gray}
+	C5 		& -- 	& 21.5	& 21.5	& 72.2	\\
+	\rowcolor{light-light-gray}
+	C6 		& -- 	& -- 	& 37.0	& 56.3	\\
+	C7 		& -- 	& -- 	& -- 	& 19.4	\\
+	\rowcolor{light-light-gray}
+	C8 		& 100.0	& 100.0	& 100.0	& 100.0	\\
+	C9 		& -- 	& -- 	& --	& 23.8	\\
+	C10		& -- 	& -- 	& -- 	& 22.2	\\
+	C11		& -- 	& -- 	& -- 	& -- 	\\
+	\hline
+	\end{tabular}
+\end{table}
 
