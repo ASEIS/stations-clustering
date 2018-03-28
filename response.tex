@@ -1,0 +1,391 @@
+
+\setlength{\paperwidth}{210mm}
+\setlength{\paperheight}{297mm}% fixed.
+
+\documentclass{article}
+
+\usepackage[review]{myreviewpckg}
+
+\usepackage{textcomp}
+\usepackage{simplemargins}
+
+\clubpenalty=10000  % Orphan - First of paragraph left behind
+\widowpenalty=10000 % Widow  - Last of paragraph sent ahead
+
+\setallmargins{1in}
+
+\begin{document}
+
+% ******************************************************************
+% *************************** REVIEWER 1 ***************************
+% ******************************************************************
+
+\begin{center}
+	\bf
+	\large
+	Authors' Response to Reviewer 1
+\end{center}
+
+\noindent
+We thank the reviewer for his/her comments and suggestions, which helped us improve the manuscript. To help the review process, in the annotated manuscript version of the paper, we have highlighted the most relevant changes that resulted from these comments in green font. In the following, we provide a response to each comment. The original comments are in italic black font, followed by our responses in regular blue font.
+\vspace{2ex}
+\newline
+
+\introcomment{~}{%
+This is an interesting article for the readers of the BSSA journal. The authors propose a new approach based on machine learning techniques to determine the importance of validation metrics for ground motion simulation. The field of ground motion simulation validation (GMSV) is relatively new and of interest to both seismologists who develop simulation models and engineers who would like to use these simulations in engineering applications. One of the most challenging questions to address is "which validation metric(s) is best to use?" as there are so many different metrics in this field and so many different opinions. It has been difficult to address this question because the answer varies depending on the application of the simulations (e.g., GMPE development, PSHA, structural analysis response of interest, etc). This paper is interesting because it provides a statistical approach to reduce the number of validation metrics and select a few representatives from a bigger set without compromising the final validation results. The authors have done a great job providing background on the topic. However, their application is very narrow, they only consider the 11 Anderson2004+ parameters (as they've noted there are other parameters) for one simulation method for one earthquake, and as a result their conclusions are only valid for this particular case. They have mentioned this limitation in the conclusions, but the abstract and introduction do not explain the limitations and the application-dependency of the proposed approach. Both Abstract and Introduction need modification to specify the application for which the results and conclusions are true (i.e., theapplication here is to narrow down the 11 Anderson2004+ parameters to select fewer parameters that give similar results as the original 11 for the simulations they chose in this paper). Currently, the Abstract and Introduction give the impression that the conclusions are true for any engineering application or simulation method. Furthermore, there should be a short discussion in the paper on how the users can apply the same method for different applications, for example for structural responses such as drift ratio or responses that are sensitive to high-frequency content of simulations (theoretically, this method should be applicable to any response of interest if they replace the GOF scores used in this study? If true this should be mentioned as it will be of interest to others).
+}
+
+\response{%
+Will be added. 
+}
+
+
+\comment{1}{%
+The terminologies used in the paper are not clear in many cases. For example, what are "features" "attributes" "dimensions" "trees, nodes and leafs" "class"? It was very difficult toread the section on Data Analysis Method and Introduction since these terminologies were not clearly defined or described in terms of the variables used in this paper. I was confused what"data" and "results" were referring to: GOF score data? GOF metric data? GOF category? Something other than GOF? I suggest that the authors streamline the paper and the terminologies to be consistent and clear in the final version.
+}
+
+\response{%
+response
+}
+
+\comment{2}{%
+The terms "common practice" or "common standards" have been mentioned several times. Because GMSV is such a new field (and I don't think there is consensus, I for one don't agreewith some statements but I agree that others may), I think these terms should be removed. Just say this is your opinion, or it is based on the references that you have listed.
+}
+
+\response{%
+Response 
+}
+
+\comment{3}{%
+In abstract, "semi-supervised" and "supervised" learning techniques are mentioned, but in the paper these terms are not explained, what part of the learning techniques is semi-supervisedand what does that mean?
+}
+
+\response{%
+Response
+}
+
+\comment{4}{%
+In introduction, the difference between "verification" and "validation" should be discussed.
+}
+
+\response{%
+Response
+}
+
+\comment{5}{%
+In abstract and introduction, what does a "direct application" mean? it's not clear. Similarly, in Validation Metrics section: "direct quantitative comparisons" and "indirect statistical analysis"
+}
+
+\response{%
+Response
+}
+
+\comment{6}{%
+Page 4, line 53: add "relatively" before "well understood"
+}
+
+\response{%
+Response
+}
+
+\comment{7}{%
+The two questions posed in the introduction lines 59-61: I don't think the first one is really the question, all parameters should be considered if anyone has thought of them as important (i.e.,has proposed them). The second question is the main question and the one being addressed in this paper.
+}
+
+\response{%
+Response
+}
+
+\comment{8}{%
+You are treating these metrics as "independent variables", but as you have also noted many of them are not. For example, Arias intensity and energy are correlate. Does this compromise your conclusions? If not explain why in the Results section.
+}
+
+\response{%
+Response
+}
+
+\comment{9}{%
+Page 7, line 133: delete the last sentence
+}
+
+\response{%
+Response
+}
+
+\comment{10}{%
+Page 14, line 310: you say "... the latter can essentially be discarded..." I don't understand this statement, wouldn't this mean that both C1 and C7 are important to consider since they areindependent of each other (one gives information that the other one doesn't)?
+}
+
+\response{%
+Response
+}
+
+\comment{11}{%
+Page 14 line 323: It's not clear how you "replicate data", provide more detail.
+}
+
+\response{%
+Response
+}
+
+\comment{12}{%
+I don't think "confusion matrix" given in tables is explained in the paper!
+}
+
+\response{%
+Response
+}
+
+\comment{13}{%
+Page 17, lines 391-394: this sentence should be re-worded, what is an "accurate conclusion"? You should be very specific that your conclusion is that instead of using all 11 validation metrics you can select a few in order to get the same categorization as all 11 metrics would have given you.}
+
+\response{%
+Response
+}
+
+\comment{14}{%
+Page 18, line 405: this is implying that fig 10 is similar to fig2! I personally cannot see this in the figures! They look very different. It might be better to regenerate fig 11a but with different color scales that only vary by four choices, then the comparison would be much easier.
+}
+
+\response{%
+Response
+}
+
+\comment{15}{%
+Figure 8: I don't know what you mean by y-label "decision attributes". Do you mean "the number of GOF metrics"? why there is no data point for 1 or 11?
+}
+
+\response{%
+Response
+}
+
+\comment{16}{%
+The conclusion basically says that response spectrum is the most important validation metric. This is not surprising to any engineer or modeler. The big question is what other parametersdescribe the differences between a simulation and a recorded motion if their response spectra matched? Or in other words, what are the other important validation parameters aside fromresponse spectrum (many have argued that's duration, but no statistical proof). Can you use your method to answer this question? Can you condition your machine learning process on Sabeing the same (for example use a subset of data with similar Sa or artificially make them equal), then decide what's the next important parameter? Would the result be the same as in yourconclusions? Or would it be influenced by removal of Sa as a parameter (this is possible since there are correlations between Sa and other metrics).
+}
+
+\response{%
+Response
+}
+
+Typos:\\
+\\
+
+\comment{1}{%
+Page 2, line 8: change focused to focus
+}
+
+\response{%
+Response
+}
+
+\comment{2}{%
+Page 2, line 20: change classifiers to classifier
+}
+
+\response{%
+Response
+}
+
+\comment{3}{%
+Page 13, line 185: change measure to measured
+}
+
+\response{%
+Response
+}
+
+\comment{4}{%
+Page 16, line 354: the last C5 should be C6?
+}
+
+\response{%
+Response
+}
+
+% ******************************************************************
+% *************************** REVIEWER 2 ***************************
+% ******************************************************************
+
+\newpage
+
+\begin{center}
+	\bf
+	\large
+	Authors' Response to Reviewer 2
+	\end{center}
+
+\noindent
+We thank the reviewer for his/her comments and suggestions, which helped us improve the manuscript. To help the review process, in the annotated manuscript version of the paper, we have highlighted the most relevant changes that resulted from these comments in green font. In the following, we provide a response to each comment. The original comments are in italic black font, followed by our responses in regular blue font.
+\vspace{2ex}
+\newline
+
+\introcomment{~}{%
+Review of Khoshnevis and Taborda for BSSA
+}
+
+\introcomment{~}{%
+Earthquake ground motion simulations are usually validated against observational data or empirically-derived solutions. However, exactly which parameters to compare (e.g., peakground velocity, duration, spectral content) in order to assess the goodness-of-fit, is not always clear. This paper uses machine learning techniques and eleven possible metrics for comparing (recorded and simulated) ground motions to determine the parameters that are most predictive of goodness-of-fit. This is an interesting paper, and will help future researchersprioritize which metrics to focus on when validating ground motions simulations. The paper is generally well written. As a strong ground motion seismologist (i.e., I assume I'm part of the audience you hope to reach), there is a lot of machine learning-related jargon that makes certain sections difficult to follow. It would also be useful to have some discussion regarding which parameters were found to be repetitive, incase future authors wish to look at more than the four recommended parameters.
+}
+
+\comment{1}{%
+L. 8 "... could \textbf{focus} ..."
+}
+
+\response{
+Response
+}
+
+\comment{2}{%
+L. 11 "... the objective \textbf{of} ..."
+}
+
+\response{
+Response
+}
+
+\comment{3}{%
+L. 25-41 The frequent use of phrases such as "Among these methods,"; "Among the latter,"; "In this category,"; and "Within this group," make the text difficult to follow.
+}
+
+\response{
+Response
+}
+
+\comment{4}{%
+L. 42-43 I would suggest moving the description of the Anderson (2004) method (i.e., L. 48+) to directly follow this sentence.
+}
+
+\response{
+Response
+}
+
+\comment{5}{%
+L. 59-61/L. 391-394 It should be stated somewhere that this is really intended for \textbf{engineering purposes}.
+}
+
+\response{
+Response
+}
+
+\comment{6}{%
+L. 61 This sentence should end with a "?"
+}
+
+\response{
+Response
+}
+
+\comment{7}{%
+L. 98-99 It is not clear how the equation for S is applied to values that are a function of period (e.g., the response or Fourier spectrum). Do you follow the guidelines provided by Anderson? Ifso, what frequency range/bands are you examining?
+}
+
+\response{
+Response
+}
+
+\comment{8}{%
+L. 128/132/137/etc. "... the three component\textbf{s} ..."
+}
+
+\response{
+Response
+}
+
+\comment{9}{%
+L. 236 Where is the discussion on the consequences of overfitting? The only other place I see overfitting mentioned is L. 328.
+}
+
+\response{
+Response
+}
+
+\comment{10}{%
+L. 236 Remove "A matter we discuss later."
+}
+
+\response{
+Response
+}
+
+\comment{11}{%
+L. 241-243 It is not helpful to list different algorithm names for making decision trees, without any information about them or how they differ.
+}
+
+\response{
+Response
+}
+
+\comment{12}{%
+L. 257-258 I don't understand this sentence. What is a continuous attribute?
+}
+
+\response{
+Response
+}
+
+\comment{13}{%
+L. 259-264 This paragraph contains a lot of jargon.
+}
+
+\response{
+Response
+}
+
+\comment{14}{%
+L. 300 Isn't this also true for the C5-C7 combination?
+}
+
+\response{
+Response
+}
+
+\comment{15}{%
+L. 328 What is "a strong pruning process"?
+}
+
+\response{
+Response
+}
+
+\comment{16}{%
+L. 433 "We present the result\textbf{s} of..."
+}
+
+\response{
+Response
+}
+
+\comment{17}{%
+L. 435 "... goal of prioritiz\textbf{ing} and reduc\textbf{ing}..."
+}
+
+\response{
+Response
+}
+
+\comment{18}{%
+L. 443 Remove "Similarly" or "similar" (redundant)
+}
+
+\response{
+Response
+}
+
+\comment{19}{%
+L. 450 "... remain valid."
+}
+
+\response{
+Response
+}
+
+\comment{20}{%
+L. 455 "... as the decisive \textbf{parameters} ..." ? (This short concluding paragraph would be much stronger without the use of unnecessary phrases, i.e., "This latter point", "One the one hand","on the other hand."
+}
+
+\response{
+Response
+}
+
+
+\end{document}
