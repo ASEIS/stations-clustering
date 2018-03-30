@@ -17,12 +17,12 @@ Figure \ref{fig:boxed-clusters} shows the statistical distribution (box-plots) o
 
 \begin{figure*}
 	\centering
-	\includegraphics[width=\textwidth]{figures/pdf/figure-06}
-	\caption{Statistical distribution of the dataset as partitioned into the four validation categories (poor, fair, good, excellent) after the clustering analysis. The distributions are shown in the form of box-plots for each metric (C1 through C11). In each case, the median is indicated by a notch in the box of the central quartiles, and the lines represent the interquartile range, with outliers shown as scattered dots. The color version of this figure is available only in the electronic edition.}
+	\includegraphics[width=\textwidth]{figures/pdf/figure-06_mod}
+	\caption{Statistical distribution of the dataset as partitioned into the four validation categories (poor, fair, good, excellent) after the clustering analysis. The distributions are shown in the form of box-plots for each metric (C1 through C11). In each case, the median is indicated by a notch in the box of the central quartiles, and the lines represent the interquartile range, with outliers shown as scattered dots. The color version of this figure is available only in the electronic edition. \myrevision{Dashed lines represent the boundaries of poor, fair, good, and excellent categories according to  \citeauthor{Anderson_2004_Proc}'s method.}}
 	\label{fig:boxed-clusters}
 \end{figure*}
 
-In total, the clustering process results in 816, 1253, 879 and 76 data samples for the poor, fair, good and excellent classes, respectively. These groups are shown in Fig.~\ref{fig:count-classes}. As it can be seen in this figure, the number of samples in the excellent class is significantly less than those in the poor, fair, and good classes. Therefore, before moving on with the decision tree analysis, it is necessary to resample the subset of the excellent class. We used the oversampling approach described in the previous section. We replicated data from the excellent class randomly by a $\times$10 factor until elevating the number of samples in this class to 760 as indicated in Fig.~\ref{fig:count-classes} with the dashed line. By common standards, an oversample rate of $\times$10 is considered acceptable \citep{Weiss_2003_JAIR}. (Arguably, we could have as well undersampled the fair class, but we deemed that unnecessary. Instead, we used a strong pruning process to prevent overfitting.) Once this process was completed we went on with the decision tree analysis. 
+In total, the clustering process results in 816, 1253, 879 and 76 data samples for the poor, fair, good and excellent classes, respectively. These groups are shown in Fig.~\ref{fig:count-classes}. As it can be seen in this figure, the number of samples in the excellent class is significantly less than those in the poor, fair, and good classes. Therefore, before moving on with the decision tree analysis, it is necessary to resample the subset of the excellent class. We used the oversampling approach described in the previous section. We replicated data from the excellent class \myrevision{through random selection of data from that class until elevating the number of samples in this class to 760 as indicated in Fig.~\ref{fig:count-classes} with the dashed line. This oversampling is considered as a $\times$10 factor.} \myremove{randomly by a $\times$10 factor until elevating the number of samples in this class to 760 as indicated in Fig.~\ref{fig:count-classes} with the dashed line.} By common standards, an oversample rate of $\times$10 is considered acceptable \citep{Weiss_2003_JAIR}. (Arguably, we could have as well undersampled the fair class, but we deemed that unnecessary. Instead, we used a \myremove{strong} \myrevision{heavy} pruning process to prevent overfitting.) Once this process was completed we went on with the decision tree analysis. 
 
 \begin{figure}[t]
 	\centering
@@ -33,12 +33,21 @@ In total, the clustering process results in 816, 1253, 879 and 76 data samples f
 
 In total we generated 20,000 trees using the C5.0 algorithm for all possible combinations of the parameters CF and $S_{\min}$, where CF was chosen to vary between 0 and 1 at intervals of size 0.01, and $S_{\min}$ was chosen to vary between 1 and 200 at unitary intervals. Despite our choice for small intervals, the algorithm often reached recurrent tree structures for different CF and $S_{\min}$ values. Therefore, in reality, from the 20,000 combinations for which we ran the algorithm, only 66 unique trees were found. 
 
+%\begin{figure*}[t]
+%	\centering
+%	\includegraphics[width=\textwidth]{figures/pdf/figure-08}
+%	\caption{Accuracy of tree predictions in terms of the factor ($F_1$) from equation \ref{eq:f} as indicated by colored dots distributed with respect to the number of attributes (GOF metrics) as a function of: \textbf{(a)} the number of nodes, and \textbf{(b)} the depth of the trees. The rings around some of the dots indicate select trees used as reference in the text, other figures and tables. The color version of this figure is available only in the electronic edition.}
+%	\label{fig:nodes-depth}
+%\end{figure*}
+
+
 \begin{figure*}[t]
 	\centering
-	\includegraphics[width=\textwidth]{figures/pdf/figure-08}
+	\includegraphics[width=\textwidth]{figures/pdf/figure-08_mod}
 	\caption{Accuracy of tree predictions in terms of the factor ($F_1$) from equation \ref{eq:f} as indicated by colored dots distributed with respect to the number of attributes (GOF metrics) as a function of: \textbf{(a)} the number of nodes, and \textbf{(b)} the depth of the trees. The rings around some of the dots indicate select trees used as reference in the text, other figures and tables. The color version of this figure is available only in the electronic edition.}
 	\label{fig:nodes-depth}
 \end{figure*}
+
 
 \begin{table}[t]
 	\centering
@@ -80,7 +89,7 @@ In total we generated 20,000 trees using the C5.0 algorithm for all possible com
 
 For each one of these unique trees, we computed the effectiveness factor $F_1$ from equation (\ref{eq:f}), and extracted the total number of nodes in the trees and their depth. Figure \ref{fig:nodes-depth} shows the results of $F_1$ for all the trees and its distribution in terms of the number of attributes used in the trees as a function of the number of nodes and the depth of each tree. Recall that we are interested in finding a sequence of decisions (represented by disjunctive decision nodes in a tree) that can lead to good GOF predictions (i.e, high values of $F_1$) using a reduced number of attributes (GOF metrics). In general, all the trees obtained with the C5.0 algorithm are good in terms of the effectiveness factor ($F_1$ values close to 1). Then our choice comes down to using a reduced number of metrics. Having several trees with 2, 3, and 4 metrics (as opposed to 11), the following factor in the decision is choosing trees with algorithms using a small number of steps to reach the prediction. This is given by a combination between the depth of the tree and the number of nodes in the tree (i.e., trees with low complexity).
 
-Based on these criteria, we selected three candidate trees: T1, T2, and T3. These trees are shown in Fig.~\ref{fig:trees}. T1 is the simplest of the three, and T2 and T3 share some of their topology on the right-hand side. T3 is the most complex of them. More complex trees tend to be deeper, have more nodes, and employ more attributes. This leads to higher $F_1$ values, but they may not necessarily be more practical. In total T1, T2, and T3 use 2, 3 and 4 attributes respectively. All coincide in the use of the total energy (C4) and response spectra (C8) as key metrics. T2 adds peak acceleration (C5), and T3 adds peak velocity (C5) to the previous metrics.
+Based on these criteria, we selected three candidate trees: T1, T2, and T3. These trees are shown in Fig.~\ref{fig:trees}. T1 is the simplest of the three, and T2 and T3 share some of their topology on the right-hand side. T3 is the most complex of them. More complex trees tend to be deeper, have more nodes, and employ more attributes. \myrevision{complexity of trees is controlled by pruning process.} This leads to higher $F_1$ values, but they may not necessarily be more practical. In total T1, T2, and T3 use 2, 3 and 4 attributes respectively. All coincide in the use of the total energy (C4) and response spectra (C8) as key metrics. T2 adds peak acceleration (C5), and T3 adds peak velocity \myremove{(C5)} \myrevision{(C6)} to the previous metrics.
 
 \begin{figure*}
 	\centering
@@ -123,42 +132,80 @@ Based on these criteria, we selected three candidate trees: T1, T2, and T3. Thes
 	\end{tabular}
 \end{table}
 
-At the bottom of each tree in Fig.~\ref{fig:trees} are the histograms of the data that land on each leaf node. (Note that the count of samples here is done based on the training dataset.) The decision tree assigns the final validation category based on the dominant class in each leaf. As such, the samples in the second leaf-node from the right in T3 are categorized as good despite a significant portion of them being excellent. This is a natural trade-off embedded in the use of decision trees which actually results in more effective trees. 
+At the bottom of each tree in Fig.~\ref{fig:trees} are the histograms of the data that land on each leaf node. (Note that the count of samples here is done based on the training dataset.) The decision tree assigns the final validation category based on the dominant class in each leaf. As such, the samples in the second leaf-node from the right in T3 are categorized as good despite a significant portion of them being excellent. This is a natural trade-off embedded in the use of \myrevision{pruned} decision trees which actually results in more effective trees. 
 
 The actual effectiveness (i.e., the average $F_1$ values shown in Fig.~\ref{fig:nodes-depth}), however, is measured based on the testing dataset. Recall that $F_1$ depends on the number of true predictions and false predictions measured by the confusion matrix and the precision and recall factors. Tables \ref{tab:t1:confusion} and \ref{tab:t3:confusion} show the confusion matrices for T1 and T3, respectively; and Tables \ref{tab:t1:f1} and \ref{tab:t3:f1} show the corresponding results for $P$, $R$, and $F_1$. As it can be seen in the Tables \ref{tab:t1:confusion} and \ref{tab:t3:confusion}, both trees lead to strong diagonal confusion matrices, meaning that the classification into poor, fair, good and excellent is well defined. The differences between both matrices are actually minor and small with respect to their diagonal values, and the $F_1$ values in Tables \ref{tab:t1:f1} and \ref{tab:t3:f1} are all near to or above 0.9. The values obtained for tree T2 are consistent with this.
 
 Another aspect of interest is the level of participation of each metric in the analysis of data as GOF values are run through the decision nodes in the trees. The results of such level of participation are listed in Table \ref{tab:participation} for trees T1, T2, T3, and T66. (The tree T66 is the most complex of them all as inferred from the number of metrics involved and the number of nodes and levels as seen in Fig.~\ref{fig:nodes-depth}.) The percentages in this table represent the amount of data that is seen by a decision node associated by any particular metric. The nodes are not unique and metrics are often used in different nodes in a given tree, thus these percentage are cumulative for each individual metric. A percentage of 100 means a given metric has the opportunity to see all data samples through a single nodes or multiple ones. A low percentage means only a few data samples are evaluated by that metric, and a null percentage means the metric plays no role in the decision tree (it is not present in any node).
 
-Notice that in all trees the metrics C4 (total energy) and C8 (response spectra) are consistently the most relevant ones in the decision algorithms. They are followed by C5 (peak acceleration) and C6 (peak velocity). On the other end, notice that C11 (strong phase duration) plays no role whatsoever in any of the trees, and that C1 (Arias integral), C2 (energy integral), and C3 (Arias intensity) have only small to marginal participations. The remaining metrics---C7 (peak displacement), C9 (Fourier spectrum), and C10 (Cross correlation)---have a somewhat significant participation, but only in the more complex trees.
+Notice that in all trees \myrevision{,using all metrics,} the metrics C4 (total energy) and C8 (response spectra) are consistently the most relevant ones in the decision algorithms. They are followed by C5 (peak acceleration) and C6 (peak velocity). On the other end, notice that C11 (strong phase duration) plays no role whatsoever in any of the trees, and that C1 (Arias integral), C2 (energy integral), and C3 (Arias intensity) have only small to marginal participations. The remaining metrics---C7 (peak displacement), C9 (Fourier spectrum), and C10 (Cross correlation)---have a somewhat significant participation, but only in the more complex trees.
 
-A low participation does not necessarily mean that a given metric is not important. Arguably, the strong phase duration is highly regarded as an important parameter for strong motion records in engineering. What the results we present here mean, in the context of GOF validation, is that in order to classify whether a simulation result is poor, fair, good, or excellent, other metrics such as energy (C8) are much more decisive in reaching an accurate conclusion about validation quality than the duration (C11).
+\myrevision{It is obvious that C8(response spectra) and C5(peak acceleration) are the most important metrics in developing the prediction models. Therefore, in order to understand other parameters importance we developed two sets of trees according to complexity of the original trees (the structure of generated trees are not presented here), while once dropping C8 (response spectra) and once dropping C8 (response spectra) and C5(peak acceleration) from the prediction attributes. According to Table \ref{tab:participation}, these trees also emphasize the importance of C4 and C6. However, in the absence of C5(peak acceleration) and C8 (response spectra),  C3 (Arias intensity) and C9 (Fourier spectrum) become more effective in developing prediction models. Also C11(strong phase duration) becomes somewhat important in the most complicated tree.}
+
+A low participation does not necessarily mean that a given metric is not important. Arguably, the strong phase duration is highly regarded as an important parameter for strong motion records in engineering. What the results we present here mean, in the context of GOF validation \myrevision{for engineering applications} , is that in order to classify whether a simulation result is poor, fair, good, or excellent, other metrics such as energy (C8) are much more decisive in \myrevision{narrowing eleven validation metrics into fewer numbers in order to get the same categorization as all eleven metrics}  \myremove{reaching an accurate conclusion about validation quality} than the duration (C11).
 
 In the end, the final selection of a preferred tree comes down to reducing complexity in the analysis without compromising the interpretation of results. We favor tree T1 because it is based only in three decision steps, and two GOF metrics: C4 (total energy), and C8 (response spectra).
 
+
+%\begin{table}[t]
+%	\centering
+%	\caption{Metrics data analysis participation in select trees (in percent)}
+%	\label{tab:participation}
+%	\small
+%	\begin{tabular}{lrrrr}
+%	Metric 	& T1 	& T2	& T3 	& T66 	\\ 
+%	\hline
+%	C1 		& --	& --	& -- 	& 1.5	\\
+%	C2 		& -- 	& --	& -- 	& 0.5	\\
+%	C3 		& -- 	& -- 	& -- 	& 9.6	\\
+%	\rowcolor{light-light-gray}
+%	C4 		& 46.8	& 52.4	& 60.2	& 100.0	\\
+%	\rowcolor{light-light-gray}
+%	C5 		& -- 	& 21.5	& 21.5	& 72.2	\\
+%	\rowcolor{light-light-gray}
+%	C6 		& -- 	& -- 	& 37.0	& 56.3	\\
+%	C7 		& -- 	& -- 	& -- 	& 19.4	\\
+%	\rowcolor{light-light-gray}
+%	C8 		& 100.0	& 100.0	& 100.0	& 100.0	\\
+%	C9 		& -- 	& -- 	& --	& 23.8	\\
+%	C10		& -- 	& -- 	& -- 	& 22.2	\\
+%	C11		& -- 	& -- 	& -- 	& -- 	\\
+%	\hline
+%	\end{tabular}
+%\end{table}
+
+
 \begin{table}[t]
 	\centering
-	\caption{Metrics data analysis participation in select trees (in percent)}
+	\caption{Metrics data analysis participation in select trees (in percent). \myrevision{Stars represent the trees with same complexity in pruning process, however, not exact tree structures.}}
 	\label{tab:participation}
 	\small
-	\begin{tabular}{lrrrr}
-	Metric 	& T1 	& T2	& T3 	& T66 	\\ 
+	\myrevision{
+	\begin{tabular}{lrrrrrrrrrrrr}
+	Metric 	& T1 	& T2	& T3 	& T66  & T1* 	& T2*	& T3* 	& T66*  & T1* 	& T2*	& T3* 	& T66* 	\\ 
 	\hline
-	C1 		& --	& --	& -- 	& 1.5	\\
-	C2 		& -- 	& --	& -- 	& 0.5	\\
-	C3 		& -- 	& -- 	& -- 	& 9.6	\\
+	&\multicolumn{4}{c}{Including C8} & \multicolumn{4}{c}{Without C8}&  \multicolumn{4}{c}{Without C5 and C8}\\
+	\hline
+	C1 		& --	& --	& -- 	& 1.5 & --	& --	& -- 	& --- & --	& --	& -- 	& --	\\
+	C2 		& -- 	& --	& -- 	& 0.5 & --	& --	& -- 	& 2.27 & --	& --	& -- 	& --	\\
+	C3 		& -- 	& -- 	& -- 	& 9.6 & --	& --	& -- 	& 53.22 & --	& 60.35	& 61.19 	& 99.11	\\
 	\rowcolor{light-light-gray}
-	C4 		& 46.8	& 52.4	& 60.2	& 100.0	\\
+	C4 		& 46.8	& 52.4	& 60.2	& 100.0  & 44.35	& 81.77	& 81.77 	& 83.20 & 47.44	& 48.67	& 80.54 	& 54.64	\\
 	\rowcolor{light-light-gray}
-	C5 		& -- 	& 21.5	& 21.5	& 72.2	\\
+	C5 		& -- 	& 21.5	& 21.5	& 72.2 & 100.0	& 100.0	& 100.0 	& 100.0 & --	& --	& -- 	& --	\\
 	\rowcolor{light-light-gray}
-	C6 		& -- 	& -- 	& 37.0	& 56.3	\\
-	C7 		& -- 	& -- 	& -- 	& 19.4	\\
+	C6 		& -- 	& -- 	& 37.0	& 56.3 & 58.65	& 63.51	& 62.77 	& 82.39 & 100.0	& 100	& 100 	& 100\\
+	C7 		& -- 	& -- 	& -- 	& 19.4 & --	& --	& -- 	& 32.37 & --	& --	& -- 	& 43.24	\\
 	\rowcolor{light-light-gray}
-	C8 		& 100.0	& 100.0	& 100.0	& 100.0	\\
-	C9 		& -- 	& -- 	& --	& 23.8	\\
-	C10		& -- 	& -- 	& -- 	& 22.2	\\
-	C11		& -- 	& -- 	& -- 	& -- 	\\
+	C8 		& 100.0	& 100.0	& 100.0	& 100.0 & --	& --	& -- 	& --	 & --	& --	& -- 	& --\\
+	C9 		& -- 	& -- 	& --	& 23.8 & --	& --	& -- 	& 48.63 & --	& --	& -- 	& 72.22	\\
+	C10		& -- 	& -- 	& -- 	& 22.2 & --	& --	& -- 	& 24.93 & --	& --	& -- 	& 20.46	\\
+	C11		& -- 	& -- 	& -- 	& -- 	    & --	& --	& -- 	& --- & --	& --	& -- 	& 8.09\\
 	\hline
 	\end{tabular}
+	}
 \end{table}
+
+
+
 

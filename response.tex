@@ -16,10 +16,37 @@
 
 \begin{document}
 
+% *****************************************************************
+% *************************Associate Editor *********************
+% *****************************************************************
+
+\begin{center}
+	\bf
+	\large
+	Authors' Response to Associate Editor (Dr. Thomas Brocher)
+\end{center}
+
+\noindent
+We thank Dr. Thomas Brocher for his comments and suggestions, which helped us improve the manuscript. To help the review process, in the annotated manuscript version of the paper, we have highlighted the most relevant changes that resulted from these comments in green font and the removed text in red font. In the following, we provide a response to each comment. The original comments are in italic black font, followed by our responses in regular blue font.
+\vspace{2ex}
+\newline
+
+\introcomment{~}{%
+I agree with the peer reviewers that this paper addresses a topical subject of great importance to BSSA readers. The science is in the process of transitioning from purely observational based analysis of ground motions to a mixture of observations and simulations of ground motions. The paper is a useful contribution to this discussion, is generally well written, and carefullydescribes the methodology used and its limitations. The peer reviewers have made some very helpful suggestions for improving the paper that I hope the authors will strongly consider.\\In particular, I agree with their comment that the limitations of the study, i.e., the choice of 11 metrics and earthquake simulations for only one earthquake, needs to be included in the abstract and the conclusions. In addition, I also agree that all the terms and methodology should be well defined for the BSSA readership, so that the paper can be understood by them without resort to frequent online searches.I found Figure 6 very helpful in giving me a very simple if heuristic understanding why C4, C5, C6, and C8 are the most diagnostic of the goodness of fit. It clearly shows that only these metrics are change significantly with the goodness of fit (P,F, G, E). Plotting these values as a function of P, F, G, and E together on the same figure might allow the reader to see thisrelationship more clearly and might help provide a heuristic understanding of how C4, C5, C6, and C8 are diagnostic whereas C11 is constant with P, F, G, and E, and thus not diagnostic. In fact, in my opinion, Figure 6 is a simple and easy way of determining which metrics are diagnostic that might even eliminate the need for the decision trees. In any case, morediscussion of this figure might help the authors make the case for the main conclusions.
+}
+
+\response{%
+
+Thanks for the constructive suggestions. We agree with you and peer reviewers that the technical terms are not commonly used in seismology and strong motion earthquake engineering. The confusion happened because of integrating three different topics into a method to carry out this research. One technical term in one field is different in another field and that cause a confusion. For example cluster, class, and label all are referring to the same concept, however, it depends on the application. We added a paragraph in the \textbf{Data Analysis Method} section to elaborate this confusion.\\
+We also modified Figure 6 in order to easily track the variation of different metrics for final classes. We do agree with you that Figure 6 clearly gives a good understanding about the metrics, however, we add decision trees, because they can convert the qualitative judgment to quantitative conditional form to be able to exactly decide on the final class based on their numerical GOF scores. \\
+We added text to abstract and conclusion to give a heads up to readers about 11 metrics and one earthquake with 3 velocity model  simulations.\\
+}
+
+
 % ******************************************************************
 % *************************** REVIEWER 1 ***************************
 % ******************************************************************
-
+\newpage
 \begin{center}
 	\bf
 	\large
@@ -27,7 +54,7 @@
 \end{center}
 
 \noindent
-We thank the reviewer for his/her comments and suggestions, which helped us improve the manuscript. To help the review process, in the annotated manuscript version of the paper, we have highlighted the most relevant changes that resulted from these comments in green font. In the following, we provide a response to each comment. The original comments are in italic black font, followed by our responses in regular blue font.
+We thank the reviewer for his/her comments and suggestions, which helped us improve the manuscript. To help the review process, in the annotated manuscript version of the paper, we have highlighted the most relevant changes that resulted from these comments in green font and the removed text in red font. In the following, we provide a response to each comment. The original comments are in italic black font, followed by our responses in regular blue font.
 \vspace{2ex}
 \newline
 
@@ -36,7 +63,7 @@ This is an interesting article for the readers of the BSSA journal. The authors 
 }
 
 \response{%
-Will be added. 
+The reviewer pointed out a very important topic that we believe we did not discuss it well in the manuscript. The manuscript presents steps of moving from considerable amount of data with specialties knowledge (background knowledge) to a final product that gives a better understanding about the data. According the reviewer suggestion we added a paragraph  to discuss this important point. Also we modified abstract an introduction for acknowledging the limitations with the study. 
 }
 
 
@@ -45,7 +72,7 @@ The terminologies used in the paper are not clear in many cases. For example, wh
 }
 
 \response{%
-response
+We agree with you that the technical terms are not commonly used in seismology and strong motion earthquake engineering. The confusion happened because of integrating three different topics into a method to carry out this research. One technical term in one field is different in another field and that cause a confusion. For example cluster, class, and label all are referring to the same concept, however, it depends on the application. We added a paragraph in the \textbf{Data Analysis Method} section to elaborate this confusion.\\
 }
 
 \comment{2}{%
@@ -53,7 +80,7 @@ The terms "common practice" or "common standards" have been mentioned several ti
 }
 
 \response{%
-Response 
+Thanks for the comment. We fixed it. 
 }
 
 \comment{3}{%
@@ -61,7 +88,7 @@ In abstract, "semi-supervised" and "supervised" learning techniques are mentione
 }
 
 \response{%
-Response
+We briefly explained these terms \textbf{Data Analysis Method} section. We also added clarification about semi-supervised and supervised learning into  \textbf{Introduction} section.
 }
 
 \comment{4}{%
@@ -69,7 +96,7 @@ In introduction, the difference between "verification" and "validation" should b
 }
 
 \response{%
-Response
+A discussion about verification and validation is added. 
 }
 
 \comment{5}{%
@@ -77,7 +104,7 @@ In abstract and introduction, what does a "direct application" mean? it's not cl
 }
 
 \response{%
-Response
+\color{red}{Ricardo, please address this comment.}
 }
 
 \comment{6}{%
@@ -85,7 +112,7 @@ Page 4, line 53: add "relatively" before "well understood"
 }
 
 \response{%
-Response
+Added. Thanks.
 }
 
 \comment{7}{%
@@ -93,23 +120,24 @@ The two questions posed in the introduction lines 59-61: I don't think the first
 }
 
 \response{%
-Response
+We modified the text for clarification and also to acknowledge each individual proposed metrics' importance. 
 }
 
 \comment{8}{%
-You are treating these metrics as "independent variables", but as you have also noted many of them are not. For example, Arias intensity and energy are correlate. Does this compromise your conclusions? If not explain why in the Results section.
+You are treating these metrics as "independent variables", but as you have also noted many of them are not. For example, Arias intensity and energy are correlated. Does this compromise your conclusions? If not explain why in the Results section.
 }
 
 \response{%
-Response
-}
+This is a very interesting comment. You are totally right. There are fairly high correlation between Arias intensity and energy integral. However, decision tree algorithm is robust enough to realize this similarity and pick the best one in each decision making process. As we remove the peak ground acceleration and response spectra from the prediction model, the algorithm looks for other best parameters. In case of hundreds of metrics it would be a reasonable choice to do feature selection analysis and choose one metric out of several correlated metrics. However, in this study, we only deal with 11 metrics and the results show that it works fairly well. 
+} 
+
 
 \comment{9}{%
 Page 7, line 133: delete the last sentence
 }
 
 \response{%
-Response
+Deleted. Thanks.
 }
 
 \comment{10}{%
@@ -117,7 +145,7 @@ Page 14, line 310: you say "... the latter can essentially be discarded..." I do
 }
 
 \response{%
-Response
+In that specific subspace (C1,C7), C1 does not help in clustering process. That is why we call it irrelevant feature, because one can define the clusters based on only defining boundaries on C7. C1 can be important, however, it does not add any positive or negative values in decision making process in this subspace analysis. 
 }
 
 \comment{11}{%
@@ -125,7 +153,7 @@ Page 14 line 323: It's not clear how you "replicate data", provide more detail.
 }
 
 \response{%
-Response
+Thanks. More details provided. 
 }
 
 \comment{12}{%
@@ -133,14 +161,14 @@ I don't think "confusion matrix" given in tables is explained in the paper!
 }
 
 \response{%
-Response
+In \textbf{Decision Trees} section we provided a definition of confusion matrix for the simplest case of two categories. The idea can be extended for more than two (in our case four) categories. 
 }
 
 \comment{13}{%
 Page 17, lines 391-394: this sentence should be re-worded, what is an "accurate conclusion"? You should be very specific that your conclusion is that instead of using all 11 validation metrics you can select a few in order to get the same categorization as all 11 metrics would have given you.}
 
 \response{%
-Response
+You are right. It could be misleading. We re-worded the sentence. 
 }
 
 \comment{14}{%
@@ -148,7 +176,7 @@ Page 18, line 405: this is implying that fig 10 is similar to fig2! I personally
 }
 
 \response{%
-Response
+That is correct. The statement convey part of the message. Although we expect to see similarities between the current results and previous studies, we keep in mind that this study is based on lack of consensus on using GOF metrics for validation purposes. Since the previous study is representing a uniform average of all metrics, we do not expect to match all stations. Therefore, we prefer to keep it as numerical. We modified the text accordingly. 
 }
 
 \comment{15}{%
@@ -156,7 +184,7 @@ Figure 8: I don't know what you mean by y-label "decision attributes". Do you me
 }
 
 \response{%
-Response
+That is right. It should be the number of decision attributes. We modified the figure accordingly. 
 }
 
 \comment{16}{%
@@ -164,7 +192,7 @@ The conclusion basically says that response spectrum is the most important valid
 }
 
 \response{%
-Response
+That is a very good suggestion. We excluded C8(response spectra) and C5(peak acceleration) from analysis and reproduce similar trees with same complexities in terms of pruning process with previous four trees. As we expected, most important, metrics are still C4 and C6.  C11 also become somewhat effective in the most complicated tree. 
 }
 
 Typos:\\
@@ -175,7 +203,7 @@ Page 2, line 8: change focused to focus
 }
 
 \response{%
-Response
+Done. Thanks.
 }
 
 \comment{2}{%
@@ -183,7 +211,7 @@ Page 2, line 20: change classifiers to classifier
 }
 
 \response{%
-Response
+Fixed it. Thanks.
 }
 
 \comment{3}{%
@@ -191,7 +219,7 @@ Page 13, line 185: change measure to measured
 }
 
 \response{%
-Response
+Changed. Thanks.
 }
 
 \comment{4}{%
@@ -199,7 +227,7 @@ Page 16, line 354: the last C5 should be C6?
 }
 
 \response{%
-Response
+Fixed. Thanks.
 }
 
 % ******************************************************************
@@ -215,7 +243,7 @@ Response
 	\end{center}
 
 \noindent
-We thank the reviewer for his/her comments and suggestions, which helped us improve the manuscript. To help the review process, in the annotated manuscript version of the paper, we have highlighted the most relevant changes that resulted from these comments in green font. In the following, we provide a response to each comment. The original comments are in italic black font, followed by our responses in regular blue font.
+We thank the reviewer for his/her comments and suggestions, which helped us improve the manuscript. To help the review process, in the annotated manuscript version of the paper, we have highlighted the most relevant changes that resulted from these comments in green font and the removed text in red font. In the following, we provide a response to each comment. The original comments are in italic black font, followed by our responses in regular blue font.
 \vspace{2ex}
 \newline
 
@@ -227,12 +255,17 @@ Review of Khoshnevis and Taborda for BSSA
 Earthquake ground motion simulations are usually validated against observational data or empirically-derived solutions. However, exactly which parameters to compare (e.g., peakground velocity, duration, spectral content) in order to assess the goodness-of-fit, is not always clear. This paper uses machine learning techniques and eleven possible metrics for comparing (recorded and simulated) ground motions to determine the parameters that are most predictive of goodness-of-fit. This is an interesting paper, and will help future researchersprioritize which metrics to focus on when validating ground motions simulations. The paper is generally well written. As a strong ground motion seismologist (i.e., I assume I'm part of the audience you hope to reach), there is a lot of machine learning-related jargon that makes certain sections difficult to follow. It would also be useful to have some discussion regarding which parameters were found to be repetitive, incase future authors wish to look at more than the four recommended parameters.
 }
 
+\response{
+We agree with you that the technical terms are not commonly used in seismology and strong motion earthquake engineering. The confusion happened because of integrating three different topics into a method to carry out this research. One technical term in one field is different in another field and that cause a confusion. For example cluster, class, and label all are referring to the same concept, however, it depends on the application. We added a paragraph in the \textbf{Data Analysis Method} section to elaborate this confusion.\\
+We also studied the models without response spectra (C8) and without response spectra (C8) and peak ground acceleration (C5).\\ 
+}
+
 \comment{1}{%
 L. 8 "... could \textbf{focus} ..."
 }
 
 \response{
-Response
+Done. Thanks.
 }
 
 \comment{2}{%
@@ -240,7 +273,7 @@ L. 11 "... the objective \textbf{of} ..."
 }
 
 \response{
-Response
+Added. Thanks.
 }
 
 \comment{3}{%
@@ -248,15 +281,14 @@ L. 25-41 The frequent use of phrases such as "Among these methods,"; "Among the 
 }
 
 \response{
-Response
+\color{red}{Ricardo, please address this comment.}
 }
 
 \comment{4}{%
-L. 42-43 I would suggest moving the description of the Anderson (2004) method (i.e., L. 48+) to directly follow this sentence.
-}
+L. 42-43 I would suggest moving the description of the Anderson (2004) method (i.e., L. 48+) to directly follow this sentence.}
 
 \response{
-Response
+Thanks for the suggestion. We moved the description of the Anderson (2004) method (i.e., L. 48+) to the mentioned location. It reads better now. 
 }
 
 \comment{5}{%
@@ -264,7 +296,7 @@ L. 59-61/L. 391-394 It should be stated somewhere that this is really intended f
 }
 
 \response{
-Response
+Thanks for pointing this out. Since Anderson developed metrics for engineering application, we assumed it is implicitly mentioned. However, we agree that it should be explicitly clarified. We modified the text accordingly. 
 }
 
 \comment{6}{%
@@ -272,7 +304,7 @@ L. 61 This sentence should end with a "?"
 }
 
 \response{
-Response
+Fixed. Thanks.
 }
 
 \comment{7}{%
@@ -280,7 +312,7 @@ L. 98-99 It is not clear how the equation for S is applied to values that are a 
 }
 
 \response{
-Response
+In this study we only use broadband results. We added a clarification into the text. Thanks for the comment.  
 }
 
 \comment{8}{%
@@ -288,7 +320,7 @@ L. 128/132/137/etc. "... the three component\textbf{s} ..."
 }
 
 \response{
-Response
+Fixed. Thanks.
 }
 
 \comment{9}{%
@@ -296,7 +328,7 @@ L. 236 Where is the discussion on the consequences of overfitting? The only othe
 }
 
 \response{
-Response
+Added. Thanks.
 }
 
 \comment{10}{%
@@ -304,7 +336,7 @@ L. 236 Remove "A matter we discuss later."
 }
 
 \response{
-Response
+Removed. Thanks.
 }
 
 \comment{11}{%
@@ -312,7 +344,7 @@ L. 241-243 It is not helpful to list different algorithm names for making decisi
 }
 
 \response{
-Response
+We added a brief description about them. Thanks.
 }
 
 \comment{12}{%
@@ -320,7 +352,7 @@ L. 257-258 I don't understand this sentence. What is a continuous attribute?
 }
 
 \response{
-Response
+We meant to say numerical continues attribute. Thanks for the comment. Fixed. 
 }
 
 \comment{13}{%
@@ -328,7 +360,7 @@ L. 259-264 This paragraph contains a lot of jargon.
 }
 
 \response{
-Response
+Thanks for the comment. Additional clarification added. 
 }
 
 \comment{14}{%
@@ -336,7 +368,7 @@ L. 300 Isn't this also true for the C5-C7 combination?
 }
 
 \response{
-Response
+That is right. Added.
 }
 
 \comment{15}{%
@@ -344,7 +376,7 @@ L. 328 What is "a strong pruning process"?
 }
 
 \response{
-Response
+We modified it to heavy pruning process and also added its explanation. 
 }
 
 \comment{16}{%
@@ -352,7 +384,7 @@ L. 433 "We present the result\textbf{s} of..."
 }
 
 \response{
-Response
+Added. Thanks.
 }
 
 \comment{17}{%
@@ -360,7 +392,7 @@ L. 435 "... goal of prioritiz\textbf{ing} and reduc\textbf{ing}..."
 }
 
 \response{
-Response
+Modified accordingly. Thanks.
 }
 
 \comment{18}{%
@@ -368,7 +400,7 @@ L. 443 Remove "Similarly" or "similar" (redundant)
 }
 
 \response{
-Response
+Modified. Thanks.
 }
 
 \comment{19}{%
@@ -376,7 +408,7 @@ L. 450 "... remain valid."
 }
 
 \response{
-Response
+Extra "s" deleted. Thanks.
 }
 
 \comment{20}{%
@@ -384,7 +416,7 @@ L. 455 "... as the decisive \textbf{parameters} ..." ? (This short concluding pa
 }
 
 \response{
-Response
+\color{red}{Ricardo, please address this comment.}
 }
 
 

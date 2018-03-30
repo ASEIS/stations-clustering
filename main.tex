@@ -53,6 +53,15 @@
 \usepackage{datetime}
 \usepackage{multirow}
 
+% Revision format added 
+%  \usepackage[dvipsnames]{xcolor}
+\usepackage{color}
+\definecolor{ForestGreen}{RGB}{34,139,34}
+\definecolor{Maroon}{RGB}{128,0,0}
+\newcommand{\myrevision}[1]{\textcolor{ForestGreen}{#1}}
+\newcommand{\myremove}[1]{\textcolor{Maroon}{#1}}
+
+
 \usdate
 
 \usepackage{ifpdf}
@@ -119,6 +128,10 @@
 \input{mycommands}
 
 \input{title-and-authors}
+
+
+
+
 
 \begin{document}
 

@@ -21,7 +21,7 @@ We call the result of applying these rules a tree T1 combination. Applying them 
 	\label{fig:res-gof-maps}
 \end{figure*}
 
-In our view, the T1 results are simpler to assimilate and equally informative. Looking at both plots in Fig.~\ref{fig:avg-gof-maps} it is possible to argue they lead to the same conclusions and present a similar picture of the validation of the simulation, not only globally but at specific locations, with only minor differences---especially if one is to consider the assumed equivalence between scores and classes (0--4: poor; 4--6: fair; 6--8:good; 8--10: excellent).
+In our view, the T1 results are simpler to assimilate and equally informative. Looking at both plots in Fig.~\ref{fig:avg-gof-maps} it is possible to argue they lead to \myremove{the same} \myrevision{similar} conclusions and present a similar picture of the validation of the simulation, not only globally but at specific locations, with only minor differences---especially if one is to consider the assumed equivalence between scores and classes (0--4: poor; 4--6: fair; 6--8:good; 8--10: excellent). \myrevision{However, we do not expect to see the same results in both figures. \citet{Taborda_2014_BSSA} results is developed based on assigning uniform weight on all metrics, however, this study research question is addressing the importance of different metrics and implying that assigning uniform weights might not provide accurate results.}
 
 \begin{figure*}[th!]
 	\centering
@@ -29,4 +29,11 @@ In our view, the T1 results are simpler to assimilate and equally informative. L
 	\caption{Comparison of GOF validation scores obtained using an 11-metric \citet{Anderson_2004_Proc}-type GOF scoring (left) and the T1 combination GOF validation classification (right). The top plots show maps with a distribution of the scores or classes outcome at each station. The contours are drawn for illustration purposes only. The bottom plots show histograms with the count of stations for each GOF score interval or validation class.}
 	\label{fig:avg-gof-maps}
 \end{figure*}
+
+\myrevision{It is worth mentioning that, in this study, we presented an integration of scientists knowledge and field data using machine learning algorithms to develop an acceptable and robust prediction model. This method can be used in any field where there are some field data as well as expertise knowledge about the data. Validation metrics are note limited to \citeauthor{Anderson_2004_Proc}'s metrics. Therefore, adding more metrics from different field can be used through the proposed method to develop prediction models. }
+
+
+
+
+
 
