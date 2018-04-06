@@ -72,7 +72,9 @@ We thank the reviewer for his/her comments and suggestions, which helped us impr
 \newline
 
 % \introcomment{~}{%
-% This is an interesting article for the readers of the BSSA journal. The authors propose a new approach based on machine learning techniques to determine the importance of validation metrics for ground motion simulation. The field of ground motion simulation validation (GMSV) is relatively new and of interest to both seismologists who develop simulation models and engineers who would like to use these simulations in engineering applications. One of the most challenging questions to address is ``which validation metric(s) is best to use?'' as there are so many different metrics in this field and so many different opinions. It has been difficult to address this question because the answer varies depending on the application of the simulations (e.g., GMPE development, PSHA, structural analysis response of interest, etc). This paper is interesting because it provides a statistical approach to reduce the number of validation metrics and select a few representatives from a bigger set without compromising the final validation results. The authors have done a great job providing background on the topic. However, their application is very narrow, they only consider the 11 Anderson2004+ parameters (as they've noted there are other parameters) for one simulation method for one earthquake, and as a result their conclusions are only valid for this particular case. They have mentioned this limitation in the conclusions, but the abstract and introduction do not explain the limitations and the application-dependency of the proposed approach. Both Abstract and Introduction need modification to specify the application for which the results and conclusions are true (i.e., the application here is to narrow down the 11 Anderson2004+ parameters to select fewer parameters that give similar results as the original 11 for the simulations they chose in this paper). Currently, the Abstract and Introduction give the impression that the conclusions are true for any engineering application or simulation method. Furthermore, there should be a short discussion in the paper on how the users can apply the same method for different applications, for example for structural responses such as drift ratio or responses that are sensitive to high-frequency content of simulations (theoretically, this method should be applicable to any response of interest if they replace the GOF scores used in this study? If true this should be mentioned as it will be of interest to others).
+% This is an interesting article for the readers of the BSSA journal. The authors propose a new approach based on machine learning techniques to determine the importance of validation metrics for ground motion simulation. The field of ground motion simulation validation (GMSV) is relatively new and of interest to both seismologists who develop simulation models and engineers who would like to use these simulations in engineering applications. One of the most challenging questions to address is ``which validation metric(s) is best to use?'' as there are so many different metrics in this field and so many different opinions. It has been difficult to address this question because the answer varies depending on the application of the simulations (e.g., GMPE development, PSHA, structural analysis response of interest, etc). This paper is interesting because it provides a statistical approach to reduce the number of validation metrics and select a few representatives from a bigger set without
+% compromising the final validation results. The authors have done a great job providing background on the topic. However, their application is very narrow, they only consider the 11 Anderson2004+ parameters (as they've noted there are other parameters) for one simulation method for one earthquake, and as a result their conclusions are only valid for this particular case. They have mentioned this limitation in the conclusions, but the abstract and introduction do not explain the limitations and the application-dependency of the proposed approach. Both Abstract and Introduction need modification to specify the application for which the results and conclusions are true (i.e., the application here is to narrow down the 11 Anderson2004+ parameters to select fewer parameters that give similar results as the original 11 for the simulations they chose in this paper). Currently, the Abstract and Introduction give the impression that the conclusions are true for any engineering application or
+% simulation method. Furthermore, there should be a short discussion in the paper on how the users can apply the same method for different applications, for example for structural responses such as drift ratio or responses that are sensitive to high-frequency content of simulations (theoretically, this method should be applicable to any response of interest if they replace the GOF scores used in this study? If true this should be mentioned as it will be of interest to others).
 % }
 %
 % \response{%
@@ -125,17 +127,17 @@ Page 4, line 53: add ``relatively'' before ``well understood''.
 }
 
 \response{%
-We appreciate the suggestion made by the reviewer, but we disagree. There should be nothing relative about the fact that these metrics are well understood by seismologists and engineers, and the strength of Anderson's method relying on this characteristic has been pointed out before by others. That being said, we modified the sentence with a choice of words that we have used in two previous papers published in BSSA, which convey the same idea we wanted to transmit.
+We appreciate the suggestion made by the reviewer, and in attention to it we modified the sentence with a choice of words that we have used in two previous papers published in BSSA, which convey the same idea we wanted to transmit. That being said, our view is that there should be nothing relative about the fact that these metrics are well understood by seismologists and engineers, and the strength of Anderson's because of this has been pointed out before by others.
 }
 
-% \comment{7}{%
-% The two questions posed in the introduction lines 59--61: I don't think the first one is really the question, all parameters should be considered if anyone has thought of them as important (i.e., has proposed them). The second question is the main question and the one being addressed in this paper.
-% }
-%
-% \response{%
-% We modified the text for clarification and also to acknowledge each individual proposed metrics' importance.
-% }
-%
+\comment{7}{%
+The two questions posed in the introduction lines 59--61: I don't think the first one is really the question, all parameters should be considered if anyone has thought of them as important (i.e., has proposed them). The second question is the main question and the one being addressed in this paper.
+}
+
+\response{%
+We thank the reviewer for expressing his/her opinion about this point. First, we changed slightly the sentences as a whole to emphasize these are indirect questions as opposed to direct questions. That said, we do think they both are valid and relevant questions. The argument made by the reviewer that any or all parameters should be included if someone has thought of them as important is precisely one of the points we argue against, and the results of this research support that argument. The fact that someone thinks of a parameter as relevant does not guarantee its relevance, it is only the reflect of subjective (expert) opinion. There may be parameters that are more influential, and these can be so influential to the point of proving others irrelevant. This is the advantage of the procedure we follow here, which allows one to evaluate objectively, based on how data relates to the results, how relevant or irrelevant is each one of the metrics involved in reaching the same conclusions. This, in turn, allows one to prioritize the metrics, which is the point of the second indirect question posed in this part of the introduction.
+}
+
 % \comment{8}{%
 % You are treating these metrics as ``independent variables'', but as you have also noted many of them are not. For example, Arias intensity and energy are correlated. Does this compromise your conclusions? If not explain why in the Results section.
 % }
@@ -210,7 +212,10 @@ We followed this suggestion and deleted the sentence.
 % That is a very good suggestion. We excluded C8(response spectra) and C5(peak acceleration) from analysis and reproduce similar trees with same complexities in terms of pruning process with previous four trees. As we expected, most important, metrics are still C4 and C6.  C11 also become somewhat effective in the most complicated tree.
 % }
 
+\noindent
 \textbf{Typos:}
+
+\vspace{2em}
 
 \comment{1}{%
 Page 2, line 8: change ``focused'' to ``focus''.

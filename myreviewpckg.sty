@@ -10,12 +10,12 @@
 \DeclareOption{review}{\setboolean{@isreview}{true}}
 \ProcessOptions
 
-%\makeatletter
-%\if@isreview
+\makeatletter
+\if@isreview
 \definecolor{mygreen}{RGB}{0,150,0}
-%\else
-%\definecolor{mygreen}{RGB}{0,0,0}
-%\fi
+\else
+\definecolor{mygreen}{RGB}{0,0,0}
+\fi
 \makeatother
 
 \newcommand{\reviewer}[2]{%

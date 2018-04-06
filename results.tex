@@ -33,21 +33,12 @@ In total, the clustering process results in 816, 1253, 879 and 76 data samples f
 
 In total we generated 20,000 trees using the C5.0 algorithm for all possible combinations of the parameters CF and $S_{\min}$, where CF was chosen to vary between 0 and 1 at intervals of size 0.01, and $S_{\min}$ was chosen to vary between 1 and 200 at unitary intervals. Despite our choice for small intervals, the algorithm often reached recurrent tree structures for different CF and $S_{\min}$ values. Therefore, in reality, from the 20,000 combinations for which we ran the algorithm, only 66 unique trees were found. 
 
-%\begin{figure*}[t]
-%	\centering
-%	\includegraphics[width=\textwidth]{figures/pdf/figure-08}
-%	\caption{Accuracy of tree predictions in terms of the factor ($F_1$) from equation \ref{eq:f} as indicated by colored dots distributed with respect to the number of attributes (GOF metrics) as a function of: \textbf{(a)} the number of nodes, and \textbf{(b)} the depth of the trees. The rings around some of the dots indicate select trees used as reference in the text, other figures and tables. The color version of this figure is available only in the electronic edition.}
-%	\label{fig:nodes-depth}
-%\end{figure*}
-
-
 \begin{figure*}[t]
 	\centering
-	\includegraphics[width=\textwidth]{figures/pdf/figure-08_mod}
+	\includegraphics[width=\textwidth]{figures/pdf/figure-08}
 	\caption{Accuracy of tree predictions in terms of the factor ($F_1$) from equation \ref{eq:f} as indicated by colored dots distributed with respect to the number of attributes (GOF metrics) as a function of: \textbf{(a)} the number of nodes, and \textbf{(b)} the depth of the trees. The rings around some of the dots indicate select trees used as reference in the text, other figures and tables. The color version of this figure is available only in the electronic edition.}
 	\label{fig:nodes-depth}
 \end{figure*}
-
 
 \begin{table}[t]
 	\centering
