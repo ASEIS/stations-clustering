@@ -8,6 +8,24 @@
 
 \usepackage{textcomp}
 \usepackage{simplemargins}
+\usepackage{ifpdf}
+
+\ifpdf
+	\usepackage[pdftex,bookmarks=false]{hyperref}
+\else
+	\usepackage{graphics}
+	\usepackage{graphicx}
+	\usepackage{epsfig}
+	\usepackage[dvipdfm,bookmarks=false]{hyperref}
+\fi
+
+\hypersetup{
+    pdfpagelayout=OneColumn,
+	colorlinks = true,
+	urlcolor   = blue,
+	citecolor  = blue,
+	linkcolor  = blue
+}
 
 \clubpenalty=10000  % Orphan - First of paragraph left behind
 \widowpenalty=10000 % Widow  - Last of paragraph sent ahead
@@ -33,7 +51,8 @@
 Dr.~Thomas Brocher\\
 Associate Editor, BSSA\\
 BSSA Editorial Office\\
-400 Evelyn Ave, Ste 201, Albany, CA 94706
+400 Evelyn Ave, Ste 201\\
+Albany, CA 94706
 
 \vspace{4em}
 \noindent
@@ -74,12 +93,23 @@ We thank the Associate Editor for his comments and suggestions. Below, we provid
 I agree with the peer reviewers that this paper addresses a topical subject of great importance to BSSA readers. The science is in the process of transitioning from purely observational based analysis of ground motions to a mixture of observations and simulations of ground motions. The paper is a useful contribution to this discussion, is generally well written, and carefully describes the methodology used and its limitations. The peer reviewers have made some very helpful suggestions for improving the paper that I hope the authors will strongly consider.
 }
 
-\introcomment{~}{%
-In particular, I agree with their comment that the limitations of the study, i.e., the choice of 11 metrics and earthquake simulations for only one earthquake, needs to be included in the abstract and the conclusions. In addition, I also agree that all the terms and methodology should be well defined for the BSSA readership, so that the paper can be understood by them without resort to frequent online searches.
+\response{%
+Thank you. We were able to address all the suggestions made by the reviewers. In the vast majority of the cases we adopted their suggestions and we only disagreed with a very small portion of them, in which case we presented our arguments in the response to the reviews enclosed here.
 }
 
 \introcomment{~}{%
-I found Figure 6 very helpful in giving me a very simple if heuristic understanding why C4, C5, C6, and C8 are the most diagnostic of the goodness of fit. It clearly shows that only these metrics are change significantly with the goodness of fit (P,F, G, E). Plotting these values as a function of P, F, G, and E together on the same figure might allow the reader to see this relationship more clearly and might help provide a heuristic understanding of how C4, C5, C6, and C8 are diagnostic whereas C11 is constant with P, F, G, and E, and thus not diagnostic. In fact, in my opinion, Figure 6 is a simple and easy way of determining which metrics are diagnostic that might even eliminate the need for the decision trees. In any case, more
+In particular, I agree with their comment that the limitations of the study, i.e., the choice of 11 metrics and earthquake simulations for only one earthquake, needs to be included in the abstract and the conclusions.}
+
+\response{
+We modified the abstract and the conclusions accordingly. In the case of the abstract we added minor modifications to emphasize the use of 11 metrics, and a whole new sentence explicitly referencing the used of three simulation datasets corresponding to the 2008 Chino Hills earthquake. In the case of the conclusions, although we already had a paragraph describing the limitations of the study, we added a small sentence reemphasizing it.
+}
+
+\introcomment{~}{%
+In addition, I also agree that all the terms and methodology should be well defined for the BSSA readership, so that the paper can be understood by them without resort to frequent online searches.
+}
+
+\introcomment{~}{%
+I found Figure 6 very helpful in giving me a very simple if heuristic understanding why C4, C5, C6, and C8 are the most diagnostic of the goodness of fit. It clearly shows that only these metrics are change significantly with the goodness of fit (P, F, G, E). Plotting these values as a function of P, F, G, and E together on the same figure might allow the reader to see this relationship more clearly and might help provide a heuristic understanding of how C4, C5, C6, and C8 are diagnostic whereas C11 is constant with P, F, G, and E, and thus not diagnostic. In fact, in my opinion, Figure 6 is a simple and easy way of determining which metrics are diagnostic that might even eliminate the need for the decision trees. In any case, more
 discussion of this figure might help the authors make the case for the main conclusions.
 }
 %
@@ -110,16 +140,14 @@ We thank the reviewer for his/her comments and suggestions, which helped us impr
 \vspace{2ex}
 \newline
 
-% \introcomment{~}{%
-% This is an interesting article for the readers of the BSSA journal. The authors propose a new approach based on machine learning techniques to determine the importance of validation metrics for ground motion simulation. The field of ground motion simulation validation (GMSV) is relatively new and of interest to both seismologists who develop simulation models and engineers who would like to use these simulations in engineering applications. One of the most challenging questions to address is ``which validation metric(s) is best to use?'' as there are so many different metrics in this field and so many different opinions. It has been difficult to address this question because the answer varies depending on the application of the simulations (e.g., GMPE development, PSHA, structural analysis response of interest, etc). This paper is interesting because it provides a statistical approach to reduce the number of validation metrics and select a few representatives from a bigger set without
-% compromising the final validation results. The authors have done a great job providing background on the topic. However, their application is very narrow, they only consider the 11 Anderson2004+ parameters (as they've noted there are other parameters) for one simulation method for one earthquake, and as a result their conclusions are only valid for this particular case. They have mentioned this limitation in the conclusions, but the abstract and introduction do not explain the limitations and the application-dependency of the proposed approach. Both Abstract and Introduction need modification to specify the application for which the results and conclusions are true (i.e., the application here is to narrow down the 11 Anderson2004+ parameters to select fewer parameters that give similar results as the original 11 for the simulations they chose in this paper). Currently, the Abstract and Introduction give the impression that the conclusions are true for any engineering application or
-% simulation method. Furthermore, there should be a short discussion in the paper on how the users can apply the same method for different applications, for example for structural responses such as drift ratio or responses that are sensitive to high-frequency content of simulations (theoretically, this method should be applicable to any response of interest if they replace the GOF scores used in this study? If true this should be mentioned as it will be of interest to others).
-% }
-%
-% \response{%
-% The reviewer pointed out a very important topic that we believe we did not discuss it well in the manuscript. The manuscript presents steps of moving from considerable amount of data with specialties knowledge (background knowledge) to a final product that gives a better understanding about the data. According the reviewer suggestion we added a paragraph  to discuss this important point. Also we modified abstract an introduction for acknowledging the limitations with the study.
-% }
-%
+\introcomment{~}{%
+This is an interesting article for the readers of the BSSA. The authors propose a new approach based on machine learning techniques to determine the importance of validation metrics for ground motion simulation. The field of ground motion simulation validation (GMSV) is relatively new and of interest to both seismologists who develop simulation models and engineers who would like to use these simulations in engineering applications. One of the most challenging questions to address is ``which validation metric(s) is best to use?'' as there are so many different metrics in this field and so many different opinions. It has been difficult to address this question because the answer varies depending on the application of the simulations (e.g., GMPE development, PSHA, structural analysis response of interest, etc). This paper is interesting because it provides a statistical approach to reduce the number of validation metrics and select a few representatives from a bigger set without compromising the final validation results. The authors have done a great job providing background on the topic. However, their application is very narrow, they only consider the 11 Anderson2004+ parameters (as they have noted, there are other parameters) for one simulation method for one earthquake, and as a result their conclusions are only valid for this particular case. They have mentioned this limitation in the conclusions, but the abstract and introduction do not explain the limitations and the application-dependency of the proposed approach. Both Abstract and Introduction need modification to specify the application for which the results and conclusions are true (i.e., the application here is to narrow down the 11 Anderson2004+ parameters to select fewer parameters that give similar results as the original 11 for the simulations they chose in this paper). Currently, the Abstract and Introduction give the impression that the conclusions are true for any engineering application or simulation method. Furthermore, there should be a short discussion in the paper on how the users can apply the same method for different applications, for example for structural responses such as drift ratio or responses that are sensitive to high-frequency content of simulations (theoretically, this method should be applicable to any response of interest if they replace the GOF scores used in this study? If true this should be mentioned as it will be of interest to others).
+}
+
+\response{%
+We thank the reviewer for the positive feedback in this general review. We agree that there were some important points that we did not discuss fully in the manuscript and we have corrected them. In attention to this general review, we modified the abstract, the introduction, and the conclusions to (i) transparently point out the limitations of our study, and (ii) offer an additional perspective on the potential refinement of it or use with additional datasets or in reference to additional validation metrics.
+}
+
 % \comment{1}{
 % The terminologies used in the paper are not clear in many cases. For example, what are ``features'' ``attributes'' ``dimensions'' ``trees, nodes and leafs'' ``class''? It was very difficult to read the section on Data Analysis Method and Introduction since these terminologies were not clearly defined or described in terms of the variables used in this paper. I was confused what ``data'' and ``results'' were referring to: GOF score data? GOF metric data? GOF category? Something other than GOF? I suggest that the authors streamline the paper and the terminologies to be consistent and clear in the final version.
 % }
@@ -127,18 +155,17 @@ We thank the reviewer for his/her comments and suggestions, which helped us impr
 % \response{%
 % We agree with you that the technical terms are not commonly used in seismology and strong motion earthquake engineering. The confusion happened because of integrating three different topics into a method to carry out this research. One technical term in one field is different in another field and that cause a confusion. For example cluster, class, and label all are referring to the same concept, however, it depends on the application. We added a paragraph in the \textbf{Data Analysis Method} section to elaborate this confusion.
 % }
-%
-% \comment{2}{%
-% The terms ``common practice'' or ``common standards'' have been mentioned several times. Because GMSV is such a new field (and I don't think there is consensus, I for one don't agree with some statements but I agree that others may), I think these terms should be removed. Just say this is your opinion, or it is based on the references that you have listed.
-% }
-%
-% \response{%
-% Thanks for the comment. We fixed it.
-% }
-%
+
+\comment{2}{%
+The terms ``common practice'' or ``common standards'' have been mentioned several times. Because GMSV is such a new field (and I don't think there is consensus, I for one don't agree with some statements but I agree that others may), I think these terms should be removed. Just say this is your opinion, or it is based on the references that you have listed.
+}
+
+\response{%
+Thanks for the comment. We limited the use of these terms to a minimum and/or replaced them by sentences providing additional context.
+}
+
 % \comment{3}{%
-% In abstract, ``semi-supervised'' and ``supervised'' learning techniques are mentioned, but in the paper these terms are not explained, what part of the learning techniques is semi-supervised
-% and what does that mean?
+% In abstract, ``semi-supervised'' and ``supervised'' learning techniques are mentioned, but in the paper these terms are not explained, what part of the learning techniques is semi-supervised and what does that mean?
 % }
 %
 % \response{%
@@ -158,6 +185,7 @@ We thank the reviewer for his/her comments and suggestions, which helped us impr
 % }
 %
 % \response{%
+% not present in the abstract, present in the introduction, I will come back to this.
 % \color{red}{Ricardo, please address this comment.}
 % }
 
@@ -216,10 +244,10 @@ We followed this suggestion and deleted the sentence.
 % \response{%
 % In \textbf{Decision Trees} section we provided a definition of confusion matrix for the simplest case of two categories. The idea can be extended for more than two (in our case four) categories.
 % }
-%
-% \comment{13}{%
-% Page 17, lines 391--394: this sentence should be re-worded, what is an ``accurate conclusion''? You should be very specific that your conclusion is that instead of using all 11 validation metrics you can select a few in order to get the same categorization as all 11 metrics would have given you.}
-%
+
+\comment{13}{%
+Page 17, lines 391--394: this sentence should be re-worded, what is an ``accurate conclusion''? You should be very specific that your conclusion is that instead of using all 11 validation metrics you can select a few in order to get the same categorization as all 11 metrics would have given you.}
+
 % \response{%
 % You are right. It could be misleading. We re-worded the sentence.
 % }
