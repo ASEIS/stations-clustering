@@ -4,7 +4,10 @@
 
 As explained in the methodology, the first step is to carry out a clustering process on the dataset in order to properly label the samples according to the classes to be used in the decision tree algorithm. Figure \ref{fig:clusters} presents a sample of the results obtained after applying the constrained \kmeans{} method, including subspacing. Recall that there are a total of 550 subspaces. Figure \ref{fig:clusters} shows three examples for each one of the subspaces considered, that is, three for each one of the 2-, 3-, and 4-feature subspace analyses. However, since it is not practical or possible to present three- or higher-dimensional plots, we display the results from a two-dimensional perspective into the subspaces by picking 2 metrics at a time. (Note that the only cases in which this is a direct view into the clustering results are the 2-feature analysis cases.)
 
-Some aspects of Fig.~\ref{fig:clusters} are worth discussing. Although in most plots all four clusters are clearly distinguishable, there are others in which that is not the case. In the C5-C9 and C7-C9 combinations in the 3-feature analysis, for instance, the excellent cluster has a limited presence. This is due to the influence of the lower C9 values (see Fig.~\ref{fig:data-box-plot}) on the correlations with C5 and C7. This is not necessarily a bad thing, as it helps to understand the different relationships between the various GOF metrics. In the best of cases, the combinations C1-C2 and C5-C8 in the 2- and 4-feature analysis, for instance, exhibit an almost perfect proportionality between the metrics. That means either one of the metrics in those combinations is redundant. Relationships with redundant features are those where knowledge about one of the features provides a direct view into the other. On the other hand, the combination C1-C7 in the 2-feature analysis presents an example of an irrelevant feature. We say C1 is irrelevant because it provides no insight about the outcome of C7 or that of the clusters. Identifying subspaces with redundant and irrelevant features is important because, on the one hand, the former help reduce the number of necessary features, while on the other hand, the latter can essentially be discarded because of their weak contribution to the decision making process \citep{Dy_2004_MLR}.
+Some aspects of Fig.~\ref{fig:clusters} are worth discussing. Although in most plots all four clusters are clearly distinguishable, there are others in which that is not the case. In 
+% the C5-C9 and C7-C9 combinations in 
+\change{the combinations in}
+the 3-feature analysis, for instance, the excellent cluster has a limited presence. This is due to the influence of the lower C9 values (see Fig.~\ref{fig:data-box-plot}) on the correlations with C5 and C7. This is not necessarily a bad thing, as it helps to understand the different relationships between the various GOF metrics. In the best of cases, the combinations C1-C2 and C5-C8 in the 2- and 4-feature analysis, for instance, exhibit an almost perfect proportionality between the metrics. That means either one of the metrics in those combinations is redundant. Relationships with redundant features are those where knowledge about one of the features provides a direct view into the other. On the other hand, the combination C1-C7 in the 2-feature analysis presents an example of an irrelevant feature. We say C1 is irrelevant because it provides no insight about the outcome of C7 or that of the clusters. Identifying subspaces with redundant and irrelevant features is important because, on the one hand, the former help reduce the number of necessary features, while on the other hand, the latter can essentially be discarded because of their weak contribution to the decision making process \citep{Dy_2004_MLR}.
 
 \begin{figure*}[ht!]
 	\centering
@@ -26,8 +29,8 @@ In total, the clustering process results in 816, 1253, 879 and 76 data samples f
 \myrevision{through random selection of data from that class until elevating the number of samples in this class to 760 as indicated in Fig.~\ref{fig:count-classes} with the dashed line. This oversampling is considered as a $\times$10 factor.} 
 \myremove{randomly by a $\times$10 factor until elevating the number of samples in this class to 760 as indicated in Fig.~\ref{fig:count-classes} with the dashed line.} 
 % By common standards, an oversample rate of $\times$10 is considered acceptable \citep{Weiss_2003_JAIR}. 
-\mychange{According to \citet{Weiss_2003_JAIR}, an oversample rate of $\times$10 is considered to be acceptable in this type of data processing.}
-(Arguably, we could have as well undersampled the fair class, but we deemed that unnecessary. Instead, we used a \myremove{strong} \myrevision{heavy} pruning process to prevent overfitting.) Once this process was completed we went on with the decision tree analysis. 
+\change{According to \citet{Weiss_2003_JAIR}, an oversample rate of $\times$10 is considered to be acceptable in this type of data processing.}
+(Arguably, we could have as well undersampled the fair class, but we deemed that unnecessary. Instead, we used a \change{heavy} pruning process to prevent overfitting.) Once this process was completed we went on with the decision tree analysis. 
 
 \begin{figure}[t]
 	\centering
@@ -138,70 +141,15 @@ Notice that in all trees \myrevision{,using all metrics,} the metrics C4 (total 
 
 \myrevision{It is obvious that C8(response spectra) and C5(peak acceleration) are the most important metrics in developing the prediction models. Therefore, in order to understand other parameters importance we developed two sets of trees according to complexity of the original trees (the structure of generated trees are not presented here), while once dropping C8 (response spectra) and once dropping C8 (response spectra) and C5(peak acceleration) from the prediction attributes. According to Table \ref{tab:participation}, these trees also emphasize the importance of C4 and C6. However, in the absence of C5(peak acceleration) and C8 (response spectra),  C3 (Arias intensity) and C9 (Fourier spectrum) become more effective in developing prediction models. Also C11(strong phase duration) becomes somewhat important in the most complicated tree.}
 
-A low participation does not necessarily mean that a given metric is not important. Arguably, the strong phase duration is highly regarded as an important parameter for strong motion records in engineering. What the results we present here mean, in the context of GOF validation \myrevision{for engineering applications} , is that in order to classify whether a simulation result is poor, fair, good, or excellent, other metrics such as energy (C8) are much more decisive in \myrevision{narrowing eleven validation metrics into fewer numbers in order to get the same categorization as all eleven metrics}  \myremove{reaching an accurate conclusion about validation quality} than the duration (C11).
+A low participation does not necessarily mean that a given metric is not important. Arguably, the strong phase duration is highly regarded as an important parameter for strong motion records in engineering. What the results we present here mean \change{is that, in the context of this particular set of 11 metrics, in order to classify whether a simulation result is poor, fair, good, or excellent, other metrics such as energy (C8) are much more influential in the final result than the duration (C11). This, of course, is done under the assumption that one seeks to narrow the selection of metrics without loss of insight about the outcome of the validation process when compared to the outcome obtained with the whole suite of the eleven metrics used here.}
+
+% Original:
+% A low participation does not necessarily mean that a given metric is not important. Arguably, the strong phase duration is highly regarded as an important parameter for strong motion records in engineering. What the results we present here mean, in the context of GOF validation, is that in order to classify whether a simulation result is poor, fair, good, or excellent, other metrics such as energy (C8) are much more decisive in reaching an accurate conclusion about validation quality than the duration (C11).
+
+% Naeem suggestion:
+% A low participation does not necessarily mean that a given metric is not important. Arguably, the strong phase duration is highly regarded as an important parameter for strong motion records in engineering. What the results we present here mean, in the context of GOF validation for engineering applications, is that in order to classify whether a simulation result is poor, fair, good, or excellent, other metrics such as energy (C8) are much more decisive in narrowing eleven validation metrics into fewer numbers in order to get the same categorization as all eleven metrics than the duration (C11).
 
 In the end, the final selection of a preferred tree comes down to reducing complexity in the analysis without compromising the interpretation of results. We favor tree T1 because it is based only in three decision steps, and two GOF metrics: C4 (total energy), and C8 (response spectra).
 
-
-%\begin{table}[t]
-%	\centering
-%	\caption{Metrics data analysis participation in select trees (in percent)}
-%	\label{tab:participation}
-%	\small
-%	\begin{tabular}{lrrrr}
-%	Metric 	& T1 	& T2	& T3 	& T66 	\\ 
-%	\hline
-%	C1 		& --	& --	& -- 	& 1.5	\\
-%	C2 		& -- 	& --	& -- 	& 0.5	\\
-%	C3 		& -- 	& -- 	& -- 	& 9.6	\\
-%	\rowcolor{light-light-gray}
-%	C4 		& 46.8	& 52.4	& 60.2	& 100.0	\\
-%	\rowcolor{light-light-gray}
-%	C5 		& -- 	& 21.5	& 21.5	& 72.2	\\
-%	\rowcolor{light-light-gray}
-%	C6 		& -- 	& -- 	& 37.0	& 56.3	\\
-%	C7 		& -- 	& -- 	& -- 	& 19.4	\\
-%	\rowcolor{light-light-gray}
-%	C8 		& 100.0	& 100.0	& 100.0	& 100.0	\\
-%	C9 		& -- 	& -- 	& --	& 23.8	\\
-%	C10		& -- 	& -- 	& -- 	& 22.2	\\
-%	C11		& -- 	& -- 	& -- 	& -- 	\\
-%	\hline
-%	\end{tabular}
-%\end{table}
-
-
-\begin{table}[t]
-	\centering
-	\caption{Metrics data analysis participation in select trees (in percent). \myrevision{Stars represent the trees with same complexity in pruning process, however, not exact tree structures.}}
-	\label{tab:participation}
-	\small
-	\myrevision{
-	\begin{tabular}{lrrrrrrrrrrrr}
-	Metric 	& T1 	& T2	& T3 	& T66  & T1* 	& T2*	& T3* 	& T66*  & T1* 	& T2*	& T3* 	& T66* 	\\ 
-	\hline
-	&\multicolumn{4}{c}{Including C8} & \multicolumn{4}{c}{Without C8}&  \multicolumn{4}{c}{Without C5 and C8}\\
-	\hline
-	C1 		& --	& --	& -- 	& 1.5 & --	& --	& -- 	& --- & --	& --	& -- 	& --	\\
-	C2 		& -- 	& --	& -- 	& 0.5 & --	& --	& -- 	& 2.27 & --	& --	& -- 	& --	\\
-	C3 		& -- 	& -- 	& -- 	& 9.6 & --	& --	& -- 	& 53.22 & --	& 60.35	& 61.19 	& 99.11	\\
-	\rowcolor{light-light-gray}
-	C4 		& 46.8	& 52.4	& 60.2	& 100.0  & 44.35	& 81.77	& 81.77 	& 83.20 & 47.44	& 48.67	& 80.54 	& 54.64	\\
-	\rowcolor{light-light-gray}
-	C5 		& -- 	& 21.5	& 21.5	& 72.2 & 100.0	& 100.0	& 100.0 	& 100.0 & --	& --	& -- 	& --	\\
-	\rowcolor{light-light-gray}
-	C6 		& -- 	& -- 	& 37.0	& 56.3 & 58.65	& 63.51	& 62.77 	& 82.39 & 100.0	& 100	& 100 	& 100\\
-	C7 		& -- 	& -- 	& -- 	& 19.4 & --	& --	& -- 	& 32.37 & --	& --	& -- 	& 43.24	\\
-	\rowcolor{light-light-gray}
-	C8 		& 100.0	& 100.0	& 100.0	& 100.0 & --	& --	& -- 	& --	 & --	& --	& -- 	& --\\
-	C9 		& -- 	& -- 	& --	& 23.8 & --	& --	& -- 	& 48.63 & --	& --	& -- 	& 72.22	\\
-	C10		& -- 	& -- 	& -- 	& 22.2 & --	& --	& -- 	& 24.93 & --	& --	& -- 	& 20.46	\\
-	C11		& -- 	& -- 	& -- 	& -- 	    & --	& --	& -- 	& --- & --	& --	& -- 	& 8.09\\
-	\hline
-	\end{tabular}
-	}
-\end{table}
-
-
-
+\input{tab-partition}
 
