@@ -171,15 +171,15 @@ Thanks for the comment. We limited the use of these terms to a minimum and/or re
 % \response{%
 % We briefly explained these terms \textbf{Data Analysis Method} section. We also added clarification about semi-supervised and supervised learning into  \textbf{Introduction} section.
 % }
-%
-% \comment{4}{%
-% In introduction, the difference between ``verification'' and ``validation'' should be discussed.
-% }
-%
-% \response{%
-% A discussion about verification and validation is added.
-% }
-%
+
+\comment{4}{%
+In introduction, the difference between ``verification'' and ``validation'' should be discussed.
+}
+
+\response{%
+A brief description of the differences between verification and validation was added to the Introduction.
+}
+
 % \comment{5}{%
 % In abstract and introduction, what does a ``direct application'' mean? it's not clear. Similarly, in Validation Metrics section: ``direct quantitative comparisons'' and ``indirect statistical analysis''.
 % }
@@ -221,14 +221,14 @@ Page 7, line 133: delete the last sentence
 We followed this suggestion and deleted the sentence.
 }
 
-% \comment{10}{%
-% Page 14, line 310: you say ``...the latter can essentially be discarded...'' I don't understand this statement, wouldn't this mean that both C1 and C7 are important to consider since they are independent of each other (one gives information that the other one doesn't)?
-% }
-%
-% \response{%
-% In that specific subspace (C1,C7), C1 does not help in clustering process. That is why we call it irrelevant feature, because one can define the clusters based on only defining boundaries on C7. C1 can be important, however, it does not add any positive or negative values in decision making process in this subspace analysis.
-% }
-%
+\comment{10}{%
+Page 14, line 310: you say ``...the latter can essentially be discarded...'' I don't understand this statement, wouldn't this mean that both C1 and C7 are important to consider since they are independent of each other (one gives information that the other one doesn't)?
+}
+
+\response{%
+In the specific case of the 2-feature clustering in the C1-C7 subspace, what the results show is that only C7 (in the vertical axis) is playing a role in establishing boundaries between the different classes. C1 does not help to do that. C1 may be important in other context, but here it does not add any value to the decision making process. That is why we call it irrelevant feature, because one can define the clusters based on only defining boundaries on C7. It is normal to have a tendency to interpret this as a correlation problem, in which the interpretation of independence (i.e., lack of correlation between C1 and C7) would indicate that both are relevant. But that is not the goal of the clustering process. The goal is to identify which metrics play a role in delimiting the classes when correlated to other metrics. In other words, the colors and the way boundaries end up forming in these figures, is as important as the shape of the clouds of data-points.
+}
+
 % \comment{11}{%
 % Page 14, line 323: It's not clear how you ``replicate data'', provide more detail.
 % }
@@ -256,9 +256,9 @@ You are right. It could be misleading. We reworded the second half of this parag
 Page 18, line 405: this is implying that fig 10 is similar to fig2! I personally cannot see this in the figures! They look very different. It might be better to regenerate fig 11a but with different color scales that only vary by four choices, then the comparison would be much easier.
 }
 
-% \response{%
-% That is correct. The statement convey part of the message. Although we expect to see similarities between the current results and previous studies, we keep in mind that this study is based on lack of consensus on using GOF metrics for validation purposes. Since the previous study is representing a uniform average of all metrics, we do not expect to match all stations. Therefore, we prefer to keep it as numerical. We modified the text accordingly.
-% }
+\response{%
+In hindsight, we may have allowed ourselves to be carried away by our own optimism. We have therefore modified our comments in this section to a more self-critical approach about the results. The question is really not whether they look the same or not, but whether they lead to similar---if not equivalent---conclusions. It is our interpretation that they do in the sense that looking at the results obtained with either approach one may walk away with the same conclusion about the simulation as a whole and about how well (or not well) did the simulations turned out with respect to specific areas in the simulation domain. We modified the text to convey this message, now hopefully more clearly than before.
+}
 
 % \comment{15}{%
 % Figure 8: I don't know what you mean by y-label ``decision attributes''. Do you mean ``the number of GOF metrics''? why there is no data point for 1 or 11?

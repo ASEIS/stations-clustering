@@ -1,9 +1,13 @@
 
-\section{Verification Test}
+% \section{Verification Test}
+\section{\change{Testing}}
 
-We now use tree T1 on the original simulation results from \citet{Taborda_2014_BSSA}, for different velocity models and components of motion. In this case we no longer aggregate all data from the simulation but now look at individual simulations done with different velocity models, and the three components of motion separately, as it would normally be done during any ground motion simulation validation. The results obtained with the T1 validation algorithm are shown in Fig.~\ref{fig:res-gof-maps}. These results are in essence very similar to those obtained by \citet{Taborda_2014_BSSA}, though using the T1 algorithm, we now rely only on the two metrics C4 and C8.
-
-A relative drawback from the T1 algorithm is that because its outcome are GOF validation classes (poor, fair, good, excellent) as opposed to GOF validation scores (with values from 0 to 10), then once one obtains the results for the validation process for different components of motion (as shown in the rows of Fig.~\ref{fig:res-gof-maps}) then there is no natural way of taking averages as one would do for scores in a numerical scale. Therefore, in order to combine results from the three components into a single validation classification for each station, we define the following rules:
+We now \change{test} tree T1 on the original simulation results from \citet{Taborda_2014_BSSA}, for different velocity models and components of motion. In this case we no longer aggregate all data from the simulation but now look at individual simulations done with different velocity models, and the three components of motion separately, as it would normally be done during any ground motion simulation validation. The results obtained with the T1 validation algorithm are shown in Fig.~\ref{fig:res-gof-maps}. \change{In an ideal case, we would expect these results to closely resemble those obtained by \citet{Taborda_2014_BSSA}, if grouped only into four categories. Relying only on the two metrics C4 and C8 using T1 is, however, not exactly the same. In addition, a}
+% 
+% These results are in essence very similar to those obtained by \citet{Taborda_2014_BSSA}, though using the T1 algorithm, we now rely only on the two metrics C4 and C8.
+% 
+% A relative 
+drawback from the T1 algorithm is that because its outcome are GOF validation classes (poor, fair, good, excellent) as opposed to GOF validation scores (with values from 0 to 10), then once one obtains the results for the validation process for different components of motion (as shown in the rows of Fig.~\ref{fig:res-gof-maps}) then there is no natural way of taking averages as one would do for scores in a numerical scale \change{\citep[as typically done when using][]{Anderson_2004_Proc}}. Therefore, in order to combine results from the three components into a single validation classification for each station, we define the following rules:
 
 \begin{itemize}
 	\setlength\itemsep{0ex}
@@ -12,7 +16,8 @@ A relative drawback from the T1 algorithm is that because its outcome are GOF va
 	\item If all three components have different validation classes, then the final combination result is set as the lower class of the three, penalizing the lack of conclusive results.
 \end{itemize}
 
-We call the result of applying these rules a tree T1 combination. Applying them to the validation results shown in Fig.~\ref{fig:res-gof-maps} for the case of the simulation done using the model CVM-S is shown in Fig.~\ref{fig:avg-gof-maps}, which compares the outcome with the result of the average scores obtained using the traditional \citet{Anderson_2004_Proc}-type GOF method. This figure exemplifies the difference between the numeric GOF validation-scores scale and the proposed T1 GOF validation classes. At the same time, it highlights the similarities between the outcomes.
+We call the result of applying these rules a tree T1 combination. Applying them to the validation results shown in Fig.~\ref{fig:res-gof-maps} for the case of the simulation done using the model CVM-S is shown in Fig.~\ref{fig:avg-gof-maps}, which compares the outcome with the result of the average scores obtained using the traditional \citet{Anderson_2004_Proc}-type GOF method. This figure exemplifies the \change{differences or similarities} between the numeric GOF validation-scores scale and the proposed T1 GOF validation classes. 
+% At the same time, it highlights the similarities between the outcomes.
 
 \begin{figure*}%[th!]
 	\centering
@@ -21,7 +26,9 @@ We call the result of applying these rules a tree T1 combination. Applying them 
 	\label{fig:res-gof-maps}
 \end{figure*}
 
-In our view, the T1 results are simpler to assimilate and equally informative. Looking at both plots in Fig.~\ref{fig:avg-gof-maps} it is possible to argue they lead to \myremove{the same} \myrevision{similar} conclusions and present a similar picture of the validation of the simulation, not only globally but at specific locations, with only minor differences---especially if one is to consider the assumed equivalence between scores and classes (0--4: poor; 4--6: fair; 6--8:good; 8--10: excellent). \myrevision{However, we do not expect to see the same results in both figures. \citet{Taborda_2014_BSSA} results is developed based on assigning uniform weight on all metrics, however, this study research question is addressing the importance of different metrics and implying that assigning uniform weights might not provide accurate results.}
+In our view, the T1 results are simpler to assimilate and equally informative. Looking at both plots in Fig.~\ref{fig:avg-gof-maps} it is possible to argue they lead to \change{similar conclusions in respect to the overall validation of the simulation, and in respect to some particular areas and specific locations. Nonetheless, it must be said that we do not expect to see a 1-to-1 relationship. That is the scope of a future work, whereas here our focus was on identifying the relevance of the different metrics. This is important because the original approach proposed by \citet{Anderson_2004_Proc} favors a uniform weighing of metrics, and the results shown here indicate this may not be the preferred strategy.}
+
+% conclusions and present a similar picture of the validation of the simulation, not only globally but at specific locations, with only minor differences---especially if one is to consider the assumed equivalence between scores and classes (0--4: poor; 4--6: fair; 6--8:good; 8--10: excellent). \myrevision{However, we do not expect to see the same results in both figures. \citet{Taborda_2014_BSSA} results is developed based on assigning uniform weight on all metrics, however, this study research question is addressing the importance of different metrics and implying that assigning uniform weights might not provide accurate results.}
 
 \begin{figure*}[th!]
 	\centering
