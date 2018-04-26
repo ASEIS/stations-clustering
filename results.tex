@@ -16,12 +16,12 @@ the 3-feature analysis, for instance, the excellent cluster has a limited presen
 	\label{fig:clusters}
 \end{figure*}
 
-Figure \ref{fig:boxed-clusters} shows the statistical distribution (box-plots) of the samples once the dataset is partitioned into the four GOF validation classes. This is similar to Fig.~\ref{fig:data-box-plot}, but after the clustering process is completed. Separately, we prepared similar plots to look at the influence of the velocity models and components of motions on the results of the clustering process and, as observed before, they had no significant differences with the aggregate of all the samples in the dataset.
+Figure \ref{fig:boxed-clusters} shows the statistical distribution (box-plots) of the samples once the dataset is partitioned into the four GOF validation classes. This is similar to Fig.~\ref{fig:data-box-plot}, but after the clustering process is completed. Separately, we prepared similar plots to look at the influence of the velocity models and components of motions on the results of the clustering process and, as observed before, they had no significant differences with the aggregate of all the samples in the dataset. \change{Figure 6 is particularly important because it highlights the outcome of the clustering process and provides a preview into the decision tree analysis results. Notice that metrics C5 through C8 consistently fall within the poor, fair, good, and excellent classification and that metrics C3 and C4 also show a progressive variation in sync with the validation classes. This means that these metrics are likely the best predictors for the outcome of the validation process, as we will see upon performing the decision tree analysis. On the other hand, metrics C1 and C2, and C9 through C11 are almost invariant, therefore less or not decisive in the validation process. C11, in particular, shows a broader (larger boxes) distribution, which indicates that it is less effective in predicting the final validation class.}
 
 \begin{figure*}
 	\centering
-	\includegraphics[width=\textwidth]{figures/pdf/figure-06_mod}
-	\caption{Statistical distribution of the dataset as partitioned into the four validation categories (poor, fair, good, excellent) after the clustering analysis. The distributions are shown in the form of box-plots for each metric (C1 through C11). In each case, the median is indicated by a notch in the box of the central quartiles, and the lines represent the interquartile range, with outliers shown as scattered dots. The color version of this figure is available only in the electronic edition. \myrevision{Dashed lines represent the boundaries of poor, fair, good, and excellent categories according to  \citeauthor{Anderson_2004_Proc}'s method.}}
+	\includegraphics[width=\textwidth]{figures/pdf/figure-06}
+	\caption{Statistical distribution of the dataset as partitioned into the four validation categories (poor, fair, good, excellent) after the clustering analysis. The distributions are shown in the form of box-plots for each metric (C1 through C11). In each case, \change{the medians are indicated by a notch in the boxes of the central quartiles, and the vertical} lines represent the interquartile range, with outliers shown as scattered dots. \change{The dashed lines and background shadows represent the boundaries of the poor, fair, good, and excellent categories as defined by \citet{Anderson_2004_Proc}.} The color version of this figure is available only in the electronic edition.}
 	\label{fig:boxed-clusters}
 \end{figure*}
 
@@ -153,3 +153,4 @@ In the end, the final selection of a preferred tree comes down to reducing compl
 
 \input{tab-partition}
 
+\input{tab-partition-extra}
