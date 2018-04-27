@@ -212,8 +212,7 @@ You are treating these metrics as ``independent variables'', but as you have als
 }
 %
 \response{%
-\textcolor{red}{[ *** Pending ***]}
-% This is a very interesting comment. You are totally right. There are fairly high correlation between Arias intensity and energy integral. However, decision tree algorithm is robust enough to realize this similarity and pick the best one in each decision making process. As we remove the peak ground acceleration and response spectra from the prediction model, the algorithm looks for other best parameters. In case of hundreds of metrics it would be a reasonable choice to do feature selection analysis and choose one metric out of several correlated metrics. However, in this study, we only deal with 11 metrics and the results show that it works fairly well.
+This is a very valid point. However, an important aspect to keep in mind is that the clustering process and the subsequent construction of the decision is not the same as a correlation analysis, and it is therefore not compromised by having highly correlated metrics. On the contrary, the process naturally selects the metrics with the best chance of predicting the outcome. In the case of two metrics being highly correlated, the process would still analyze which of the two is a better predictor. In some cases it may decide to keep both, and in some cases it may decide that one is enough. In attention to this and other related comments we decided to include an additional table (Table 7) showing how the level of participation of the different metrics would change if one removes some of the initially most relevant metrics. This should help the readers better understand the results of our work.
 }
 
 \comment{9}{%
@@ -245,7 +244,7 @@ I don't think ``confusion matrix'' given in tables is explained in the paper!
 }
 
 \response{%
-We are a little surpirsed by this comment. The paper does have an explanation about confusion matrices. In the original manuscript, this explanation is the section titled \textbf{Decision Trees}, page 13, between lines 280 and 282. The explanation includes an illustrative example for the simplest case of two categories and it should not be difficult for any reader of the BSSA to understand this concept is extendable to larger matrics such as those shown in Tables 2 and 3. We added a sentence in the explanation to make it explicit that they can be extended to deal with more attributes.
+The explanation about confusion matrices in the original manuscript was in the section titled \textbf{Decision Trees}, page 13, between lines 280 and 282. The explanation included an illustrative example for the simplest case of two categories. We assumed it would be clear that this concept is extendable to larger matrics such as those shown in Tables 2 and 3. We added a sentence in the explanation to make it explicit that they can be extended to deal with more attributes.
 }
 
 \comment{13}{%
@@ -276,8 +275,7 @@ The conclusion basically says that response spectrum is the most important valid
 }
 
 \response{%
-\textcolor{red}{[ *** Pending ***]}
-% That is a very good suggestion. We excluded C8(response spectra) and C5(peak acceleration) from analysis and reproduce similar trees with same complexities in terms of pruning process with previous four trees. As we expected, most important, metrics are still C4 and C6.  C11 also become somewhat effective in the most complicated tree.
+We also mention in the conclusion that the next metrics in line are the energy (C4), the peak acceleration (C5) and peak velocity (C6). In order to emphasize this point, as described in the response to comment \#8, we also included a new table (Table 7) showing the participation of the different metrics in the absence of the response spectra (C8) and the peak acceleration (C5). The results confirm that in such cases the scond most relevant metrics are still the energy (C4) and the peak ground velocity (C6) as mentioned before. This additional analysis also confirms the very low or null participation of the duration (C11) in other trees.
 }
 
 \noindent
@@ -356,8 +354,7 @@ It would also be useful to have some discussion regarding which parameters were 
 }
 
 \response{%
-\textcolor{red}{[ *** Pending ***]}
-% We also studied the models without response spectra (C8) and without response spectra (C8) and peak ground acceleration (C5).
+We addressed this by considering additional trees in the cases of removing metrics C5 and C8 (see Table 7). This was also done in response to the comments \#8 and \#16 from Reviewer 1. As we explain in the response to those comments, the procedure used here is different from a simpler correlation analisis in which a metric can be directly related by other if ``repetitive''. Here, the algorithm searches for the potential of each metric to serve as a predictor. In some cases, one may need two well correlated metrics to aid in that decision process, while not in others. By including the results shown in the new Table 7, instead of trying to understand these correlations, we can see what metrics become relevant in the absence of others. The results indicate that in addition to the energy and the response spectra, the next in line are the peak response in acceleration, velocity, and the Arias intensity. They also confirm the lack of relevance of the duration (C11), the time integrals (C1) and (C2), and the cross correlation (C10).
 }
 
 \comment{1}{%
@@ -403,7 +400,7 @@ Line 61: This sentence should end with a ``?''.
 }
 
 \response{%
-We disagree. In our view, these sentences are written as indirect questions and do not require the use of a question mark. To make this clearer, we modified the beginning of the sentences slightly by removing the colon and adding the word ``regarding''.
+In our view, these sentences are written as indirect questions and do not require the use of a question mark. To make this clearer, we modified the beginning of the sentences slightly by removing the colon and adding the word ``regarding''.
 }
 
 \comment{7}{%
