@@ -2,8 +2,8 @@
 \subsection{Decision Trees}
 \label{sec:decision-tree}
 
-Building decision trees is a supervised learning process used to approximate a target function as a sequence of disjunctive conditions designed to measure the effectiveness of a set of attributes to classify data and predict outcomes. The theory behind decision trees is well established \citep[e.g.,][]{Quinlan_1986_ML, Quinlan_1993_Book, Mitchell_1997_Book}. 
-% \myrevision{A decision tree can be used to classify a case by starting at the root of the tree and moving through it until the leaf is encountered. Each tree is a structure including a root, decision nodes and leaf nodes. Decision nodes specifies some test to carried out on attributes and leaf nodes indicate the final class \citep{Quinlan_1993_Book}.} 
+Building decision trees is a supervised learning process used to approximate a target function as a sequence of disjunctive conditions designed to measure the effectiveness of a set of attributes to classify data and predict outcomes. The theory behind decision trees is well established \citep[e.g.,][]{Quinlan_1986_ML, Quinlan_1993_Book, Mitchell_1997_Book}.
+% \myrevision{A decision tree can be used to classify a case by starting at the root of the tree and moving through it until the leaf is encountered. Each tree is a structure including a root, decision nodes and leaf nodes. Decision nodes specifies some test to carried out on attributes and leaf nodes indicate the final class \citep{Quinlan_1993_Book}.}
 Decision trees are, however, non-unique. They depend on the dataset, the user parameters, and the algorithm employed to build them \citep{Murthy_1998_DMKD}. Therefore, before describing our choice of the decision tree algorithm and parameters, we revise three aspects about the dataset: data classes, attributes equivalence, and dataset balance.
 
 First, regarding data classes we refer to whether the classes of data are properly distinguishable or not, and to whether the data attributes contribute to those classes or not. In our case, data classes are handled by means of the clustering process. As we described in the previous section, at the end of the clustering process, all the data-points (or samples) in our dataset get labeled with one out of four outcome classes (or clusters) defined in terms of the validation categories (poor, fair, good, excellent).
@@ -16,32 +16,32 @@ Last, there is the issue of balance. A balanced dataset is one that has about th
 
 Upon completing the clustering and resampling processes, the next step is to subdivide the dataset in two, a training dataset (with 70 percent of the samples picked randomly), and a testing dataset (with the remaining 30 percent). We first use the training dataset to build a large suite of potential decision trees, and then use the testing dataset to evaluate and pick the best possible decision tree(s). There are several algorithms for building decision trees \citep[e.g., ID3, C4.5, C5.0, CART; see][]{Quinlan_1986_ML, Quinlan_1993_Book, Quinlan_1996_JAIR, Breiman_1984_Book}. \change{Here, we use the C5.0 algorithm as implemented by \citet{Kuhn_2017_Manual}. This algorithm is the latest update to the original ID3 and subsequent C4.5 algorithms \citep{Quinlan_1993_Book, Quinlan_1996_JAIR}. C5.0 is superior to its predecessors because it reduces the limitations for handling numerical attributes, missing data, and it has additional features such as the development of boosted models. Discussing the differences between these algorithms is out of the scope of this study.}
 
-% \myrevision{C5.0 is considered as the developed version of ID3 and C4.5, where it does not have any limitations in handling missing data, numerical attributes, and developing boosted models. Internal algorithm of CART is different than other methods, however, discussing technical details of these algorithms are beyond the scope of this study.} 
+% \myrevision{C5.0 is considered as the developed version of ID3 and C4.5, where it does not have any limitations in handling missing data, numerical attributes, and developing boosted models. Internal algorithm of CART is different than other methods, however, discussing technical details of these algorithms are beyond the scope of this study.}
 
 % Here we use the C5.0 implementation \citep{Kuhn_2017_Manual}, which is an extension of the C4.5 algorithm developed by \citet{Quinlan_1993_Book, Quinlan_1996_JAIR}.
 
 In \change{general}, given a dataset, the process of building the tree consists of recursively identifying the attributes in the training data that are most likely to predict an outcome. The process is recursive because new branches and decision nodes are created based on the remaining data at every branch and level, until the tree reaches a certain depth or when other conditions are met. The effectiveness of an attribute $A$ in classifying any subset $S$ from the training data is measured through the information gain $G$ as
-% 
+%
 \begin{equation}
 	\label{eq:gain}
 	G(S,A) = E(S) - \sum_{v \, \in \, A[a]} \frac{ \left| S_v \right| }{ \left| S \right| } E \left( S_v \right)
 	\, ,
-\end{equation} 
-% 
+\end{equation}
+%
 where $A[a]$ is the set of all possible values of attribute $A$, $S_v$ is the subset of $S$ for which attribute $A$ has value $v$, and $E(\cdot)$ is the entropy function given by
-% 
+%
 \begin{equation}
 	E(S) = \sum_{i=1}^{c} \Big( -p_i \log_2 \left(p_i\right) \Big)
 	\, ,
 \end{equation}
-% 
+%
 where $p_i$ is the proportion of $S$ belonging to class $i$, and $c$ are the different values that a given target attribute can take.
 
 Entropy measures the homogeneity of a set of data. The higher the entropy, the more even the distribution of the data across classes. Conversely, an extremely low value of entropy would mean most of the data falls within a particular class. With this in mind, the information gain $G$ of an attribute $A$ for the dataset $S$, or $G(S,A)$ in equation (\ref{eq:gain}), is the expected reduction in entropy caused by partitioning the dataset according to \change{the attribute $A$ \citep{Mitchell_1997_Book}, which here we consider to be discrete. For selection of a threshold for a continuous attribute, please refer to \citet{Quinlan_1996_JAIR}.}
 
 % attribute $A$ \citep{Mitchell_1997_Book}. For selection of a threshold for a \myrevision{numerical} continuous attribute refer to \citet{Quinlan_1996_JAIR}.
 
-\change{In the particular case of the C5.0 algorithm, in addition to the general steps just described, the result of the process of building a decision tree also depends on other logical and numerical parameters. We set the options to: (a) perform feature selection or winnowing, (b) evaluate possible advanced splits of data, (c) use a confidence factor, and (d) use a threshold for the number of samples that go in the tree leaves. The feature selection option is used by the algorithm to choose the most important attribute over others; the option of evaluating advanced splits prevents the use of a hard threshold during the classification by considering different probabilities in assigning data to different classes; \textcolor{red}{the confidence factor (CF) is used to estimate the errors in which one would incur should a given branch be removed, and then used to optimize the pruning process}; and the threshold for the number of samples in a leaf is set to a minimum number $S_{\min}$ (also known as \textit{minCases}) to limit the level of complexity of the tree. Additional details about these options are available in \citet{Quinlan_1993_Book} and \citet{Kuhn_2017_Manual}. For this study, in order to obtain a variety of tree options, we build trees for varying values of CF and $S_{\min}$.}
+\change{In the particular case of the C5.0 algorithm, in addition to the general steps just described, the result of the process of building a decision tree also depends on other logical and numerical parameters. We set the options to: (a) perform feature selection or winnowing, (b) evaluate possible advanced splits of data, (c) use a confidence factor, and (d) use a threshold for the number of samples that go in the tree leaves. The feature selection option is used by the algorithm to choose the most important attribute over others; the option of evaluating advanced splits prevents the use of a hard threshold during the classification by considering different probabilities in assigning data to different classes; the confidence factor (CF) is used to control the level of pruning; and the threshold for the number of samples in a leaf is set to a minimum number $S_{\min}$ (also known as \textit{minCases}) to limit the level of complexity of the tree. Additional details about these options are available in \citet{Quinlan_1993_Book} and \citet{Kuhn_2017_Manual}. For this study, in order to obtain a variety of tree options, we build trees for varying values of CF and $S_{\min}$.}
 
 % SUGGESTED BY NAEEM:
 % In the particular case of the C5.0 algorithm the result of this process depends on several parameters, logical and numerical. We set the options to do feature selection \myrevision{or winnowing. Therefore, the algorithm choose to use the most important attributes and ignore others. We also activate the evaluation of possible advanced splits of data. Sometimes data is very close to the splitting threshold where assigning a hard threshold may incorrectly change the classification, whereas, that small difference could happen because of numerical errors or error in measurement. Therefore, advanced split can define a soft threshold to consider different probabilities in assigning data to different classes. A decision tree can grow so deep to finally classify all training data correctly. However, the tree will be very complex and will suffer from overfitting. In other words it will have very poor functionality for test data. Therefore, decision tree algorithms (here C5.0) first grow the tree up to the most complex tree then based on user defined factors start to prune the grown tree. The pruning process helps to reduce the complexity of the tree and also increase it's generalizability. Consequently the pruned tree's leaf nodes will have training data which belongs to more than one class which the final class will be the mode of that leaf node. In this study we use two parameters to control the pruning process including confidence or certainty factor (CF) and the smallest number of samples that must be put in at least two of the splits ($S_{\min}$, also known as \textit{minCases}). C5.0 algorithm uses error-based pruning method (see \citet{Quinlan_1993_Book} for more details). The objective is to minimize the observed error rate. Therefore, error estimates for leaf nodes and subtrees are computed assuming that they were used to classify a set of unseen cases with a predicted error rate which is computed based on CF and binomial distribution of number of misclassified events (E) and all training data at that leaf (N). Decreasing CF and increasing $S_{\min}$ cause more heavy pruning process \citep[see][]{Kuhn_2017_Manual}.} In particular, we build a suite of trees for varying values of CF and $S_{\min}$.
@@ -52,38 +52,38 @@ Entropy measures the homogeneity of a set of data. The higher the entropy, the m
 Each tree resulting from this process has different qualities. We are interested in selecting a tree that is highly effective, but with a low level of complexity. In other words, we seek a tree with a good ratio of accuracy for predicting the classification outcome of the data, while using a reduced number of attributes (GOF metrics) in only a few number of steps (as given by a small number of decision nodes or a tree with shallow depth). The number of metrics, the number of nodes, and the depth of a tree are directly seen from the topology of the tree, and are often proportional (shallow trees tend to use less nodes, and thus less metrics). In general, smaller trees are preferable because they are easy to understand and often more accurate predictors \citep{Quinlan_1996_JAIR}.
 
 The effectiveness of the tree, on the other hand, needs to be measured. To that end we use the factor $F_{\beta}$ proposed by \citet{Rijsbergen_1979_Book} as
-% 
+%
 \begin{equation}
 	\label{eq:f}
 	F_{\beta} = \frac{ (1 + \beta^2) P R}{\beta^2 P + R}
 	\, ,
 \end{equation}
-% 
+%
 where $P$ and $R$ are the precision and recall factors, respectively, and $\beta$ is a weighting factor between the two. $P$ measures the fraction of data samples that are correctly classified within a category, whereas $R$ measures the fraction of the data classified within that category regardless of whether it was correctly classified or not. Mathematically, they are defined as
-% 
+%
 \begin{equation}
-	P = \frac{ \mathrm{TP} }{ \mathrm{TP} + \mathrm{FP} } 
+	P = \frac{ \mathrm{TP} }{ \mathrm{TP} + \mathrm{FP} }
 	\quad \mathrm{and} \quad
 	R = \frac{ \mathrm{TP} }{ \mathrm{TP} + \mathrm{FN} }
 	\, .
 \end{equation}
-% 
+%
 Here, TP, FP, and FN are the number of samples in the testing dataset considered to be true-positives, false-positives, and false-negatives, respectively. These values are typically ordered in what is known as a confusion matrix. For the simplest case of two categories, a confusion matrix takes the form
-% 
+%
 \begin{equation}
 \nonumber
 \begin{array}{rr@{}rl}
 	&					&	\multicolumn{2}{c}{\mathrm{Prediction}}		\\
 	&					&	\mathrm{Positive}	&	\mathrm{Negative}	\\[0.75ex]
-	\mathrm{Actual~Value}		
+	\mathrm{Actual~Value}
 	&	\begin{array}{r}
 			\mathrm{Positive} \\[1ex]
-			\mathrm{Negative} 
+			\mathrm{Negative}
 		\end{array}
 	&	\left[~
 		\begin{array}{c}
 			\mathrm{TP} \\[1ex]
-			\mathrm{FP} 
+			\mathrm{FP}
 		\end{array}\right.
 	&
 		\left.
@@ -93,7 +93,7 @@ Here, TP, FP, and FN are the number of samples in the testing dataset considered
 		\end{array}~\right]
 \end{array}
 \end{equation}
-% 
+%
 where TN is the number of true-negative samples. \change{These confusion matrices can be larger depending on the number of attributes. In our case, the confusion matrices are size 4$\times$4, in order to compare the actual number of samples with the predicted ones for the four given categories (poor, fair, good and excellent).}
 
 We compute $F_{\beta}$ in equation (\ref{eq:f}) using $\beta = 1$ to give equal weight to $P$ and $R$ \citep{McCarthy_1995_Proc}. This is done for all the trees obtained using all possible combinations of CF and $S_{\min}$ values. Then, we select trees with high levels of effectiveness as \change{measured} by $F_1$, commensurate to such trees having low complexities, i.e., reduced number of metrics and shallow depths, which is precisely the goal set at the start. Note that $F_1$ is obtained based on the testing dataset as opposed to the training dataset. The results as applied to our dataset are presented next.
