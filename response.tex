@@ -60,7 +60,7 @@ Dear Dr. Brocher,
 
 \vspace{1em}
 \noindent
-Thank you for coordinating the review of our manuscript (BSSA-D-18-00056) and for your own comments about it. Altogether, they have certainly helped improve our submission to the Bulletin. We are enclosing a response to both your suggestions and those of the reviewers. We were able to satify most, if not all of them. To help in this second review cycle, in the annotated manuscript version of the paper, we have highlighted the most relevant changes that resulted from your comments and those of the reviewers in green font; and below we provide a response to each one of your comments, followed by our responses to the reviewers. In all three cases we reproduce the original comments in italic black font, and our responses in regular blue font.\\
+Thank you for coordinating the review of our manuscript (BSSA-D-18-00056) and for your own comments about it. Altogether, they have certainly helped improve our submission to the Bulletin. We are enclosing a response to both your suggestions and those of the reviewers. We were able to satisfy most, if not all of them. To help in this second review cycle, in the annotated manuscript version of the paper, we have highlighted the most relevant changes that resulted from your comments and those of the reviewers in green font; and below we provide a response to each one of your comments, followed by our responses to the reviewers. In all three cases we reproduce the original comments in italic black font, and our responses in regular blue font.\\
 
 \noindent
 We look forward to hearing back from you.
@@ -109,11 +109,7 @@ In addition, I also agree that all the terms and methodology should be well defi
 }
 
 \response{%
-\textcolor{red}{[ *** Pending ***]}
-% Thanks for the constructive suggestions. We agree with you and peer reviewers that the technical terms are not commonly used in seismology and strong motion earthquake engineering. The confusion happened because of integrating three different topics into a method to carry out this research. One technical term in one field is different in another field and that cause a confusion. For example cluster, class, and label all are referring to the same concept, however, it depends on the application. We added a paragraph in the \textbf{Data Analysis Method} section to elaborate this confusion.
-% \vspace{2ex}
-% \newline
-% We added text to abstract and conclusion to give a heads up to readers about 11 metrics and one earthquake with 3 velocity model  simulations.
+Thank you for this suggestion. We revised the \textbf{Introduction}, \textbf{Study Dataset}, and \textbf{Data Analysis} sections to carefully introduce and explain the different terms and their equivalencies, when necessary. We think the introduced modifications should solve this issue and provide a long-lasting reference for the BSSA readership.
 }
 
 \introcomment{~}{%
@@ -154,8 +150,7 @@ The terminologies used in the paper are not clear in many cases. For example, wh
 }
 
 \response{%
-\textcolor{red}{[ *** Pending ***]}
-% We agree with you that the technical terms are not commonly used in seismology and strong motion earthquake engineering. The confusion happened because of integrating three different topics into a method to carry out this research. One technical term in one field is different in another field and that cause a confusion. For example cluster, class, and label all are referring to the same concept, however, it depends on the application. We added a paragraph in the \textbf{Data Analysis Method} section to elaborate this confusion.
+We revised the \textbf{Introduction}, \textbf{Study Dataset}, and \textbf{Data Analysis} sections to carefully introduce and explain the different terms and their equivalencies.
 }
 
 \comment{2}{%
@@ -187,7 +182,7 @@ In abstract and introduction, what does a ``direct application'' mean? it's not 
 }
 
 \response{%
-These terms were not present in the Abstract. The term ``direct application'' was present in the Introduction, but it has been removed due to improvements in the text based on other suggestion by this and a second Reviewer. The terms ``direct quantitative comparisons'' and ``indirect statistical analysis'' were present in the Introduction and the Validation Metrics sections. In our view, the first of these terms makes reference to validation through direct, i.e., signal to signal, quantitative comparisons of metrics; while the second of these terms makes reference to validation by means of statistical analysis showcasing the overall results of comparisons, and thus the use of ``indirect''. We understand, however, that this may not be a view shared by any other reader, so we have modified the text to be more explicit about this distinction.
+The term ``direct application'' was present in the Introduction, but it has been removed due to improvements in the text based on other suggestion by this and a Reviewer \#2. The terms ``direct quantitative comparisons'' and ``indirect statistical analysis'' were present in the Introduction and the Validation Metrics sections. In our view, the first of these terms makes reference to validation through direct, i.e., signal to signal, quantitative comparisons of metrics; while the second of these terms makes reference to validation by means of statistical analysis showcasing the overall results of comparisons, and thus the use of ``indirect''. We understand, however, that this may not be a view shared by any other reader, so we have modified the text to be more explicit about this distinction.
 }
 
 \comment{6}{%
@@ -243,7 +238,7 @@ I don't think ``confusion matrix'' given in tables is explained in the paper!
 }
 
 \response{%
-The explanation about confusion matrices in the original manuscript was in the section titled \textbf{Decision Trees}, page 13, between lines 280 and 282. The explanation included an illustrative example for the simplest case of two categories. We assumed it would be clear that this concept is extendable to larger matrics such as those shown in Tables 2 and 3. We added a sentence in the explanation to make it explicit that they can be extended to deal with more attributes.
+The explanation about confusion matrices in the original manuscript was in the section titled \textbf{Decision Trees}, page 13, between lines 280 and 282. The explanation included an illustrative example for the simplest case of two categories. We assumed it would be clear that this concept is extendable to larger matrices such as those shown in Tables 2 and 3. We added a sentence in the explanation to make it explicit that they can be extended to deal with more attributes.
 }
 
 \comment{13}{%
@@ -266,7 +261,7 @@ Figure 8: I don't know what you mean by y-label ``decision attributes''. Do you 
 }
 
 \response{%
-That is right. It should be the number of decision attributes. We modified the figure accordingly. The reason why there is no data for 1 is because there are no trees that would classify the data using a single metric. On the other end, the reason why there is no data for 11 metrics is because the analysis of the data resulted in the metric C11 not having any participation in the decision process, as shown in Table 6. We also tried other trees for which we removed metrics C5 and C8. In such cases the participations of the metrics changes and so do the topology of the trees. Some of them include the metric C11.
+That is right. It should be the number of decision attributes. We modified the figure accordingly. The reason why there is no data for 1 is because the analysis did not yield any tree that would classify the data using a single metric. On the other end, the reason there are no trees with the 11 metrics is because the analysis of the data resulted in the metric C11 not having any participation in the decision process, as shown in Table 6. We also tried other trees for which we removed metrics C5 and C8. In such cases the participations of the metrics changes and so do the topology of the trees. Some of the trees resulting from that analysis did include the metric C11, but with a very small participation, as shown un the new Table 7.
 }
 
 \comment{16}{%
@@ -274,7 +269,7 @@ The conclusion basically says that response spectrum is the most important valid
 }
 
 \response{%
-We also mention in the conclusion that the next metrics in line are the energy (C4), the peak acceleration (C5) and peak velocity (C6). In order to emphasize this point, as described in the response to comment \#8, we also included a new table (Table 7) showing the participation of the different metrics in the absence of the response spectra (C8) and the peak acceleration (C5). The results confirm that in such cases the scond most relevant metrics are still the energy (C4) and the peak ground velocity (C6) as mentioned before. This additional analysis also confirms the very low or null participation of the duration (C11) in other trees.
+These are very good points. Yes, the general consensus about the importance of the response spectra (C8) may not be surprising, but it is still very useful to confirm such importance through a data-informed process. Most important, as pointed out by the reviewer, is to answer the question about what other parameters are relevant. We think our work contributes precisely to that. We mention in the conclusion that the next metrics in line are the energy (C4), the peak acceleration (C5) and the peak velocity (C6). In order to further emphasize this point, as described in the response to comment \#8, we also included a new table (Table 7) showing the participation of the different metrics in the absence of the response spectra (C8) and the peak acceleration (C5). The results confirm that in such cases the next most relevant metrics are still the energy (C4) and the peak ground velocity (C6), as mentioned before. This additional analysis also reafirms the initial conclusion about the very small (and in some cases null) participation of the duration (C11) in most of the decision trees built in the data-processing analysis carried out here.
 }
 
 \noindent
@@ -344,8 +339,7 @@ As a strong ground motion seismologist (i.e., I assume I'm part of the audience 
 }
 
 \response{%
-\textcolor{red}{[ *** Pending ***]}
-% We agree with you that the technical terms are not commonly used in seismology and strong motion earthquake engineering. The confusion happened because of integrating three different topics into a method to carry out this research. One technical term in one field is different in another field and that cause a confusion. For example cluster, class, and label all are referring to the same concept, however, it depends on the application. We added a paragraph in the \textbf{Data Analysis Method} section to elaborate this confusion.
+Thank you for this suggestion. We revised the \textbf{Introduction}, \textbf{Study Dataset}, and \textbf{Data Analysis} sections to carefully introduce and explain the different terms and their equivalencies, when necessary.
 }
 
 \introcomment{~}{%
@@ -353,7 +347,7 @@ It would also be useful to have some discussion regarding which parameters were 
 }
 
 \response{%
-We addressed this by considering additional trees in the cases of removing metrics C5 and C8 (see Table 7). This was also done in response to the comments \#8 and \#16 from Reviewer 1. As we explain in the response to those comments, the procedure used here is different from a simpler correlation analisis in which a metric can be directly related by other if ``repetitive''. Here, the algorithm searches for the potential of each metric to serve as a predictor. In some cases, one may need two well correlated metrics to aid in that decision process, while not in others. By including the results shown in the new Table 7, instead of trying to understand these correlations, we can see what metrics become relevant in the absence of others. The results indicate that in addition to the energy and the response spectra, the next in line are the peak response in acceleration, velocity, and the Arias intensity. They also confirm the lack of relevance of the duration (C11), the time integrals (C1) and (C2), and the cross correlation (C10).
+We addressed this by considering additional trees in the cases of removing metrics C5 and C8 (see Table 7). This was also done in response to the comments \#8 and \#16 from Reviewer 1. As we explain in the response to those comments, the procedure used here is different from a simpler correlation analysis in which a metric can be directly related by other if ``repetitive''. Here, the algorithm searches for the potential of each metric to serve as a predictor. In some cases, one may need two well correlated metrics to aid in that decision process, while not in others. By including the results shown in the new Table 7, instead of trying to understand these correlations, we can see what metrics become relevant in the absence of others. The results indicate that in addition to the energy and the response spectra, the next in line are the peak response in acceleration, velocity, and the Arias intensity. They also confirm the lack of relevance of the duration (C11), the time integrals (C1) and (C2), and the cross correlation (C10).
 }
 
 \comment{1}{%
@@ -439,7 +433,7 @@ Lines 241--243: It is not helpful to list different algorithm names for making d
 }
 
 \response{%
-We disagree about the need to make detailed distinctions about these different algorithms. That is why we provided references. If the reader is interested in learning the differences, the most we can do without expanding the scope of our study is to point him/her in the right direction, which we already do. Nonetheless, in attention to the Reviewer, we modified slightly the descritpion to give some additional context in what regards to the C5.0 algorithm and added a sentence explaining that detailing the alternative algorithms is out of the scope of this study.
+Although it could certainly be good to have a comprehensive discussion about different methods, that would take much space, and it is not within the scope of this study. Instead, we provide adequate references to suggest further reading for the interested audience. That being said, in attention to the Reviewer's comment, we modified slightly the descritpion to give some additional context in what regards to the C5.0 algorithm and added a sentence explaining that detailing the alternative algorithms is out of the scope of this study.
 }
 
 \comment{12}{%
@@ -447,7 +441,7 @@ Lines 257--258: I don't understand this sentence. What is a continuous attribute
 }
 
 \response{%
-Following Equation (3) we define $A[a]$ as all the possible values of attribute $A$. The use of $[a]$ implies that $A$ is considered a numerically discrete attribute. We therefore meant to say that if $A$ continues attribute. Thanks for the comment. Fixed.
+Following Equation (3) we define $A[a]$ as all the possible values of attribute $A$. The use of $[a]$ instead of $(a)$ implies that $A$ is considered to be discrete. We therefore meant to say that if $A$ was continuous, as in $A(a)$, then the reader should refer to Quinlan (1996). We improved the text to make this clearer.
 }
 
 \comment{13}{%
