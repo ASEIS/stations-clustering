@@ -11,12 +11,12 @@ As explained in the methodology, the first step is to carry out a clustering pro
 	\label{fig:clusters}
 \end{figure*}
 
-Some aspects of Fig.~\ref{fig:clusters} are worth discussing. Although in most plots all four clusters are clearly distinguishable, there are others in which that is not the case. In 
-% the C5-C9 and C7-C9 combinations in 
+Some aspects of Fig.~\ref{fig:clusters} are worth discussing. Although in most plots all four clusters are clearly distinguishable, there are others in which that is not the case. In
+% the C5-C9 and C7-C9 combinations in
 \change{the combinations in}
 the 3-feature analysis, for instance, the excellent cluster has a limited presence. This is due to the influence of the lower C9 values (see Fig.~\ref{fig:data-box-plot}) on the correlations with C5 and C7. This is not necessarily a bad thing, as it helps to understand the different relationships between the various GOF metrics. In the best of cases, the combinations C1-C2 and C5-C8 in the 2- and 4-feature analysis, for instance, exhibit an almost perfect proportionality between the metrics. That means either one of the metrics in those combinations is redundant. Relationships with redundant features are those where knowledge about one of the features provides a direct view into the other. On the other hand, the combination C1-C7 in the 2-feature analysis presents an example of an irrelevant feature. We say C1 is irrelevant because it provides no insight about the outcome of C7 or that of the clusters. Identifying subspaces with redundant and irrelevant features is important because, on the one hand, the former help reduce the number of necessary features, while on the other hand, the latter can essentially be discarded because of their weak contribution to the decision making process \citep{Dy_2004_MLR}.
 
-Figure \ref{fig:boxed-clusters} shows the statistical distribution (box-plots) of the samples once the dataset is partitioned into the four GOF validation classes. This is similar to Fig.~\ref{fig:data-box-plot}, but after the clustering process is completed. Separately, we prepared similar plots to look at the influence of the velocity models and components of motions on the results of the clustering process and, as observed before, they had no significant differences with the aggregate of all the samples in the dataset. \change{Figure \ref{fig:boxed-clusters} is particularly important because it highlights the outcome of the clustering process and provides a preview into the decision tree analysis results. Notice that metrics C5 through C8 consistently fall within the poor, fair, good, and excellent classification and that metrics C3 and C4 also show a progressive variation in sync with the validation classes. This means that these metrics are likely the best predictors for the outcome of the validation process, as we will see upon performing the decision tree analysis. On the other hand, metrics C1 and C2, and C9 through C11 are almost invariant, therefore less or not decisive in the validation process. C11, in particular, shows a broader (larger boxes) distribution, which indicates that it is less effective in predicting the final validation class.}
+Figure \ref{fig:boxed-clusters} shows the statistical distribution (box-plots) of the samples once the dataset is partitioned into the four GOF validation classes. This is similar to Fig.~\ref{fig:data-box-plot}, but after the clustering process is completed. Separately, we prepared similar plots to look at the influence of the velocity models and components of motions on the results of the clustering process and, as observed before, they had no significant differences with the aggregate of all the samples in the dataset. \change{Figure \ref{fig:boxed-clusters} is particularly important because it highlights the outcome of the clustering process and provides a preview into the decision tree analysis results. Notice that metrics C5 through C8 consistently fall within \citeauthor{Anderson_2004_Proc}'s poor, fair, good, and excellent classifications, and that metrics C3 and C4 also show a progressive variation in sync with these categories. This means that these metrics are likely the best predictors for the outcome of the validation process, as we will see upon performing the decision tree analysis. On the other hand, metrics C1 and C2, and C9 through C11 are almost invariant, therefore less or not decisive in the validation process. C11, in particular, shows a broader (larger boxes) distribution, which indicates that it is less effective in predicting the final validation class.}
 
 \begin{figure*}
 	\centering
@@ -25,12 +25,12 @@ Figure \ref{fig:boxed-clusters} shows the statistical distribution (box-plots) o
 	\label{fig:boxed-clusters}
 \end{figure*}
 
-In total, the clustering process results in 816, 1253, 879 and 76 data samples for the poor, fair, good and excellent classes, respectively. These groups are shown in Fig.~\ref{fig:count-classes}. As it can be seen in this figure, the number of samples in the excellent class is significantly less than those in the poor, fair, and good classes. Therefore, before moving on with the decision tree analysis, it is necessary to resample the subset of the excellent class\change{, for which we use the oversampling approach described in the previous section. Oversampling is nothing else but a replication of data samples. This process is done randomly, i.e., through a random selection of data samples from the original set to be duplicated until one increases the number of total samples in the oversampled set to a desired target number. In the case of the excellent class, we applied oversampling until reaching a total of 760 samples, as indicated with the dashed line in Fig.~\ref{fig:count-classes}. Since the original size was 76 samples, that means we applied an oversampling ratio of 10$\times$. According to \citet{Weiss_2003_JAIR}, an oversample rate of 10$\times$ is considered to be acceptable in this type of data processing.} (Arguably, we could have as well undersampled the fair class, but we deemed that unnecessary. Instead, we used a \change{heavy} pruning process to prevent overfitting.) Once this process was completed we went on with the decision tree analysis.
+In total, the clustering process results in 816, 1253, 879 and 76 data samples for the poor, fair, good and excellent classes, respectively. These groups are shown in Fig.~\ref{fig:count-classes}. As it can be seen in this figure, the number of samples in the excellent class is significantly less than those in the poor, fair, and good classes. Therefore, before moving on with the decision tree analysis, it is necessary to resample the subset of the excellent class\change{, for which we use the oversampling approach described in the previous section. Oversampling is nothing else but a replication of data samples. This process is done randomly, i.e., through a random selection of data samples from the original set to be duplicated until one increases the number of total samples in the oversampled set to a desired target number. In the case of the excellent class, we applied oversampling until reaching a total of 760 samples, as indicated with the dashed line in Fig.~\ref{fig:count-classes}. Since the original size was 76 samples, that means we applied an oversampling ratio of 10$\times$. According to \citet{Weiss_2003_JAIR}, an oversample rate of 10$\times$ is considered to be acceptable in this type of data processing.} (Arguably, we could have undersampled the fair class as well but we deemed that unnecessary. Besides, we used a \change{heavy} pruning process to prevent overfitting.) Once this process was completed we went on with the decision tree analysis.
 
-% We used the oversampling approach described in the previous section. We replicated data from the excellent class 
-% \myrevision{through random selection of data from that class until elevating the number of samples in this class to 760 as indicated in Fig.~\ref{fig:count-classes} with the dashed line. This oversampling is considered as a $\times$10 factor.} 
-% \myremove{randomly by a $\times$10 factor until elevating the number of samples in this class to 760 as indicated in Fig.~\ref{fig:count-classes} with the dashed line.} 
-% By common standards, an oversample rate of $\times$10 is considered acceptable \citep{Weiss_2003_JAIR}. 
+% We used the oversampling approach described in the previous section. We replicated data from the excellent class
+% \myrevision{through random selection of data from that class until elevating the number of samples in this class to 760 as indicated in Fig.~\ref{fig:count-classes} with the dashed line. This oversampling is considered as a $\times$10 factor.}
+% \myremove{randomly by a $\times$10 factor until elevating the number of samples in this class to 760 as indicated in Fig.~\ref{fig:count-classes} with the dashed line.}
+% By common standards, an oversample rate of $\times$10 is considered acceptable \citep{Weiss_2003_JAIR}.
 
 \begin{figure}[t]
 	\centering
@@ -39,7 +39,7 @@ In total, the clustering process results in 816, 1253, 879 and 76 data samples f
 	\label{fig:count-classes}
 \end{figure}
 
-In total we generated 20,000 trees using the C5.0 algorithm for all possible combinations of the parameters CF and $S_{\min}$, where CF was chosen to vary between 0 and 1 at intervals of size 0.01, and $S_{\min}$ was chosen to vary between 1 and 200 at unitary intervals. Despite our choice for small intervals, the algorithm often reached recurrent tree structures for different CF and $S_{\min}$ values. Therefore, in reality, from the 20,000 combinations for which we ran the algorithm, only 66 unique trees were found. 
+In total we generated 20,000 trees using the C5.0 algorithm for all possible combinations of the parameters CF and $S_{\min}$, where CF was chosen to vary between 0 and 1 at intervals of size 0.01, and $S_{\min}$ was chosen to vary between 1 and 200 at unitary intervals. Despite our choice for small intervals, the algorithm often reached recurrent tree structures for different CF and $S_{\min}$ values. Therefore, in reality, from the 20,000 combinations for which we ran the algorithm, only 66 unique trees were found.
 
 For each one of these unique trees, we computed the effectiveness factor $F_1$ from equation (\ref{eq:f}), and extracted the total number of nodes in the trees and their depth. Figure \ref{fig:nodes-depth} shows the results of $F_1$ for all the trees and its distribution in terms of the number of \change{decision} attributes \change{or GOF metrics} used in the trees as a function of the number of nodes and the depth of each tree. Recall that we are interested in finding a sequence of decisions (represented by disjunctive decision nodes in a tree) that can lead to good GOF predictions (i.e, high values of $F_1$) using a reduced number of attributes (GOF metrics). In general, all the trees obtained with the C5.0 algorithm are good in terms of the effectiveness factor ($F_1$ values close to 1). Then our choice comes down to using a reduced number of metrics. Having several trees with 2, 3, and 4 metrics (as opposed to 11), the following factor in the decision is choosing trees with algorithms using a small number of steps to reach the prediction. This is given by a combination between the depth of the tree and the number of nodes in the tree (i.e., trees with low complexity).
 
@@ -56,15 +56,15 @@ For each one of these unique trees, we computed the effectiveness factor $F_1$ f
 	\label{tab:t1:confusion}
 	\small
 	\begin{tabular}{cccccc}
-		& 		& \multicolumn{4}{c}{Prediction}\\ 
+		& 		& \multicolumn{4}{c}{Prediction}\\
 		\cline{3-6}
 		&   	& P  	& F     & G  	& E 	\\
 		\cline{2-6}
-		\parbox[t]{2mm}{\multirow{4}{*}{\rotatebox[origin=c]{90}{Actual}}}  
+		\parbox[t]{2mm}{\multirow{4}{*}{\rotatebox[origin=c]{90}{Actual}}}
 		& P 	& 242 	& 11 	& 0     & 0    	\\
 		& F 	& 13 	& 313   & 16    & 0    	\\
 		& G 	& 0 	& 42    & 207   & 15   	\\
-		& E 	& 0 	& 0     & 23    & 231	\\ 
+		& E 	& 0 	& 0     & 23    & 231	\\
 		\cline{2-6}
 	\end{tabular}
 \end{table}
@@ -75,15 +75,15 @@ For each one of these unique trees, we computed the effectiveness factor $F_1$ f
 	\label{tab:t3:confusion}
 	\small
 	\begin{tabular}{cccccc}
-		& 		& \multicolumn{4}{c}{Prediction}\\ 
+		& 		& \multicolumn{4}{c}{Prediction}\\
 		\cline{3-6}
 		&   	& P  	& F     & G  	& E 	\\
 		\cline{2-6}
-		\parbox[t]{2mm}{\multirow{4}{*}{\rotatebox[origin=c]{90}{Actual}}}  
+		\parbox[t]{2mm}{\multirow{4}{*}{\rotatebox[origin=c]{90}{Actual}}}
 		& P 	& 248 	& 14 	& 0     & 0    	\\
 		& F 	& 7 	& 343   & 18    & 0    	\\
 		& G 	& 0 	& 9 	& 221   & 33   	\\
-		& E 	& 0 	& 0     & 7    	& 213	\\ 
+		& E 	& 0 	& 0     & 7    	& 213	\\
 		\cline{2-6}
 	\end{tabular}
 \end{table}
@@ -92,7 +92,7 @@ Based on these criteria, we selected three candidate trees: T1, T2, and T3. Thes
 
 At the bottom of each tree in Fig.~\ref{fig:trees} are the histograms of the data that land on each leaf node. (Note that the count of samples here is done based on the training dataset.) The decision tree assigns the final validation category based on the dominant class in each leaf. As such, the samples in the second leaf-node from the right in T3 are categorized as good despite a significant portion of them being excellent. This is a natural trade-off embedded in the use of decision trees.
 
-% , which actually results in more effective trees. 
+% , which actually results in more effective trees.
 
 \begin{figure*}
 	\centering
@@ -111,7 +111,7 @@ Another aspect of interest is the level of participation of each metric in the a
 	\label{tab:t1:f1}
 	\small
 	\begin{tabular}{lccc}
-	Class   & $P$	& $R$  	& $F_1$ \\ 
+	Class   & $P$	& $R$  	& $F_1$ \\
 	\hline
 	P 		& 0.96 	& 0.95 	& 0.95 	\\
 	F 		& 0.92 	& 0.86 	& 0.88 	\\
@@ -128,7 +128,7 @@ Another aspect of interest is the level of participation of each metric in the a
 	\label{tab:t3:f1}
 	\small
 	\begin{tabular}{lccc}
-	Class   & $P$	& $R$  	& $F_1$ \\ 
+	Class   & $P$	& $R$  	& $F_1$ \\
 	\hline
 	P 		& 0.95 	& 0.97 	& 0.95 	\\
 	F 		& 0.93 	& 0.93 	& 0.93 	\\
@@ -147,7 +147,7 @@ Another aspect of interest is the level of participation of each metric in the a
 
 % \myrevision{It is obvious that C8(response spectra) and C5(peak acceleration) are the most important metrics in developing the prediction models. Therefore, in order to understand other parameters importance we developed two sets of trees according to complexity of the original trees (the structure of generated trees are not presented here), while once dropping C8 (response spectra) and once dropping C8 (response spectra) and C5(peak acceleration) from the prediction attributes. According to Table \ref{tab:participation}, these trees also emphasize the importance of C4 and C6. However, in the absence of C5(peak acceleration) and C8 (response spectra),  C3 (Arias intensity) and C9 (Fourier spectrum) become more effective in developing prediction models. Also C11(strong phase duration) becomes somewhat important in the most complicated tree.}
 
-\change{That being said, a} low participation does not necessarily mean that a given metric is not relevant at all. Arguably, the strong phase duration is highly regarded as an important parameter for strong motion records in engineering. What the results we present here mean \change{is that, in the context of this particular set of 11 metrics, in order to classify whether a simulation result is poor, fair, good, or excellent, other metrics such as energy (C8) are much more influential in the final result than the duration (C11). This, of course, is done under the assumption that one seeks to narrow the selection of metrics without loss of insight about the outcome of the validation process when compared to the outcome obtained with the whole suite of the eleven metrics used here.}
+\change{That being said, a} low participation does not necessarily mean that a given metric is not relevant at all. Arguably, the strong phase duration is highly regarded as an important parameter for strong motion records in engineering. What the results we present here mean \change{is that, in the context of this particular set of 11 metrics, in order to classify whether a simulation result is poor, fair, good, or excellent, other metrics such as energy (C4) are much more influential in the final result than the duration (C11). This, of course, is done under the assumption that one seeks to narrow the selection of metrics without loss of insight about the outcome of the validation process when compared to the outcome obtained with the whole suite of the eleven metrics used here.}
 
 % Original:
 % A low participation does not necessarily mean that a given metric is not important. Arguably, the strong phase duration is highly regarded as an important parameter for strong motion records in engineering. What the results we present here mean, in the context of GOF validation, is that in order to classify whether a simulation result is poor, fair, good, or excellent, other metrics such as energy (C8) are much more decisive in reaching an accurate conclusion about validation quality than the duration (C11).

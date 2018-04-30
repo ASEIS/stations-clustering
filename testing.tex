@@ -2,11 +2,13 @@
 % \section{Verification Test}
 \section{\change{Testing}}
 
-We now \change{test} tree T1 on the original simulation results from \citet{Taborda_2014_BSSA}, for different velocity models and components of motion. In this case we no longer aggregate all data from the simulation but now look at individual simulations done with different velocity models, and the three components of motion separately, as it would normally be done during any ground motion simulation validation. The results obtained with the T1 validation algorithm are shown in Fig.~\ref{fig:res-gof-maps}. \change{In an ideal case, we would expect these results to closely resemble those obtained by \citet{Taborda_2014_BSSA}, if grouped only into four categories. Relying only on the two metrics C4 and C8 using T1 is, however, not exactly the same. In addition, a}
-% 
+We now \change{test} tree T1 on the original simulation results from \citet{Taborda_2014_BSSA}, for different velocity models and components of motion. In this case we no longer aggregate all data from the simulation but now look at individual simulations done with different velocity models, and the three components of motion separately, as it would normally be done during any ground motion simulation validation. The results obtained with the T1 validation algorithm are shown in Fig.~\ref{fig:res-gof-maps}. \change{We should note that they are not supposed to be the same as those obtained by \citet{Taborda_2014_BSSA} because T1 no longer gives the same weight to all metrics but relies only on the two metrics C4 and C8. A
+%
+% In an ideal case, we would expect these results to closely resemble those obtained by \citet{Taborda_2014_BSSA}, if grouped only into four categories. Relying only on the two metrics C4 and C8 using T1 is, however, not exactly the same. In addition, a}
+%
 % These results are in essence very similar to those obtained by \citet{Taborda_2014_BSSA}, though using the T1 algorithm, we now rely only on the two metrics C4 and C8.
-% 
-% A relative 
+%
+% A relative
 drawback from the T1 algorithm is that because its outcome are GOF validation classes (poor, fair, good, excellent) as opposed to GOF validation scores (with values from 0 to 10), once one obtains the results for the validation process for different components of motion (as shown in the rows of Fig.~\ref{fig:res-gof-maps}), there is no natural way of taking averages as one would do for scores in a numerical scale \change{\citep[i.e., as typically done when using][]{Anderson_2004_Proc}}. Therefore, in order to combine results from the three components into a single validation classification for each station, we define the following rules:
 
 \begin{itemize}
@@ -16,7 +18,7 @@ drawback from the T1 algorithm is that because its outcome are GOF validation cl
 	\item If all three components have different validation classes, then the final combination result is set as the lower class of the three, penalizing the lack of conclusive results.
 \end{itemize}
 
-We call the result of applying these rules a tree T1 combination. Applying them to the validation results shown in Fig.~\ref{fig:res-gof-maps} for the case of the simulation done using the model CVM-S is shown in Fig.~\ref{fig:avg-gof-maps}, which compares the outcome with the result of the average scores obtained using the traditional \citet{Anderson_2004_Proc}-type GOF method. This figure exemplifies the \change{differences or similarities} between the numeric GOF validation-scores scale and the proposed T1 GOF validation classes. 
+We call the result of applying these rules a tree T1 combination. Applying them to the validation results shown in Fig.~\ref{fig:res-gof-maps} for the case of the simulation done using the model CVM-S is shown in Fig.~\ref{fig:avg-gof-maps}, which compares the outcome with the result of the average scores obtained using the traditional \citet{Anderson_2004_Proc}-type GOF method. This figure exemplifies the \change{differences or similarities} between the numeric GOF validation-scores scale and the proposed T1 GOF validation classes.
 % At the same time, it highlights the similarities between the outcomes.
 
 \begin{figure*}%[th!]
@@ -38,9 +40,3 @@ In our view, the T1 results are simpler to assimilate and equally informative. L
 \end{figure*}
 
 % \myrevision{It is worth mentioning that, in this study, we presented an integration of scientists knowledge and field data using machine learning algorithms to develop an acceptable and robust prediction model. This method can be used in any field where there are some field data as well as expertise knowledge about the data. Validation metrics are note limited to \citeauthor{Anderson_2004_Proc}'s metrics. Therefore, adding more metrics from different field can be used through the proposed method to develop prediction models. }
-
-
-
-
-
-

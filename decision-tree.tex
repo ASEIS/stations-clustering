@@ -6,7 +6,7 @@ Building decision trees is a supervised learning process used to approximate a t
 % \myrevision{A decision tree can be used to classify a case by starting at the root of the tree and moving through it until the leaf is encountered. Each tree is a structure including a root, decision nodes and leaf nodes. Decision nodes specifies some test to carried out on attributes and leaf nodes indicate the final class \citep{Quinlan_1993_Book}.}
 Decision trees are, however, non-unique. They depend on the dataset, the user parameters, and the algorithm employed to build them \citep{Murthy_1998_DMKD}. Therefore, before describing our choice of the decision tree algorithm and parameters, we revise three aspects about the dataset: data classes, attributes equivalence, and dataset balance.
 
-First, by data classes we refer to whether the classes of data are properly distinguishable or not, and to whether the data attributes contribute to those classes or not. In our case, data classes are handled by means of the clustering process. As we described in the previous section, at the end of the clustering process, all the data-samples in our dataset are labeled \change{into one out the four validation categories. In decision trees, however, we refer to these categories as \textit{classes}. We are therefore interested in working with a labeled dataset or a properly \textit{classified} dataset using the validation classes P, F, G and E, which is something that has been guaranteed by the prior clustering process.}
+First, by data classes we refer to whether the classes of data are properly distinguishable or not, and to whether the data attributes contribute to those classes or not. In our case, data classes are handled by means of the clustering process. As we described in the previous section, at the end of the clustering process, all the data samples in our dataset are labeled \change{into one out the four validation categories. In decision trees, however, we refer to these categories as \textit{classes}. We are therefore interested in working with a labeled dataset or a properly \textit{classified} dataset using the validation classes P, F, G and E, which is something that has been guaranteed by the prior clustering process.}
 
 % outcome classes (or clusters) defined in terms of the validation categories (poor, fair, good, excellent).
 
@@ -14,9 +14,11 @@ Second, by attributes equivalence, we refer to whether the data attributes are c
 
 % In our case, this is not necessary because (a) all the data attributes---defined by the 11 GOF metrics---are on the same dimensionless numerical scale (varying from 0 to 10), and (b) because the algorithm we use is not susceptible to the attributes scale.
 
-Last, there is the issue of balance. A balanced dataset is one that has about the same number of samples per class. Algorithms used for building decision trees tend to perform better with balanced datasets \citep[e.g.,][]{Branco_2016_ACMCS, Weiss_2003_JAIR}. Imbalanced datasets, on the other hand, are those with a significant disparity in the number of samples in each class. Imbalanced datasets can be improved by a resampling process. There are two basic resampling approaches: undersampling and oversampling \citep{Branco_2016_ACMCS}. Undersampling discards data from the subsets with larger number of samples. Oversampling replicates data until reaching appropriate number of samples. Both processes are done by randomly picking data to either be discarded or replicated. In our case, as we will see later, we apply oversampling to one of our dataset classes. 
+Last, there is the issue of balance. A balanced dataset is one that has about the same number of samples per class. Algorithms used for building decision trees tend to perform better with balanced datasets \citep[e.g.,][]{Branco_2016_ACMCS, Weiss_2003_JAIR}. Imbalanced datasets, on the other hand, are those with a significant disparity in the number of samples in each class. Imbalanced datasets can be improved by a resampling process. There are two basic resampling approaches: undersampling and oversampling \citep{Branco_2016_ACMCS}. Undersampling discards data from the subsets with larger number of samples. Oversampling replicates data until reaching appropriate number of samples. Both processes are done by randomly picking data to either be discarded or replicated. In our case, as we will see later, we apply oversampling to one of our dataset classes.
 
-\change{In general, oversampling increases the possibility of overfitting, which occurs when the training data leads the algorithm to produce a decision tree that predicts outcomes too close to or exactly the same as the training data. This is not desirable because such a tree would lead to inaccurate predictions for other unseen data. Overfitting can be avoided by using conservative oversampling rates \citep{Weiss_2003_JAIR} and/or by applying heavy pruning methods. (Pruning, as the word implies, is the process of cutting branches off a tree. Heavy pruning methods limit the complexity of the tree by constraining the number of branches and/or depth of a tree.)}
+\change{In general, oversampling increases the possibility of overfitting, which occurs when the training data leads the algorithm to produce a decision tree that predicts outcomes too close to or exactly the same as the training data. This is not desirable because such a tree would lead to inaccurate predictions for other unseen data. Overfitting can be avoided 
+% by using conservative oversampling rates \citep{Weiss_2003_JAIR} and/or
+by applying heavy pruning methods. (Pruning, as the word implies, is the process of cutting branches off a tree. Heavy pruning methods limit the complexity of the tree by constraining the number of branches and/or depth of a tree.)}
 
 % This process has consequences, mainly that it increases the likelihood of overfitting. \myrevision{Overfitting happens when the prediction algorithm predicts the final results too closely or exactly to the training data, however, it provides non-accurate results for unseen or test data.}
 
@@ -65,7 +67,12 @@ The effectiveness of the tree, on the other hand, needs to be measured. To that 
 	\, ,
 \end{equation}
 %
-where $P$ and $R$ are the precision and recall factors, respectively, and $\beta$ is a weighting factor between the two. $P$ measures the fraction of data samples that are correctly classified within a category, whereas $R$ measures the fraction of the data classified within that category regardless of whether it was correctly classified or not. Mathematically, they are defined as
+where $P$ and $R$ are the precision and recall factors, respectively, and $\beta$ is a weighting factor between the two. $P$ and $R$ are defined as
+% $P$ measures the fraction of data samples that are correctly classified \change{in that class, whereas $R$ measures the fraction that are correctly recalled.}
+%
+% \textcolor{red}{of the data classified within that category regardless of whether it was correctly classified or not.}
+%
+% Mathematically, they are defined as
 %
 \begin{equation}
 	P = \frac{ \mathrm{TP} }{ \mathrm{TP} + \mathrm{FP} }
@@ -74,7 +81,7 @@ where $P$ and $R$ are the precision and recall factors, respectively, and $\beta
 	\, .
 \end{equation}
 %
-Here, TP, FP, and FN are the number of samples in the testing dataset considered to be true-positives, false-positives, and false-negatives, respectively. 
+Here, TP, FP, and FN are the number of samples in the testing dataset considered to be true-positives, false-positives, and false-negatives, respectively.
 
 These values are typically ordered in a confusion matrix. For the simplest case of two categories, a confusion matrix takes the form
 %
@@ -104,6 +111,6 @@ These values are typically ordered in a confusion matrix. For the simplest case 
 %
 where TN is the number of true-negative samples. \change{Confusion matrices can be larger depending on the number of classes. In our case, the confusion matrices are size 4$\times$4, in order to compare the actual number of data samples classified as P, F, G and E with the number of samples predicted by the decision trees for each one of the same validation classes.}
 
-We compute $F_{\beta}$ in equation (\ref{eq:f}) using $\beta = 1$ to give equal weight to $P$ and $R$ \citep{McCarthy_1995_Proc}. This is done for all the trees obtained using all possible combinations of CF and $S_{\min}$ values. Then, we select trees with high levels of effectiveness as \change{measured} by $F_1$, commensurate to such trees having low complexities, i.e., reduced number of metrics and shallow depths, which is precisely the goal set at the start. Note that $F_1$ is obtained based on the testing dataset as opposed to the training dataset. 
+We compute $F_{\beta}$ in equation (\ref{eq:f}) using $\beta = 1$ to give equal weight to $P$ and $R$ \citep{McCarthy_1995_Proc}. This is done for all the trees obtained using all possible combinations of CF and $S_{\min}$ values. Then, we select trees with high levels of effectiveness as \change{measured} by $F_1$, commensurate to such trees having low complexities, i.e., reduced number of metrics and shallow depths, which is precisely the goal set at the start. Note that $F_1$ is obtained based on the testing dataset as opposed to the training dataset.
 
 % The results as applied to our dataset are presented next.
