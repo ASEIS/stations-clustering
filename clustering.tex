@@ -20,7 +20,6 @@ This process is sensitive to the initial selection of the number of clusters and
 \end{figure*}
 
 In our implementation we limit the clustering to four validation categories: poor (P), fair (F), good (G), and excellent (E). The cluster centers are randomly selected at the start, but we apply constraints by adding \change{a subset of four artificial data samples into our dataset such that they have cannot-link conditions. These artificial data samples are associated with the different validation categories and are such that they have GOF scores equal to 3, 5, 7, and 9, across all metrics.}
-% This means that, in total, we introduce 44 artificial data samples (4 categories $\times$ 11 metrics). These artificial data samples play the role of representatives of the validation categories for each metric.}
 
 \change{The concepts of cluster centers and distances, as exemplified in Fig.~\ref{fig:k-means}, imply the existence of a two-dimensional space. Here, the dimensions are defined by the GOF metrics. We are therefore dealing with an eleven-dimensional space. In clustering, the term dimensions is equivalent to the concept of the data \textit{features}. Within this context, the GOF metrics are the features defining a multi-dimensional space. In such multi-dimensional space defined by the 11 features,} the distances are obtained using the Euclidean expression
 %
