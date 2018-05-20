@@ -1,0 +1,189 @@
+
+% \setlength{\paperwidth}{210mm}
+% \setlength{\paperheight}{297mm}% fixed.
+
+\documentclass{article}
+
+\usepackage[review]{myreviewpckg}
+
+\usepackage{textcomp}
+\usepackage{simplemargins}
+\usepackage{ifpdf}
+
+\ifpdf
+	\usepackage[pdftex,bookmarks=false]{hyperref}
+\else
+	\usepackage{graphics}
+	\usepackage{graphicx}
+	\usepackage{epsfig}
+	\usepackage[dvipdfm,bookmarks=false]{hyperref}
+\fi
+
+\hypersetup{
+    pdfpagelayout=OneColumn,
+	colorlinks = true,
+	urlcolor   = blue,
+	citecolor  = blue,
+	linkcolor  = blue
+}
+
+\clubpenalty=10000  % Orphan - First of paragraph left behind
+\widowpenalty=10000 % Widow  - Last of paragraph sent ahead
+
+\setallmargins{1in}
+
+\begin{document}
+
+% *****************************************************************
+% *********************** Associate Editor ************************
+% *****************************************************************
+
+\thispagestyle{empty}
+\setcounter{page}{0}
+
+~
+
+\vspace{6em}
+\noindent\today
+
+\vspace{5em}
+\noindent
+Dr.~Thomas Brocher\\
+Associate Editor, BSSA\\
+BSSA Editorial Office\\
+400 Evelyn Ave, Ste 201\\
+Albany, CA 94706
+
+\vspace{4em}
+\noindent
+Dear Dr. Brocher,
+
+\vspace{1em}
+\noindent
+Thank you again for reviewing our manuscript (BSSA-D-18-00056R1). We are enclosing a response to your comments and suggestions, which we hope you will find satisfactory. To help with the final review, we have assumed all previous changes as accepted, and produced a new annotated manuscript highlighting the latest modifications for your convenience.
+\\
+
+\noindent
+We look forward to hearing back from you.
+
+\vspace{2em}
+\noindent
+Sincerely yours,
+
+
+\vspace{5em}
+\noindent
+Ricardo Taborda\\
+Department of Civil Engineering, and\\
+Center for Earthquake Research and Information\\
+The University of Memphis
+
+\newpage
+\begin{center}
+	\bf
+	\large
+	Authors' Response
+\end{center}
+
+\noindent
+As done before, below, we provide a response to each comment. The original comments are in italic black font, followed by our responses in regular blue font.
+\vspace{2ex}
+\newline
+
+\introcomment{~}{%
+I appreciate the author's thoughtful response to the reviewers suggestions and to the revisions that they made to their manuscript, which have substantially improved the paper. I think the paper is close to being acceptable for publication, but I have a few minor suggestions for the authors to consider.
+}
+
+\response{%
+Thank you. We think we have addressed all your suggestions, and hope you will find the new version of our submission acceptable for publication.
+}
+
+\comment{1}{%
+Figure 2. In the boxes showing the counts of the GOF factors, consider indicating the ranges of Poor, Fair, Good, and Excellent to allow the reader to quickly see that most GOF factors are in the Fair range. Would it also be useful to indicate the average GOF score for each model? This would allow the reader interested in velocity models to more easily which model produced the highest average GOF.
+}
+
+\response{%
+We modified Figure 2 by including the ranges for poor, fair, good and excellent, as suggested, and modified the figure's caption accordingly. We, however, did not include the average score as it may be misleading to the readers. The reason for that is that the values for the particular case of the 2008 Chino Hills earthquake at high frequencies would suggest that the velocity model CVM-H+GTL is better than CVM-S or CVM-H, but we know that is not generally the case. In a subsequent study (Taborda et al.,~2016), which is cited in the paper, we showed that over a larger collection of events (30), and for the lower frequencies at which the models can be more properly evaluated, the velocity model CVM-S (in its version 4.26.M01) is the one that is most consistent in yielding better simulation results when these are compared to data. We had cited that paper in the Introduction, and recognizing it may be of interest at this point as well, we now modified the end of the first paragraph in the \textbf{Study Dataset} section to reflect that.
+}
+
+\comment{2}{%
+Line 146. I assume that all 11 of Anderson's metrics were used for the GOFs shown in Figure 2, but this is not explicitly stated. It should be explicitly stated which of Anderson's metrics were used in Figure 2. It may also be worthwhile to comment that the general fit was Fair, and to compare the average GOF score for the 3 velocity models. This information all may be in Taborda and Bielak (2014) but this paper should repeat them so that the readers don't have to look up the older paper.
+}
+
+\response{%
+That is correct. We now make explicit mention to the fact that those results were obtained using the eleven metrics described earlier and shown in Table 1. Following the explanation in our response to the previous comment, we modified the end of the first paragraph in the \textbf{Study Dataset} section to make reference to the evaluation of the velocity models done later on by Taborda et al.~(2016). We think that, on what regards to comparing velocity models, that reference is better than Taborda and Bielak (2014).
+}
+
+\comment{3}{%
+Line 165. ``Alright'' is not quite the right word here. I think you mean either acceptable or reasonable. Did you consider other options, such as using only one component for one velocity model? I assume that you wanted as large a dataset as possible, but you should state the reason you followed the approach of using all data.
+}
+
+\response{%
+Certainly. We fixed the language and added a sentence to explain the reason behind our choice, which was indeed to use a dataset as large as possible. Thank you.
+}
+
+\comment{4}{%
+Figure 5. Consider adding lines to each plot that would indicate a 1:1 relation between the x and y axes. These lines would highlight datasets that lie on and off this line, as well as help the reader better see the scatter in the data.
+}
+
+\response{%
+We appreciate this comment. However, we are reluctant to add the 1:1 relationship lines. The reason being that these plots should not be interpreted as typical correlation plots of scattered data are usually interpreted. If we add the line we would be erroneously leading the readers to think these are as any other $x$-$y$ plots correlating showing the relationship of two metrics as seen through the data, and here one also needs to understand that the symbols (or colors) and how well defined are the transitions from one to another are actually equally, and perhaps more important than whether the cloud of data points follow a 1:1 relationship or not. To make this point clearer we added a comment in the text reflecting this point... \textcolor{red}{Adding the comment in the text of the paper is pending on Naeem agreeing with this response}.
+}
+
+\comment{5}{%
+Line 280. Suggest ``scope of the paper'' rather than ``scope of the study''.
+}
+
+\response{%
+Done. Thanks for the sugestion.
+}
+
+\comment{6}{%
+Tables 6 and 7. To make it easier for the reader to easily understand your results, I suggest adding the full title of each metric to the tables from Table 1.
+}
+
+\response{%
+Thank you for the suggestion. We adopted it and modified Tables 6 and 7 accordingly.
+}
+
+\comment{7}{%
+Lines 437-443 and 450-456. Throughout the text, but especially in these paragraphs, I suggest making it easier for the reader to understand which metrics matter and which don't. For this reason I would state the full name of the metric, followed by its code. For example, I would write total energy (C4) instead of just C4 or C4 (total energy). The full name of the metric is easily understood by any reader, the code requires the reader to constantly refer to Table 1.
+}
+
+\response{%
+Thank you for the suggestion. We thought that doing it all throughout the paper would likely be too repetitive and at some points unnecessary. That being said, we completely agree that in these paragraphs of the \textbf{Results} section using the full names would help carry over the main observations we draw from the analysis. We have therefore modified this part of the manuscript in attention to this comment. We also review the format to be consistent, i.e., first the code, then the name within parentheses.
+}
+
+\comment{8}{%
+Line 479. Suggest ``of the algorithm'' rather than ``from the algorithm''.
+}
+
+\response{%
+Fixed. Thanks.
+}
+
+\comment{9}{%
+Lines 497-499. One of the differences between the two results are that the Tree T1 Combination appears to yield a higher percentage of poor and fair scores than the 11-metric score. But I'm not sure because it's actually very hard to compare the counts in Figure 11. A more direct comparison could be made if the counts in the numerical All GOF Scores were combined into Poor, Fair, Good, and Excellent, and plotted over the Tree T1 Combination count in the lower right hand side. These boxes could be shown as dashed or dotted lines and would make this comparison much more quantitative.
+}
+
+\response{%
+We followed this advise and modified Figure 11 accordingly. We also modified the text in the \textbf{Testing} section.
+}
+
+\comment{10}{%
+Line 533. Suggest ``to focus'' instead of ``the focus''.
+}
+
+\response{%
+Done. Thanks.
+}
+
+\comment{11}{%
+Lastly, it is customary to acknowledge and/or to thank, the journal reviewers for their helpful suggestions.
+}
+
+\response{%
+Absolutely! We totally forgot about that during the previous revision. Our apologies for that. We have now added our thanks to the reviewers and to you as well.
+}
+
+\end{document}
